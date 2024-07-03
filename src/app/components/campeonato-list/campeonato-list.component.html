@@ -1,0 +1,13 @@
+  <div>
+    <h2>Lista de Campeonatos</h2>
+    <div *ngIf="campeonatos.length > 0; else noCampeonatos">
+      <ul>
+        <li *ngFor="let campeonato of campeonatos">
+          {{ campeonato.year }} - {{ campeonato.categoria }} - {{ campeonato.division }}
+        </li>
+      </ul>
+    </div>
+    <ng-template #noCampeonatos>
+      <p>No hay campeonatos disponibles.</p>
+    </ng-template>
+  </div>

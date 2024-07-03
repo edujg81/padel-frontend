@@ -1,0 +1,11 @@
+<p>jugador-list works!</p>
+<div *ngIf="jugadores.length > 0">
+    <ul>
+      <li *ngFor="let jugador of jugadores">
+        {{ jugador.nombreCompleto }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="jugadores.length === 0">
+    No hay jugadores disponibles.
+</div>

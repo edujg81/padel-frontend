@@ -1,0 +1,19 @@
+<p>jugador-form works!</p>
+<form [formGroup]="jugadorForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Nombre:</label>
+      <input id="name" formControlName="name">
+      <div *ngIf="jugadorForm.get('nombreCompleto')?.invalid && jugadorForm.get('nombreCompleto')?.touched">
+        Nombre es requerido.
+      </div>
+    </div>
+    <div>
+        <label for="dni">DNI:</label>
+        <input id="dni" formControlName="dni">
+        <div *ngIf="jugadorForm.get('dni')?.invalid && jugadorForm.get('dni')?.touched">
+          Edad es requerida.
+        </div>
+      </div>
+      <!-- Agrega más campos según sea necesario -->
+      <button type="submit" [disabled]="jugadorForm.invalid">Crear Jugador</button>
+    </form>

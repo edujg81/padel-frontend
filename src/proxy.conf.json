@@ -1,0 +1,8 @@
+{
+    "/api": {
+      "target": "http://localhost:8080",  // Cambia esto según la URL de tu backend
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
