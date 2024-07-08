@@ -1,33 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { CampeonatoService } from '../../services/campeonato.service';
-import { CommonModule, NgIf, NgFor } from '@angular/common';
 import { Campeonato } from '../../models/campeonato.model';
-import { AppComponent } from '../../app.component';
-import { MatCard, MatCardActions, MatCardContent, MatCardTitle } from '@angular/material/card';
+import { CampeonatoService } from '../../services/campeonato.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-campeonato-list',
   standalone: true,
   imports: [
-    AppComponent,
-    CommonModule,
-    NgIf,
-    NgFor,
-    MatCard,
-    MatCardContent,
-    MatCardActions,
-    MatCardTitle
-  ],
+    CommonModule, 
+    MatButtonModule, 
+    MatCardModule, 
+    HttpClientModule],
   templateUrl: './campeonato-list.component.html',
-  styleUrl: './campeonato-list.component.scss'
+  styleUrls: ['./campeonato-list.component.scss']
 })
 export class CampeonatoListComponent implements OnInit {
-deleteCampeonato(arg0: number) {
-throw new Error('Method not implemented.');
-}
-editCampeonato(arg0: number) {
-throw new Error('Method not implemented.');
-}
+
   campeonatos: Campeonato[] = [];
 
   constructor(private campeonatoService: CampeonatoService) { }
@@ -38,4 +29,11 @@ throw new Error('Method not implemented.');
       error: error => console.error('Error al recuperar campeonatos', error)
     });
   }
+  
+	deleteCampeonato(arg0: number) {
+		throw new Error('Method not implemented.');
+	}
+	editCampeonato(arg0: number) {
+		throw new Error('Method not implemented.');
+	}
 }

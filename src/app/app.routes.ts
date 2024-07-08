@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
 
 import { CampeonatoListComponent } from './components/campeonato-list/campeonato-list.component';
 import { CampeonatoDetailComponent } from './components/campeonato-detail/campeonato-detail.component';
@@ -17,4 +18,6 @@ export const routes: Routes = [
   { path: 'jugadores/:id', component: JugadorDetailComponent }
 ];
 
-export default routes;
+export const appRoutes = [
+  provideHttpClient()
+];
