@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
 
 import { CampeonatoListComponent } from './components/campeonato-list/campeonato-list.component';
 import { CampeonatoDetailComponent } from './components/campeonato-detail/campeonato-detail.component';
@@ -10,7 +9,7 @@ import { JugadorDetailComponent } from './components/jugador-detail/jugador-deta
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/campeonatos', pathMatch: 'full' },
+  { path: '', redirectTo: '/campeonatos', pathMatch: 'full', title: 'Inicio'},
   { path: 'campeonatos', component: CampeonatoListComponent },
   { path: 'campeonatos/new', component: CampeonatoFormComponent },
   { path: 'campeonatos/:id', component: CampeonatoDetailComponent },
@@ -19,8 +18,3 @@ export const routes: Routes = [
   { path: 'jugadores/:id', component: JugadorDetailComponent },
   { path: '**', component: NotFoundComponent}
 ];
-
-/*export const appRoutes = [
-  provideRouter(routes),
-  provideHttpClient()
-];*/

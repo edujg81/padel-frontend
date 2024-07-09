@@ -26,7 +26,7 @@ export class CampeonatoListComponent implements OnInit {
   selCampeonatoId = -1;
 
   constructor(private campeonatoService: CampeonatoService) { }
-
+  
   ngOnInit(): void {
     this.campeonatoService.getCampeonatos().subscribe({
       next: (data: Campeonato[]) => this.campeonatos = data,

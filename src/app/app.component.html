@@ -1,5 +1,7 @@
 <mat-toolbar color="primary">
-  <span>{{ title }}</span>
+  <a routerLink="['/']" routerLinkActive="router-link-active">
+    <span>{{ title }}</span> <!-- sustituir por logo -->
+  </a>
   <span class="spacer"></span>
   <span fxFlex></span>
   <a mat-button routerLink="/campeonatos" routerLinkActive="visited" routerLinkActiveOptions="{exact: true}">Campeonatos</a>

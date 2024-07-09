@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { Campeonato } from '../../models/campeonato.model';
@@ -12,15 +12,18 @@ import { CommonModule } from '@angular/common';
   styleUrl: './campeonato-detail.component.scss'
 })
 export class CampeonatoDetailComponent implements OnInit {
+  route: ActivatedRoute = inject(ActivatedRoute);
+  campeonatoService = inject(CampeonatoService);
   campeonato: Campeonato | undefined;
 
-  constructor(
-    private route: ActivatedRoute,
-    private campeonatoService: CampeonatoService
-  ) { }
+  selCampeonatoId = -1;
+
+  constructor() {
+    this.selCampeonatoId = Number(this.route.snapshot.params['id']);
+  }
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+   const id = this.selCampeonatoId;
     this.campeonatoService.getCampeonato(id).subscribe(data => {
       this.campeonato = data;
     });

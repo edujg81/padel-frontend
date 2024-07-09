@@ -6,3 +6,11 @@
 .elevate{
     box-shadow: 0 4px 8px 0 rgba(200, 150, 100, 0.4), 0 6px 20px 0 rgba(200, 150, 100, 0.4);
 }
+
+button {
+    padding: 10px;
+    border: solid 1px var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+}
