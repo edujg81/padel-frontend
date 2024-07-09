@@ -1,23 +1,44 @@
  
-  <h2>Lista de Campeonatos</h2>
-  <div *ngIf="campeonatos.length > 0; else noCampeonatos">
-    <div class="container">
-      <mat-card *ngFor="let campeonato of campeonatos">
-        <mat-card-title>{{ campeonato.year }} - {{ campeonato.categoria }} - {{ campeonato.division }}</mat-card-title>
-        <mat-card-content>
-          <p>Activo: {{ campeonato.activo }}</p>
-          <p>Estado: {{ campeonato.estado }}</p>
-          <p>Puntos por victoria: {{ campeonato.puntosPorVictoria }}</p>
-          <p>Puntos por derrota: {{ campeonato.puntosPorDerrota }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button (click)="editCampeonato(campeonato.id)">Editar</button>
-          <button mat-button color="warn" (click)="deleteCampeonato(campeonato.id)">Eliminar</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+<h2>Lista de Campeonatos</h2>
+<div 
+  fxLayout.xs="column"
+  fxLayout="row wrap"
+  fxLayoutAlign="space-between stretch"
+  *ngIf="campeonatos.length > 0; else noCampeonatos"
+>
+  <div fxFlex.sm="48" fxFlex="30" *ngFor="let campeonato of campeonatos; let i = index">
+    <mat-card class="example-card" [class.elevate]="selCampeonatoId === campeonato.id" 
+            (mouseover)="selCampeonatoId = campeonato.id" 
+            (mouseout)="selCampeonatoId = -1"
+            (focus)="onFocus(campeonato)"
+            (blur)="onBlur(campeonato)">
+      <mat-card-header>
+        <mat-card-title>
+          {{ campeonato.year }} - {{ campeonato.categoria | uppercase }} - División {{ campeonato.division }}
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>Activo: {{ campeonato.activo ? 'Sí' : 'No' }}</p>
+        <p>Estado: {{ campeonato.estado }}</p>
+        <p>Puntos por Victoria: {{ campeonato.puntosPorVictoria }}</p>
+        <p>Puntos por Derrota: {{ campeonato.puntosPorDerrota }}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <a *ngIf="verDetalleButton"
+          routerLink="['/campeonatos', campeonato.id]"
+          mat-raised-button>
+          <button mat-button>Detalles</button>
+        </a>
+        <button mat-button (click)="editCampeonato(campeonato.id)">Editar</button>
+        <button mat-button color="warn" (click)="deleteCampeonato(campeonato.id)">Eliminar</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
-  <ng-template #noCampeonatos>
-    <p>No hay campeonatos disponibles.</p>
-  </ng-template>
+</div>
+
+<ng-template #noCampeonatos>
+  <p>No hay campeonatos disponibles.</p>
+</ng-template>
   

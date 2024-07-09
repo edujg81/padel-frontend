@@ -7,6 +7,7 @@ import { CampeonatoFormComponent } from './components/campeonato-form/campeonato
 import { JugadorListComponent } from './components/jugador-list/jugador-list.component';
 import { JugadorFormComponent } from './components/jugador-form/jugador-form.component';
 import { JugadorDetailComponent } from './components/jugador-detail/jugador-detail.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/campeonatos', pathMatch: 'full' },
@@ -15,9 +16,11 @@ export const routes: Routes = [
   { path: 'campeonatos/:id', component: CampeonatoDetailComponent },
   { path: 'jugadores', component: JugadorListComponent },
   { path: 'jugadores/new', component: JugadorFormComponent },
-  { path: 'jugadores/:id', component: JugadorDetailComponent }
+  { path: 'jugadores/:id', component: JugadorDetailComponent },
+  { path: '**', component: NotFoundComponent}
 ];
 
-export const appRoutes = [
+/*export const appRoutes = [
+  provideRouter(routes),
   provideHttpClient()
-];
+];*/

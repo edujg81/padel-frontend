@@ -1,7 +1,15 @@
 .container {
-  margin: 20px;
+  max-width: 1600px;
+  margin: auto;
+  padding: 20px;
+  color: whitesmoke;
+  //background-color: white;
 }
 
 .spacer {
   flex: 1 1 auto;
+}
+
+.visited {
+  color: black !important;
 }
