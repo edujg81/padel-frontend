@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { CommonModule } from '@angular/common';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 @Component({
   selector: 'app-campeonato-form',
@@ -11,8 +16,18 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./campeonato-form.component.scss'],
   imports: [
     CommonModule,  // Añade CommonModule a la lista de imports
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatSlideToggleModule,
+    FormsModule,
+    MatSlideToggle,
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatSelectModule,
+    MatButtonModule
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CampeonatoFormComponent implements OnInit {
   campeonatoForm: FormGroup;  // Declaración de FormGroup
@@ -31,6 +46,10 @@ export class CampeonatoFormComponent implements OnInit {
       puntosPorVictoria: [2, Validators.required],
       puntosPorDerrota: [0, Validators.required]
     });
+  }
+
+  alertFormValues(formGroup: FormGroup) {
+    alert(JSON.stringify(formGroup.value, null, 2));
   }
 
   ngOnInit(): void {

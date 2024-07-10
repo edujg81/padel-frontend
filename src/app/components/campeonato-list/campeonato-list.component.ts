@@ -4,6 +4,7 @@ import { CampeonatoService } from '../../services/campeonato.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-campeonato-list',
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
     CommonModule, 
     MatButtonModule, 
     MatCardModule, 
+    RouterLink
   ],
   templateUrl: './campeonato-list.component.html',
   styleUrls: ['./campeonato-list.component.scss']
@@ -23,7 +25,7 @@ export class CampeonatoListComponent implements OnInit {
   campeonatos: Campeonato[] = [];
 
   verDetalleButton = true;
-  selCampeonatoId = -1;
+  selCampeonatoId: number = -1;
 
   constructor(private campeonatoService: CampeonatoService) { }
   
@@ -34,10 +36,10 @@ export class CampeonatoListComponent implements OnInit {
     });
   }
   
-	deleteCampeonato(arg0: number) {
+	deleteCampeonato(id: number): void {
 		throw new Error('Method not implemented.');
 	}
-	editCampeonato(arg0: number) {
+	editCampeonato(id: number): void {
 		throw new Error('Method not implemented.');
 	}
 

@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { provideRouter, Routes } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
 
 import { CampeonatoListComponent } from './components/campeonato-list/campeonato-list.component';
 import { CampeonatoDetailComponent } from './components/campeonato-detail/campeonato-detail.component';
@@ -7,6 +8,8 @@ import { JugadorListComponent } from './components/jugador-list/jugador-list.com
 import { JugadorFormComponent } from './components/jugador-form/jugador-form.component';
 import { JugadorDetailComponent } from './components/jugador-detail/jugador-detail.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+
+// Definimos las rutas de la aplicación
 
 export const routes: Routes = [
   { path: '', redirectTo: '/campeonatos', pathMatch: 'full', title: 'Inicio'},
@@ -18,3 +21,8 @@ export const routes: Routes = [
   { path: 'jugadores/:id', component: JugadorDetailComponent },
   { path: '**', component: NotFoundComponent}
 ];
+/*
+export const appRoutes = [
+  provideRouter(routes),
+  provideHttpClient()
+];*/

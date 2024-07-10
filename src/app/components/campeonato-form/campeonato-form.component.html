@@ -1,59 +1,59 @@
 <div>
   <h2>Crear Campeonato</h2>
-  <form [formGroup]="campeonatoForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="year">Año:</label>
-      <input id="year" formControlName="year">
+  <form class="example-form" [formGroup]="campeonatoForm" (ngSubmit)="onSubmit()">
+    <mat-form-field hintLabel="Año" appearance="fill">
+      <mat-label>Introduce Año</mat-label>
+      <input matInput #input maxlength="4" placeholder="Ej. 2024" formControlName="year">
       <div *ngIf="campeonatoForm.get('year')?.invalid && campeonatoForm.get('year')?.touched">
         El año es obligatorio.
       </div>
-    </div>
-    
-    <div>
-      <label for="categoria">Categoría:</label>
-      <input id="categoria" formControlName="categoria">
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Categoría" appearance="fill">
+      <mat-label>Introduce Categoría</mat-label>
+      <input matInput #input placeholder="Masculino | Femenino | Mixto" formControlName="categoria">
       <div *ngIf="campeonatoForm.get('categoria')?.invalid && campeonatoForm.get('categoria')?.touched">
         La categoría es obligatoria.
       </div>
-    </div>
-  
-    <div>
-      <label for="division">División:</label>
-      <input id="division" formControlName="division">
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+      <mat-label for="division">División</mat-label>
+      <input id="division" matInput formControlName="division">
       <div *ngIf="campeonatoForm.get('division')?.invalid && campeonatoForm.get('division')?.touched">
         La división es obligatoria.
       </div>
-    </div>
+    </mat-form-field>
   
-    <div>
-      <label for="estado">Estado:</label>
-      <input id="estado" formControlName="estado">
+    <mat-form-field appearance="fill">
+      <mat-label for="estado">Estado</mat-label>
+      <input id="estado" matInput formControlName="estado">
       <div *ngIf="campeonatoForm.get('estado')?.invalid && campeonatoForm.get('estado')?.touched">
         El estado es obligatorio.
       </div>
-    </div>
+    </mat-form-field>
   
-    <div>
-      <label for="puntosPorVictoria">Puntos por Victoria:</label>
-      <input id="puntosPorVictoria" formControlName="puntosPorVictoria">
+    <mat-slide-toggle formControlName="activo" labelPosition="before">Activo</mat-slide-toggle>
+  
+    <mat-form-field appearance="fill">
+      <mat-label for="puntosPorVictoria">Puntos por Victoria</mat-label>
+      <input id="puntosPorVictoria" matInput formControlName="puntosPorVictoria" type="number">
       <div *ngIf="campeonatoForm.get('puntosPorVictoria')?.invalid && campeonatoForm.get('puntosPorVictoria')?.touched">
         Los puntos por victoria son obligatorios.
       </div>
-    </div>
+    </mat-form-field>
   
-    <div>
-      <label for="puntosPorDerrota">Puntos por Derrota:</label>
-      <input id="puntosPorDerrota" formControlName="puntosPorDerrota">
+    <mat-form-field appearance="fill">
+      <mat-label for="puntosPorDerrota">Puntos por Derrota</mat-label>
+      <input id="puntosPorDerrota" matInput formControlName="puntosPorDerrota" type="number">
       <div *ngIf="campeonatoForm.get('puntosPorDerrota')?.invalid && campeonatoForm.get('puntosPorDerrota')?.touched">
         Los puntos por derrota son obligatorios.
       </div>
-    </div>
+    </mat-form-field>
+    
+    <p>Form Group Status: {{campeonatoForm.status}}</p>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="campeonatoForm.invalid">Crear</button>
   
-    <div>
-      <label for="activo">Activo:</label>
-      <input id="activo" type="checkbox" formControlName="activo">
-    </div>
-  
-    <button type="submit" [disabled]="campeonatoForm.invalid">Crear Campeonato</button>
   </form>
 </div>

@@ -13,7 +13,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+
+// Aquí se declaran los módulos y proveedores globales
 export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom(
@@ -25,6 +29,8 @@ export const appConfig: ApplicationConfig = {
       MatInputModule,
       MatToolbarModule,
       MatIconModule,
+      MatSlideToggleModule,
+      FlexLayoutModule,
       BrowserAnimationsModule
     ),
     provideRouter(routes, withComponentInputBinding())]

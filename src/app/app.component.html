@@ -1,11 +1,16 @@
 <mat-toolbar color="primary">
-  <a routerLink="['/']" routerLinkActive="router-link-active">
+  <a [routerLink]="['/']" routerLinkActive="router-link-active">
     <span>{{ title }}</span> <!-- sustituir por logo -->
   </a>
   <span class="spacer"></span>
   <span fxFlex></span>
-  <a mat-button routerLink="/campeonatos" routerLinkActive="visited" routerLinkActiveOptions="{exact: true}">Campeonatos</a>
-  <a mat-button routerLink="/jugadores" routerLinkActive="visited">Jugadores</a>
+  <a mat-button [routerLink]="['/campeonatos']" routerLinkActive="visited" routerLinkActiveOptions="{exact: true}">Campeonatos</a>
+  <a mat-button [routerLink]="['/jugadores']" routerLinkActive="visited">Jugadores</a>
+  <a mat-button routerLink="/">Inicio</a>
+  <a mat-button routerLink="/campeonatos">Campeonatos</a>
+  <a mat-button routerLink="/jugadores">Jugadores</a>
+  <a mat-button routerLink="/inscripciones">Inscripciones</a>
+  <a mat-button routerLink="/informes">Informes</a>
 </mat-toolbar>
 
 <div class="container">

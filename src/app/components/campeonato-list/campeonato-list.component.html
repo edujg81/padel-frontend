@@ -1,9 +1,9 @@
- 
 <h2>Lista de Campeonatos</h2>
+<button mat-raised-button color="primary" routerLink="/campeonatos/new">Crear Campeonato</button>
 <div 
   fxLayout.xs="column"
-  fxLayout="row wrap"
-  fxLayoutAlign="space-between stretch"
+  fxLayout="column"
+  fxLayoutGap="10px"
   *ngIf="campeonatos.length > 0; else noCampeonatos"
 >
   <div fxFlex.sm="48" fxFlex="30" *ngFor="let campeonato of campeonatos; let i = index">
@@ -19,14 +19,16 @@
       </mat-card-header>
 
       <mat-card-content>
-        <p>Activo: {{ campeonato.activo ? 'Sí' : 'No' }}</p>
-        <p>Estado: {{ campeonato.estado }}</p>
-        <p>Puntos por Victoria: {{ campeonato.puntosPorVictoria }}</p>
-        <p>Puntos por Derrota: {{ campeonato.puntosPorDerrota }}</p>
+        <p>
+          Activo: {{ campeonato.activo ? 'Sí' : 'No' }} 
+          - Estado: {{ campeonato.estado }}
+          - Puntos por Victoria: {{ campeonato.puntosPorVictoria }}
+          - Puntos por Derrota: {{ campeonato.puntosPorDerrota }}
+        </p>
       </mat-card-content>
 
       <mat-card-actions>
-        <a *ngIf="verDetalleButton" routerLink="['/campeonatos/:id', campeonato.id]">
+        <a [routerLink]="['/campeonatos', campeonato.id]">
           <button mat-button>Detalles</button>
         </a>
         <button mat-button (click)="editCampeonato(campeonato.id)">Editar</button>
@@ -39,4 +41,3 @@
 <ng-template #noCampeonatos>
   <p>No hay campeonatos disponibles.</p>
 </ng-template>
-  
