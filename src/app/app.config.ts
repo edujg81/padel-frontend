@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { BrowserModule } from '@angular/platform-browser';
 
 // Aquí se declaran los módulos y proveedores globales
 export const appConfig: ApplicationConfig = {
@@ -31,6 +32,7 @@ export const appConfig: ApplicationConfig = {
       MatIconModule,
       MatSlideToggleModule,
       FlexLayoutModule,
+      BrowserModule,
       BrowserAnimationsModule
     ),
     provideRouter(routes, withComponentInputBinding())]

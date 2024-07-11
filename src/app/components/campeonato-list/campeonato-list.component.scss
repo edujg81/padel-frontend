@@ -1,6 +1,11 @@
+@use '@angular/material' as mat;
+
+@import './../../../styles/custom-theme.scss'; // Asegúrate de que esta ruta sea correcta según la estructura de tu proyecto
+
 .example-card {
     margin-top: 20px;
-    background: rgb(100, 150, 150);
+    background: mat.get-color-from-palette($accent, A100);
+    //background: rgb(100, 150, 150);
 }
   
 .elevate{
@@ -9,8 +14,13 @@
 
 button {
     padding: 10px;
-    border: solid 1px var(--primary-color);
-    background: var(--primary-color);
-    color: white;
+    //border: solid 1px var(--primary-color);
+    //background: var(--primary-color);
+    //color: white;
     border-radius: 8px;
 }
+/*
+.accent-background {
+    background-color: var(--mat-primary);
+    color: var(--mat-accent);
+}*/

@@ -9,11 +9,12 @@
   *ngIf="campeonatos.length > 0; else noCampeonatos"
 >
   <div fxFlex.sm="48" fxFlex="30" *ngFor="let campeonato of campeonatos; let i = index">
-    <mat-card class="example-card" [class.elevate]="selCampeonatoId === campeonato.id" 
-            (mouseover)="selCampeonatoId = campeonato.id" 
-            (mouseout)="selCampeonatoId = -1"
-            (focus)="onFocus(campeonato)"
-            (blur)="onBlur(campeonato)">
+    <mat-card class="example-card accent-background" [class.elevate]="selCampeonatoId === campeonato.id" 
+      (mouseover)="selCampeonatoId = campeonato.id" 
+      (mouseout)="selCampeonatoId = -1"
+      (focus)="onFocus(campeonato)"
+      (blur)="onBlur(campeonato)">
+
       <mat-card-header>
         <mat-card-title>
           {{ campeonato.year }} - {{ campeonato.categoria | uppercase }} - División {{ campeonato.division }}

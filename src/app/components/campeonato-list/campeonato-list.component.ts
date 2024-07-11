@@ -3,8 +3,9 @@ import { Campeonato } from '../../models/campeonato.model';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { RouterLink, RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-campeonato-list',
@@ -13,6 +14,10 @@ import { RouterLink } from '@angular/router';
     CommonModule, 
     MatButtonModule, 
     MatCardModule, 
+    RouterModule,
+    NgFor,
+    NgIf,
+    FlexLayoutModule,
     RouterLink
   ],
   templateUrl: './campeonato-list.component.html',

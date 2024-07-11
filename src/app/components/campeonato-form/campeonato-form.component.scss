@@ -8,10 +8,16 @@
     margin-top: 10px;
 }
 
-p{
+p.check{
     color: darkslategrey !important;
+    font-size:0.9em;
+}
+
+p.alert{
+    color: orangered !important;
+    font-size:0.8em;
 }
 
 mat-form-field{
-    color: darkslategrey !important;
+   color: darkslategrey !important;
 }
