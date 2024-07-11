@@ -4,7 +4,7 @@ export interface Campeonato {
     categoria: string;
     division: number;
     estado: string;
-    activo: boolean;
     puntosPorVictoria: number;
     puntosPorDerrota: number;
+    activo: boolean;
   }

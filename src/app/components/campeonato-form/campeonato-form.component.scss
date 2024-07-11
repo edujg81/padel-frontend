@@ -1,8 +1,17 @@
 .example-form mat-slide-toggle {
-    margin: 8px 0;
+    margin: 8px 0px 20px;
     display: block;
 }
 
-.example-container mat-form-field + mat-form-field {
+.example-form mat-form-field + mat-form-field {
     margin-left: 8px;
+    margin-top: 10px;
+}
+
+p{
+    color: darkslategrey !important;
+}
+
+mat-form-field{
+    color: darkslategrey !important;
 }

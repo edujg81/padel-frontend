@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CampeonatoService } from '../../services/campeonato.service';
@@ -42,9 +42,9 @@ export class CampeonatoFormComponent implements OnInit {
       categoria: ['', Validators.required],
       division: ['', Validators.required],
       estado: ['Sin iniciar', Validators.required],
-      activo: [true],
-      puntosPorVictoria: [2, Validators.required],
-      puntosPorDerrota: [0, Validators.required]
+      puntosPorVictoria: ['2', Validators.required],
+      puntosPorDerrota: ['0', Validators.required],
+      activo: [true]
     });
   }
 
