@@ -1,18 +1,31 @@
 @use '@angular/material' as mat;
 
-@include mat.core();
+// Incluimos los estilos comunes de Angular Material
+//@include mat.core();
 
-$primary: mat.define-palette(mat.$purple-palette);
-$accent: mat.define-palette(mat.$green-palette);
-$warn: mat.define-palette(mat.$orange-palette);
+// Definir paletas de colores
+$primary-palette: mat.define-palette(mat.$deep-purple-palette, 400, 600, 800);
+$accent-palette: mat.define-palette(mat.$teal-palette, 300, 200, 500);
+$warn-palette: mat.define-palette(mat.$deep-orange-palette, 600);
 
-$theme: mat.define-light-theme((
+// Tipografía personalizada
+$custom-typography: mat.define-typography-config(
+  $font-family:   'Roboto, sans-serif',
+  $body-2:        mat.define-typography-level(16px, 28px, 500),
+  $body-1:        mat.define-typography-level(16px, 28px, 400),
+  $caption:       mat.define-typography-level(14px, 20px, 400),
+  $button:        mat.define-typography-level(16px, 16px, 400),
+);
+
+// Definir tema claro
+$custom-theme: mat.define-light-theme((
   color: (
-    primary: $primary,
-    accent: $accent,
-    warn: $warn,
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warn-palette,
   ),
-  typography: mat.define-typography-config(),
+  typography: $custom-typography,
 ));
 
-@include mat.all-component-themes($theme);
+// Aplicar tema a todos los componentes
+@include mat.all-component-themes($custom-theme);

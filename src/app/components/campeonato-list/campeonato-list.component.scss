@@ -1,10 +1,10 @@
-@use '@angular/material' as mat;
+//@use '@angular/material' as mat;
 
-@import './../../../styles/custom-theme.scss'; // Asegúrate de que esta ruta sea correcta según la estructura de tu proyecto
+//@import './../../../styles/custom-theme.scss'; // Asegúrate de que esta ruta sea correcta según la estructura de tu proyecto
 
 .example-card {
     margin-top: 20px;
-    background: mat.get-color-from-palette($accent, A100);
+    //background: mat.get-color-from-palette($primary, 50);
     //background: rgb(100, 150, 150);
 }
   
