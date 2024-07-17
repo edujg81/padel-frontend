@@ -31,10 +31,14 @@
       <input matInput #input maxlength="1" placeholder ="Ej. 0" formControlName="puntosPorDerrota">
     </mat-form-field>
     
-    <mat-slide-toggle color="accent" hintlabel="Activo" formControlName="activo" labelPosition="before"><p class="check">Activo</p></mat-slide-toggle>
-
-    <p class="alert" *ngIf="campeonatoForm.status == 'INVALID'">* Rellena todos los campos del formulario</p>
-
-    <button mat-raised-button color="accent" type="submit" [disabled]="campeonatoForm.invalid">Crear Campeonato</button>
+    <mat-slide-toggle color="accent" hintlabel="Activo" formControlName="activo" labelPosition="before" appearance="fill">
+     <mat-label for="activo">Activo</mat-label>
+    </mat-slide-toggle>
+    <p></p>
+    <p class="alert" *ngIf="campeonatoForm.status == 'INVALID'; else muestraBoton">* Rellena todos los campos del formulario</p>
   </form>
 </div>
+
+<ng-template #muestraBoton>
+  <p><button mat-raised-button color="accent" type="submit" [disabled]="campeonatoForm.invalid">Crear Campeonato</button></p>
+</ng-template>

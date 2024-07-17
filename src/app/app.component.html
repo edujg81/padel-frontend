@@ -3,6 +3,15 @@
     <span>{{ title }}</span> <!-- sustituir por logo -->
   </a>
   <span class="spacer"></span>
+  <button
+    mat-icon-button
+    (click)="toggleDarkTheme()"
+    class="theme-toggle"
+    aria-label="Toggle Dark Theme"
+  >
+    <mat-icon>{{ isDark ? "dark_mode" : "light_mode" }}</mat-icon>
+  </button>
+  <span class="spacer"></span>
   <span fxFlex></span>
   <a mat-button routerLink="/">Inicio</a>
   <a mat-button [routerLink]="['/jugadores']" routerLinkActive="visited">Jugadores</a>

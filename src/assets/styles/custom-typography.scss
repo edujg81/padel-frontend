@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+
+// Tipografía personalizada
+$custom-typography: mat.define-typography-config(
+  $font-family:   'Roboto, "Helvetica Neue", Arial, sans-serif',
+  $body-2:        mat.define-typography-level(14px, 28px, 350),
+  $body-1:        mat.define-typography-level(14px, 28px, 400),
+  $caption:       mat.define-typography-level(12px, 20px, 400),
+  $button:        mat.define-typography-level(16px, 16px, 400)
+);
+
+@include mat.all-component-typographies($custom-typography);

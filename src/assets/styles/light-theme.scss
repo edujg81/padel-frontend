@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+//@import '@angular/material/prebuilt-themes/purple-green.css';
+
+// Definir paletas de colores
+$primary-palette: mat.define-palette(mat.$deep-purple-palette, 400, 200, 600);
+$accent-palette: mat.define-palette(mat.$teal-palette, 300, 200, 500);
+$warn-palette: mat.define-palette(mat.$deep-orange-palette, 600);
+
+// Definir tema claro
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warn-palette,
+  ),
+));
+
+// Aplicar tema a todos los componentes
+@include mat.all-component-themes($light-theme);

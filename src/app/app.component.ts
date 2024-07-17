@@ -1,13 +1,9 @@
-import { Component } from '@angular/core';
-import { CampeonatoListComponent } from './components/campeonato-list/campeonato-list.component';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
+import { StyleManager } from './services/style-manager.service';
 
 // Componente principal de la aplicación. Solo debe importar lo necesario para su funcionamiento.
 
@@ -19,10 +15,25 @@ import { MatInputModule } from '@angular/material/input';
   imports: [
     MatToolbarModule, 
     MatButtonModule, 
+    MatIcon,
     RouterOutlet,
-    RouterLink
-  ]
+    RouterLink,
+  ],
+  providers: [StyleManager]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   title = 'Gestión de Campeonatos de Pádel';
+  isDark = this.styleManager.isDark;
+
+  constructor(private styleManager: StyleManager) {}
+
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
+  toggleDarkTheme() {
+    this.styleManager.toggleDarkTheme();
+    this.isDark = !this.isDark;
+  }
 }

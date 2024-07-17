@@ -1,23 +1,23 @@
 .example-form mat-slide-toggle {
-    margin: 8px 0px 20px;
-    display: block;
+    margin: 10px 10px 10px 10px;
+    //display: block;
 }
 
 .example-form mat-form-field + mat-form-field {
-    margin-left: 8px;
+    margin-left: 10px;
     margin-top: 10px;
 }
 
 p.check{
-    color: darkslategrey !important;
-    font-size:0.9em;
+    //color: darkslategrey !important;
+    //font-size:0.9em;
 }
 
 p.alert{
     color: orangered !important;
-    font-size:0.8em;
+    //font-size:0.8em;
 }
 
 mat-form-field{
-   color: darkslategrey !important;
+  // color: darkslategrey !important;
 }

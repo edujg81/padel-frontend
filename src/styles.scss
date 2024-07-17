@@ -1,35 +1,25 @@
-//@import '@angular/material/prebuilt-themes/purple-green.css';
+@import './assets/styles/dark-theme.scss';
+@import './assets/styles/light-theme.scss';
+@import './assets/styles/custom-typography';
 
-@use '@angular/material' as mat;
-@use './styles/custom-theme';
+html, body { 
+    height: 100%; 
+}
 
-// Incluimos los estilos comunes de Angular Material
-@include mat.core();
-
-@include mat.core-theme(custom-theme.$custom-theme);
-@include mat.button-theme(custom-theme.$custom-theme);
-
-html, body { height: 100%; }
 body { 
     margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
 
 /* Application-wide Styles */
 h1 {
-    //color: #333;
-    //font-family: Arial, Helvetica, sans-serif;
-    //font-size: 250%;
+    font-size: 250%;
 }
 h2, h3 {
-    //color: #444;
-    //font-family: Arial, Helvetica, sans-serif;
-    //font-weight: lighter;
+    font-weight: lighter;
 }
-body, input[type="text"], button {
-    //color: #333;
-}
-/* everywhere else */
-*{
-    //font-family: Arial, Helvetica, sans-serif;
+
+// Aplicar fondo oscuro al body cuando se use el tema oscuro
+body.dark-theme {
+    background-color: #333; // Fondo gris oscuro
+    color: #fff; // Texto blanco para mejor contraste
 }
