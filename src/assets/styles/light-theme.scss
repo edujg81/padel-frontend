@@ -18,3 +18,13 @@ $light-theme: mat.define-light-theme((
 
 // Aplicar tema a todos los componentes
 @include mat.all-component-themes($light-theme);
+
+// Estilos para mat-card en tema claro
+@include mat.card-theme($light-theme);
+
+// Ajuste adicional para mat-card en tema claro
+mat-card.mat-card {
+  background:rgba(60, 130, 130, 0.300); // Fondo blanco en tema claro
+  color: #333; // Texto oscuro en fondo claro
+  margin-top: 10px;
+}

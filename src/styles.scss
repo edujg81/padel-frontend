@@ -17,9 +17,3 @@ h1 {
 h2, h3 {
     font-weight: lighter;
 }
-
-// Aplicar fondo oscuro al body cuando se use el tema oscuro
-body.dark-theme {
-    background-color: #333; // Fondo gris oscuro
-    color: #fff; // Texto blanco para mejor contraste
-}

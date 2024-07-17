@@ -34,3 +34,20 @@ $dark-theme: mat.define-dark-theme((
 
 // Aplicar tema a todos los componentes
 @include mat.all-component-themes($dark-theme);
+
+// Estilos para mat-card en tema oscuro
+@include mat.card-theme($dark-theme);
+
+// Ajuste adicional para mat-card en tema oscuro
+mat-card.mat-card {
+  background:rgba(30, 130, 130, 0.6); // Fondo oscuro en tema oscuro
+  color: #ccc; // Texto claro en fondo oscuro
+  margin-top: 10px;
+}
+
+// Aplicar fondo oscuro al body cuando se use el tema oscuro
+body.dark-theme {
+  background:rgb(60, 60, 60); // Fondo oscuro en tema oscuro
+  color: #ccc; // Texto claro en fondo oscuro
+
+}

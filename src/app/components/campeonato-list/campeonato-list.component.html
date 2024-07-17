@@ -13,7 +13,7 @@
   *ngIf="campeonatos.length > 0; else noCampeonatos"
 >
   <div fxFlex.sm="48" fxFlex="30" *ngFor="let campeonato of campeonatos; let i = index">
-    <mat-card class="example-card accent-background" [class.elevate]="selCampeonatoId === campeonato.id" 
+    <mat-card class="mat-card" [class.elevate]="selCampeonatoId === campeonato.id" 
       (mouseover)="selCampeonatoId = campeonato.id" 
       (mouseout)="selCampeonatoId = -1"
       (focus)="onFocus(campeonato)"
