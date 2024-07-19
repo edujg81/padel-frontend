@@ -15,6 +15,7 @@ export class StyleManager {
     this.dark = !this.dark;
     this.applyTheme(this.dark ? 'dark-theme' : 'light-theme');
     document.body.classList.toggle('dark-theme', this.dark);
+    document.body.classList.toggle('light-theme', !this.dark);
   }
 
   private applyTheme(themeName: string) {

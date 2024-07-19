@@ -1,9 +1,9 @@
 @use '@angular/material' as mat;
 
 // Definir paletas de colores
-$primary-palette: mat.define-palette(mat.$deep-purple-palette, 200, 400, 600);
-$accent-palette: mat.define-palette(mat.$teal-palette, 200, 300, 500);
-$warn-palette: mat.define-palette(mat.$deep-orange-palette, 600);
+$primary-palette: mat.define-palette(mat.$blue-gray-palette, 800);
+$accent-palette: mat.define-palette(mat.$green-palette, A200);
+$warn-palette: mat.define-palette(mat.$red-palette, 500);
 
 // Definir tema oscuro
 $dark-theme: mat.define-dark-theme((
@@ -40,14 +40,18 @@ $dark-theme: mat.define-dark-theme((
 
 // Ajuste adicional para mat-card en tema oscuro
 mat-card.mat-card {
-  background:rgba(30, 130, 130, 0.6); // Fondo oscuro en tema oscuro
+  //background:rgba(30, 60, 90, 0.3); // Fondo oscuro en tema oscuro
+  background: #37474f50; // Fondo oscuro en tema oscuro
   color: #ccc; // Texto claro en fondo oscuro
   margin-top: 10px;
 }
 
+input {
+  background: red;
+}
+
 // Aplicar fondo oscuro al body cuando se use el tema oscuro
 body.dark-theme {
-  background:rgb(60, 60, 60); // Fondo oscuro en tema oscuro
+  background:rgba(30, 30, 30, 0.9); // Fondo oscuro en tema oscuro
   color: #ccc; // Texto claro en fondo oscuro
-
 }

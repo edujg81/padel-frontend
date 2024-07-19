@@ -3,9 +3,9 @@
 //@import '@angular/material/prebuilt-themes/purple-green.css';
 
 // Definir paletas de colores
-$primary-palette: mat.define-palette(mat.$deep-purple-palette, 400, 200, 600);
-$accent-palette: mat.define-palette(mat.$teal-palette, 300, 200, 500);
-$warn-palette: mat.define-palette(mat.$deep-orange-palette, 600);
+$primary-palette: mat.define-palette(mat.$indigo-palette, 200);
+$accent-palette: mat.define-palette(mat.$light-green-palette, 700);
+$warn-palette: mat.define-palette(mat.$red-palette, 500);
 
 // Definir tema claro
 $light-theme: mat.define-light-theme((
@@ -24,7 +24,13 @@ $light-theme: mat.define-light-theme((
 
 // Ajuste adicional para mat-card en tema claro
 mat-card.mat-card {
-  background:rgba(60, 130, 130, 0.300); // Fondo blanco en tema claro
+  background: #9fa8da50; // Fondo blanco en tema claro
   color: #333; // Texto oscuro en fondo claro
   margin-top: 10px;
+}
+
+// Aplicar fondo oscuro al body cuando se use el tema oscuro
+body.light-theme {
+  background:rgba(245, 245, 250, 0.9); // Fondo oscuro en tema oscuro
+  color: #333; // Texto oscuro en fondo claro
 }
