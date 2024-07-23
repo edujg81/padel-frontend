@@ -4,6 +4,8 @@
 $primary-palette: mat.define-palette(mat.$blue-gray-palette, 800);
 $accent-palette: mat.define-palette(mat.$green-palette, A200);
 $warn-palette: mat.define-palette(mat.$red-palette, 500);
+$foreground-palette: mat.define-palette(mat.$blue-gray-palette, 600);
+$background-palette: mat.define-palette(mat.$green-palette, 600);
 
 // Definir tema oscuro
 $dark-theme: mat.define-dark-theme((
@@ -11,8 +13,12 @@ $dark-theme: mat.define-dark-theme((
     primary: $primary-palette,
     accent: $accent-palette,
     warn: $warn-palette,
+    foreground: $foreground-palette,
+    background: $background-palette
   ),
-  background: (
+  //background-color: rgba(15, 15, 20, 0.9)
+  background-color: black
+  /*background: (
     default: #333, // Fondo gris oscuro
     app-background: #333,
     status-bar: black,
@@ -29,29 +35,41 @@ $dark-theme: mat.define-dark-theme((
     disabled-button-toggle: black,
     unselected-chip: black,
     disabled-list-option: black
-  )
+  )*/
 ));
 
 // Aplicar tema a todos los componentes
 @include mat.all-component-themes($dark-theme);
 
 // Estilos para mat-card en tema oscuro
-@include mat.card-theme($dark-theme);
+/*@include mat.card-theme($dark-theme);
+@include mat.form-field-theme($dark-theme);*/
 
 // Ajuste adicional para mat-card en tema oscuro
 mat-card.mat-card {
   //background:rgba(30, 60, 90, 0.3); // Fondo oscuro en tema oscuro
-  background: #37474f50; // Fondo oscuro en tema oscuro
+  background: #4a536550; // Fondo oscuro en tema oscuro
   color: #ccc; // Texto claro en fondo oscuro
   margin-top: 10px;
 }
+/*
+.mat-form-field {
+  .mat-form-field-flex {
+    background-color: #424242; // Fondo gris oscuro en tema oscuro
+    color: #ffffff; // Texto blanco en fondo oscuro
+  }
 
-input {
-  background: red;
-}
+  .mat-form-field-label {
+    color: #bbbbbb; // Color del label en tema oscuro
+  }
+
+  .mat-input-element {
+    color: #ffffff; // Color del texto en el input en tema oscuro
+  }
+}*/
 
 // Aplicar fondo oscuro al body cuando se use el tema oscuro
 body.dark-theme {
-  background:rgba(30, 30, 30, 0.9); // Fondo oscuro en tema oscuro
+  background:rgba(15, 15, 20, 0.9); // Fondo oscuro en tema oscuro
   color: #ccc; // Texto claro en fondo oscuro
 }

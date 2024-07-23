@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTableModule } from '@angular/material/table';
 
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,6 +32,7 @@ export const appConfig: ApplicationConfig = {
       MatToolbarModule,
       MatIconModule,
       MatSlideToggleModule,
+      MatTableModule,
       FlexLayoutModule,
       BrowserModule,
       BrowserAnimationsModule
