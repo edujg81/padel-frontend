@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatToolbar } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { StyleManager } from './services/style-manager.service';
@@ -13,7 +13,7 @@ import { StyleManager } from './services/style-manager.service';
   styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [
-    MatToolbarModule, 
+    MatToolbar, 
     MatButtonModule, 
     MatIcon,
     RouterOutlet,

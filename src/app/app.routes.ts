@@ -1,5 +1,4 @@
-import { provideRouter, Routes } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
+import { Routes } from '@angular/router';
 
 import { CampeonatoListComponent } from './components/campeonato-list/campeonato-list.component';
 import { CampeonatoDetailComponent } from './components/campeonato-detail/campeonato-detail.component';
@@ -21,8 +20,3 @@ export const routes: Routes = [
   { path: 'jugadores/:id', component: JugadorDetailComponent },
   { path: '**', component: NotFoundComponent}
 ];
-/*
-export const appRoutes = [
-  provideRouter(routes),
-  provideHttpClient()
-];*/

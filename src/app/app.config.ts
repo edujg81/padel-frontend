@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, NgModule } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -18,6 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 // Aquí se declaran los módulos y proveedores globales
 export const appConfig: ApplicationConfig = {
@@ -33,9 +34,11 @@ export const appConfig: ApplicationConfig = {
       MatIconModule,
       MatSlideToggleModule,
       MatTableModule,
+      MatPaginatorModule,
       FlexLayoutModule,
       BrowserModule,
-      BrowserAnimationsModule
+      BrowserAnimationsModule,
+      NgModule
     ),
     provideRouter(routes, withComponentInputBinding())]
 };
