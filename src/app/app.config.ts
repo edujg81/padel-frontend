@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 // Aquí se declaran los módulos y proveedores globales
 export const appConfig: ApplicationConfig = {
@@ -35,6 +36,7 @@ export const appConfig: ApplicationConfig = {
       MatSlideToggleModule,
       MatTableModule,
       MatPaginatorModule,
+      MatSortModule,
       FlexLayoutModule,
       BrowserModule,
       BrowserAnimationsModule,

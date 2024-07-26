@@ -1,51 +1,21 @@
-.mat-elevation-z8 {
-    margin: 10px;
-}
-
-.table-container {
-    position: relative;
-}
-
 .mat-table {
     width: 100%;
     margin-bottom: 1px;
+    overflow: auto;
 }
 
-.mat-icon-button{
-    padding: 8px;
+.list-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 550px;
 }
 
 .mat-form-field-wrapper {
-    margin: 10px;
     display: flex;
-    justify-content: right;
-}
-  
-.mat-cell {
-    padding: 8px;
-}
-  
-.mat-header-cell {
-    padding: 8px;
-}
-  
-.mat-cell-actions button {
-    margin-right: 8px;
-}
-
-.paginator-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 1px;
 }
   
 mat-paginator {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin: 0 auto;
-}
-
-mat-form-field {
-    margin-bottom: 0px;
 }

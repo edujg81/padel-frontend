@@ -11,7 +11,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 // Definimos las rutas de la aplicación
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/campeonatos', pathMatch: 'full', title: 'Inicio'},
+  { path: 'home', component: CampeonatoListComponent},
+  { path: 'owner', loadChildren: () => import('./app.component').then(m => m.AppComponent) },
+  { path: '', redirectTo: '/home', pathMatch: 'full', title: 'Inicio'},
   { path: 'campeonatos', component: CampeonatoListComponent },
   { path: 'campeonatos/new', component: CampeonatoFormComponent },
   { path: 'campeonatos/:id', component: CampeonatoDetailComponent },

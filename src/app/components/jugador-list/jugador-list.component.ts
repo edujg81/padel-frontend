@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JugadorService } from '../../services/jugador.service';
 import { Jugador } from '../../models/jugador.model';
@@ -9,6 +9,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 
 @Component({
   selector: 'app-jugador-list',
@@ -22,12 +24,15 @@ import { MatInputModule } from '@angular/material/input';
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
-    MatPaginator
+    MatPaginator,
+    MatSortModule,
+    MatSort,
+    FlexLayoutModule
   ],
   templateUrl: './jugador-list.component.html',
   styleUrl: './jugador-list.component.scss'
 })
-export class JugadorListComponent implements OnInit {
+export class JugadorListComponent implements OnInit, AfterViewInit {
  
   title = 'Lista de Jugadores';
 
@@ -35,8 +40,14 @@ export class JugadorListComponent implements OnInit {
   jugadores: MatTableDataSource<Jugador> = new MatTableDataSource<Jugador>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   
   constructor(private jugadorService: JugadorService) {}
+
+  ngAfterViewInit(): void {
+    this.jugadores.sort = this.sort;
+    this.jugadores.paginator = this.paginator;
+  }
 
   ngOnInit(): void {
     this.jugadorService.getJugadores().subscribe({
