@@ -39,7 +39,7 @@ export class JugadorListComponent implements OnInit, AfterViewInit {
   dibujaColumnas: string[] = ['nombreCompleto', 'email', 'sexo', 'estado', 'lesionado', 'fechaAlta', 'acciones'];
   jugadores: MatTableDataSource<Jugador> = new MatTableDataSource<Jugador>();
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
   constructor(private jugadorService: JugadorService) {}
