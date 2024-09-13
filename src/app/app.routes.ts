@@ -18,7 +18,8 @@ export const routes: Routes = [
   { path: 'campeonatos/new', component: CampeonatoFormComponent },
   { path: 'campeonatos/:id', component: CampeonatoDetailComponent },
   { path: 'jugadores', component: JugadorListComponent },
-  { path: 'jugadores/new', component: JugadorFormComponent },
+  { path: 'jugadores/new', component: JugadorFormComponent }, // Ruta para agregar jugador
+  { path: 'jugadores/edit/:id', component: JugadorFormComponent },  // Ruta para editar jugador
   { path: 'jugadores/:id', component: JugadorDetailComponent },
   { path: '**', component: NotFoundComponent}
 ];

@@ -1,19 +1,47 @@
-<p>jugador-form works!</p>
-<form [formGroup]="jugadorForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="name">Nombre:</label>
-      <input id="name" formControlName="name">
-      <div *ngIf="jugadorForm.get('nombreCompleto')?.invalid && jugadorForm.get('nombreCompleto')?.touched">
-        Nombre es requerido.
-      </div>
+<div class="jugador-form-container">
+  <h2>{{ isEditing ? 'Editar Jugador' : 'Agregar Jugador' }}</h2>
+  <form [formGroup]="jugadorForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre Completo</mat-label>
+      <input matInput formControlName="nombreCompleto" placeholder="Ingresa el nombre completo" required>
+      <mat-error *ngIf="jugadorForm.get('nombreCompleto')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Ingresa el email" required>
+      <mat-error *ngIf="jugadorForm.get('email')?.hasError('required')">Este campo es obligatorio</mat-error>
+      <mat-error *ngIf="jugadorForm.get('email')?.hasError('email')">Email no válido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Sexo</mat-label>
+      <mat-select formControlName="sexo" required>
+        <mat-option value="masculino">Masculino</mat-option>
+        <mat-option value="femenino">Femenino</mat-option>
+      </mat-select>
+      <mat-error *ngIf="jugadorForm.get('sexo')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Estado</mat-label>
+      <input matInput formControlName="estado" placeholder="Ingresa el estado" required>
+      <mat-error *ngIf="jugadorForm.get('estado')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Alta</mat-label>
+      <input matInput formControlName="fechaAlta" [matDatepicker]="picker" placeholder="Selecciona una fecha" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="jugadorForm.get('fechaAlta')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="lesionado">Lesionado</mat-checkbox>
+
+    <div class="form-buttons">
+      <button mat-raised-button color="primary" type="submit">{{ isEditing ? 'Guardar Cambios' : 'Agregar Jugador' }}</button>
+      <button mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
     </div>
-    <div>
-        <label for="dni">DNI:</label>
-        <input id="dni" formControlName="dni">
-        <div *ngIf="jugadorForm.get('dni')?.invalid && jugadorForm.get('dni')?.touched">
-          Edad es requerida.
-        </div>
-      </div>
-      <!-- Agrega más campos según sea necesario -->
-      <button type="submit" [disabled]="jugadorForm.invalid">Crear Jugador</button>
-    </form>
+  </form>
+</div>

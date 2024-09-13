@@ -20,6 +20,9 @@ import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 // Aquí se declaran los módulos y proveedores globales
 export const appConfig: ApplicationConfig = {
@@ -36,7 +39,10 @@ export const appConfig: ApplicationConfig = {
       MatSlideToggleModule,
       MatTableModule,
       MatPaginatorModule,
+      MatDialogModule,
       MatSortModule,
+      MatDatepickerModule,
+      MatNativeDateModule, // Para el soporte nativo de fechas
       FlexLayoutModule,
       BrowserModule,
       BrowserAnimationsModule,

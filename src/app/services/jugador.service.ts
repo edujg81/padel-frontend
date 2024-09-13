@@ -2,21 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Jugador } from '../models/jugador.model';
-import { environment } from "../../environments/environment.prod";
 
 @Injectable({
   providedIn: 'root'
 })
 export class JugadorService {
-  private apiUrl = `${environment.apiUrl}/jugadores`;  // Cambia la URL según sea necesario
+  private apiUrl = 'http://localhost:8080/jugadores';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getJugadores(): Observable<Jugador[]> {
     return this.http.get<Jugador[]>(this.apiUrl);
   }
 
-  getJugador(id: number): Observable<Jugador> {
+  getJugadorById(id: number): Observable<Jugador> {
     return this.http.get<Jugador>(`${this.apiUrl}/${id}`);
   }
 

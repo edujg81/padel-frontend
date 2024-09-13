@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { StyleManager } from './services/style-manager.service';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Componente principal de la aplicación. Solo debe importar lo necesario para su funcionamiento.
 
@@ -20,6 +21,7 @@ import { MatPaginator } from '@angular/material/paginator';
     RouterOutlet,
     RouterLink,
     MatPaginator,
+    MatDialogModule
   ],
   providers: [StyleManager]
 })

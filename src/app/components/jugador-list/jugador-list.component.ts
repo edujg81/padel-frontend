@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { JugadorFormComponent } from '../jugador-form/jugador-form.component';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-jugador-list',
@@ -25,24 +27,28 @@ import { FlexLayoutModule } from '@ngbracket/ngx-layout';
     MatFormFieldModule,
     MatInputModule,
     MatPaginator,
+    MatButtonModule,
     MatSortModule,
     MatSort,
-    FlexLayoutModule
+    FlexLayoutModule,
+    RouterLink
   ],
   templateUrl: './jugador-list.component.html',
   styleUrl: './jugador-list.component.scss'
 })
 export class JugadorListComponent implements OnInit, AfterViewInit {
- 
+
   title = 'Lista de Jugadores';
 
   dibujaColumnas: string[] = ['nombreCompleto', 'email', 'sexo', 'estado', 'lesionado', 'fechaAlta', 'acciones'];
   jugadores: MatTableDataSource<Jugador> = new MatTableDataSource<Jugador>();
 
+  selJugadorId: number = -1;
+
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
-  constructor(private jugadorService: JugadorService) {}
+  constructor(private jugadorService: JugadorService, private router: Router) {}
 
   ngAfterViewInit(): void {
     this.jugadores.sort = this.sort;
@@ -68,25 +74,23 @@ export class JugadorListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  editarJugador(jugador: Jugador) {
-    this.jugadorService.updateJugador(jugador).subscribe(updatedJugador => {
-      // Actualiza la tabla después de editar
-      const index = this.jugadores.data.findIndex(
-        j => j.id === updatedJugador.id
-      );
-      
-      if (index !== -1) {
-        this.jugadores.data[index] = updatedJugador;
-        this.jugadores.data = [...this.jugadores.data];
-      }
-    });
+  editarJugador(jugador: Jugador): void {
+    
   }
 
   verJugador(jugador: Jugador){
-    // no implementado
+    this.router.navigate(['/jugador', jugador.id]);
   }
 
   borrarJugador(jugador: Jugador){
-    // no implementado
+    if (confirm(`¿Estás seguro de que deseas borrar a ${jugador.nombreCompleto}?`)) {
+      this.jugadorService.deleteJugador(jugador.id).subscribe(() => {
+        this.jugadores.data = this.jugadores.data.filter(j => j.id !== jugador.id);
+      });
+    }
+  }
+
+  agregarJugador(): void {
+    
   }
 }
