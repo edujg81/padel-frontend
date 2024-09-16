@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
   constructor(private styleManager: StyleManager) {}
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // Implementación del método
   }
 
   toggleDarkTheme() {

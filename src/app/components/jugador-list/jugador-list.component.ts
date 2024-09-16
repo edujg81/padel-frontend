@@ -11,7 +11,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
-import { JugadorFormComponent } from '../jugador-form/jugador-form.component';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -75,22 +74,27 @@ export class JugadorListComponent implements OnInit, AfterViewInit {
   }
 
   editarJugador(jugador: Jugador): void {
-    
+    this.router.navigate(['/jugadores/edit', jugador.id]);
   }
 
   verJugador(jugador: Jugador){
-    this.router.navigate(['/jugador', jugador.id]);
+    this.router.navigate(['jugadores/', jugador.id]);
   }
 
   borrarJugador(jugador: Jugador){
     if (confirm(`¿Estás seguro de que deseas borrar a ${jugador.nombreCompleto}?`)) {
       this.jugadorService.deleteJugador(jugador.id).subscribe(() => {
         this.jugadores.data = this.jugadores.data.filter(j => j.id !== jugador.id);
+      }, error => {
+        console.error('Error al borrar jugador', error);
       });
     }
   }
 
+  /**
+   * Navega a la ruta para agregar un nuevo jugador
+   */
   agregarJugador(): void {
-    
+    this.router.navigate(['/jugadores/new']);
   }
 }

@@ -4,7 +4,7 @@
 </h1>
 
 <div fxLayout="row" fxLayoutAlign="space-between center" class="mat-form-field-wrapper">
-  <button mat-fab color="primary" [routerLink]="['/jugador/add']">
+  <button mat-fab color="primary" (click)="agregarJugador()">
     <mat-icon>add</mat-icon>
   </button>
   <mat-form-field fxFlex="30%" appearance="outline">
@@ -58,7 +58,7 @@
         <button mat-icon-button color="primary" (click)="verJugador(jugador)">
           <mat-icon class="mat-18">reorder</mat-icon>
         </button>
-        <button mat-icon-button color="accent" [routerLink]="['/jugador/edit', jugador.id]">
+        <button mat-icon-button color="accent" (click)="editarJugador(jugador)">
           <mat-icon class="mat-18">edit</mat-icon>
         </button>
         <button mat-icon-button color="warn" (click)="borrarJugador(jugador)">
