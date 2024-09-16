@@ -30,4 +30,8 @@ export class JugadorService {
   deleteJugador(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  darDeBajaJugador(jugador: Jugador): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/baja/${jugador.id}`, jugador);
+  }
 }

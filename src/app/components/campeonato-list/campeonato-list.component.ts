@@ -34,6 +34,13 @@ export class CampeonatoListComponent implements OnInit {
 
   constructor(private campeonatoService: CampeonatoService) { }
   
+  /**
+   * OnInit lifecycle hook.
+   *
+   * Subscribes to CampeonatoService.getCampeonatos() and assigns the response to the campeonatos property.
+   *
+   * If there is an error, logs the error to the console.
+   */
   ngOnInit(): void {
     this.campeonatoService.getCampeonatos().subscribe({
       next: (data: Campeonato[]) => this.campeonatos = data,

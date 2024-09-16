@@ -36,6 +36,10 @@ export class AppComponent implements OnInit {
     // Implementación del método
   }
 
+  /**
+   * Toggles the application's theme between light and dark.
+   * Updates the {@link isDark} property accordingly.
+   */
   toggleDarkTheme() {
     this.styleManager.toggleDarkTheme();
     this.isDark = !this.isDark;

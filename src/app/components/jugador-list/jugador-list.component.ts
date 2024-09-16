@@ -49,11 +49,19 @@ export class JugadorListComponent implements OnInit, AfterViewInit {
   
   constructor(private jugadorService: JugadorService, private router: Router) {}
 
+  /**
+   * Inicializa los componentes de ordenamiento y paginacion en la tabla
+   * una vez que el componente se ha renderizado.
+   */
   ngAfterViewInit(): void {
     this.jugadores.sort = this.sort;
     this.jugadores.paginator = this.paginator;
   }
 
+  /**
+   * Recupera la lista de jugadores al inicializar el componente
+   * y la asigna al datasource de la tabla.
+   */
   ngOnInit(): void {
     this.jugadorService.getJugadores().subscribe({
       next: (data: Jugador[]) => {
@@ -64,6 +72,14 @@ export class JugadorListComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   * Filtra la tabla de jugadores por el valor ingresado en el input de
+   * filtrado. El valor se convierte a min sculas y se aplica como filtro a
+   * la tabla. Despu s, se vuelve a la primera p gina de la tabla
+   * (si existe paginaci n). Se llama cada vez que el usuario escribe algo
+   * en el input de filtrado.
+   * @param event El evento de change del input de filtrado.
+   */
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.jugadores.filter = filterValue.trim().toLowerCase();
@@ -73,22 +89,34 @@ export class JugadorListComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /**
+   * Navega a la ruta para editar un jugador existente
+   * @param jugador El jugador a editar
+   */
   editarJugador(jugador: Jugador): void {
     this.router.navigate(['/jugadores/edit', jugador.id]);
   }
 
+  /**
+   * Navega a la ruta para ver los detalles de un jugador
+   * @param jugador El jugador a ver
+   */
   verJugador(jugador: Jugador){
     this.router.navigate(['jugadores/', jugador.id]);
   }
 
-  borrarJugador(jugador: Jugador){
-    if (confirm(`¿Estás seguro de que deseas borrar a ${jugador.nombreCompleto}?`)) {
-      this.jugadorService.deleteJugador(jugador.id).subscribe(() => {
-        this.jugadores.data = this.jugadores.data.filter(j => j.id !== jugador.id);
+
+  /**
+   * Da de baja un jugador
+   * @param jugador El jugador a dar de baja
+   */
+  bajaJugador(jugador: Jugador){
+      this.jugadorService.darDeBajaJugador(jugador).subscribe(() => {
+      
+        console.log('Jugador dado de baja correctamente');
       }, error => {
-        console.error('Error al borrar jugador', error);
+        console.error('Error al dar de baja al jugador', error);
       });
-    }
   }
 
   /**
