@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes, provideRouter, RouterModule } from '@angular/router';
 
 import { CampeonatoListComponent } from './components/campeonato-list/campeonato-list.component';
 import { CampeonatoDetailComponent } from './components/campeonato-detail/campeonato-detail.component';
