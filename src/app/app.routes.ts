@@ -1,4 +1,4 @@
-import { Routes, provideRouter, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { CampeonatoListComponent } from './components/campeonato-list/campeonato-list.component';
 import { CampeonatoDetailComponent } from './components/campeonato-detail/campeonato-detail.component';
@@ -9,11 +9,10 @@ import { JugadorDetailComponent } from './components/jugador-detail/jugador-deta
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 // Definimos las rutas de la aplicación
-
 export const routes: Routes = [
-  { path: 'home', component: CampeonatoListComponent},
+  { path: 'home', component: CampeonatoListComponent },
   { path: 'owner', loadChildren: () => import('./app.component').then(m => m.AppComponent) },
-  { path: '', redirectTo: '/home', pathMatch: 'full', title: 'Inicio'},
+  { path: '', redirectTo: '/home', pathMatch: 'full', title: 'Inicio' },
   { path: 'campeonatos', component: CampeonatoListComponent },
   { path: 'campeonatos/new', component: CampeonatoFormComponent },
   { path: 'campeonatos/:id', component: CampeonatoDetailComponent },
@@ -21,5 +20,5 @@ export const routes: Routes = [
   { path: 'jugadores/new', component: JugadorFormComponent }, // Ruta para agregar jugador
   { path: 'jugadores/edit/:id', component: JugadorFormComponent },  // Ruta para editar jugador
   { path: 'jugadores/:id', component: JugadorDetailComponent },
-  { path: '**', component: NotFoundComponent}
+  { path: '**', component: NotFoundComponent }
 ];

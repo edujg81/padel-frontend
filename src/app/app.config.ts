@@ -2,7 +2,6 @@ import { ApplicationConfig, importProvidersFrom, NgModule } from '@angular/core'
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
-import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -23,13 +22,14 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
 
 // Aquí se declaran los módulos y proveedores globales
 export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom(
-      HttpClientModule,
       ReactiveFormsModule,
+      HttpClientModule,
       MatButtonModule,
       MatCardModule,
       MatFormFieldModule,
@@ -48,5 +48,6 @@ export const appConfig: ApplicationConfig = {
       BrowserAnimationsModule,
       NgModule
     ),
-    provideRouter(routes, withComponentInputBinding())]
+    provideRouter(routes, withComponentInputBinding())
+  ]
 };

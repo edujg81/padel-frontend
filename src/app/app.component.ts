@@ -7,8 +7,9 @@ import { StyleManager } from './services/style-manager.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 
-// Componente principal de la aplicación. Solo debe importar lo necesario para su funcionamiento.
+// Importa los módulos de Angular Material que necesitas
 
+// Componente principal de la aplicación. Solo debe importar lo necesario para su funcionamiento.
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -37,9 +38,9 @@ export class AppComponent implements OnInit {
   }
 
   /**
-   * Toggles the application's theme between light and dark.
-   * Updates the {@link isDark} property accordingly.
-   */
+ * Alterna el tema de la aplicación entre claro y oscuro.
+ * Actualiza la propiedad {@link isDark} en consecuencia.
+ */
   toggleDarkTheme() {
     this.styleManager.toggleDarkTheme();
     this.isDark = !this.isDark;

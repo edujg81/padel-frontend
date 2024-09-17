@@ -22,8 +22,6 @@ $light-theme: mat.m2-define-light-theme((
 @include mat.all-component-themes($light-theme);
 
 // Estilos para mat-card en tema claro
-/*@include mat.card-theme($light-theme);
-@include mat.form-field-theme($light-theme);*/
 
 // Ajuste adicional para mat-card en tema claro
 mat-card.mat-card {
