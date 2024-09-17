@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-jugador-form',
@@ -25,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatSelectModule
   ],
   templateUrl: './jugador-form.component.html',
@@ -64,7 +66,7 @@ export class JugadorFormComponent implements OnInit {
       email: ['', Validators.required],
       sexo: ['', Validators.required],
       estado: ['', Validators.required],
-      lesionado: [false, Validators.required],
+      lesionado: ['false'],
       fechaAlta: ['', Validators.required]
       // Agrega más campos según sea necesario
     });

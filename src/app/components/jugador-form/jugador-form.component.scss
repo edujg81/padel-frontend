@@ -1,3 +1,11 @@
+@media (forced-colors: active) {
+    .mat-checkbox {
+      background-color: ButtonFace;
+      color: ButtonText;
+      border: 1px solid ButtonText;
+    }
+}
+
 .jugador-form-container {
     max-width: 600px;
     margin: auto;

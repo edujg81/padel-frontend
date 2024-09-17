@@ -37,7 +37,7 @@
       <mat-error *ngIf="jugadorForm.get('fechaAlta')?.hasError('required')">Este campo es obligatorio</mat-error>
     </mat-form-field>
 
-    <mat-checkbox formControlName="lesionado">Lesionado</mat-checkbox>
+    <mat-checkbox formControlName="lesionado" style="forced-color-adjust: yes;">Lesionado</mat-checkbox>
 
     <div class="form-buttons">
       <button mat-raised-button color="primary" type="submit">{{ isEditing ? 'Guardar Cambios' : 'Agregar Jugador' }}</button>

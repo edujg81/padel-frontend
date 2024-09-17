@@ -2,6 +2,10 @@
 @import './assets/styles/light-theme.scss';
 @import './assets/styles/custom-typography';
 
+@media (forced-colors: active) {
+    /* Estilos específicos para el modo de colores forzados */
+}
+
 html, body { 
     height: 100%; 
 }
