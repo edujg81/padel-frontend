@@ -42,8 +42,6 @@ $dark-theme: mat.m2-define-dark-theme((
 @include mat.all-component-themes($dark-theme);
 
 // Estilos para mat-card en tema oscuro
-/*@include mat.card-theme($dark-theme);
-@include mat.form-field-theme($dark-theme);*/
 
 // Ajuste adicional para mat-card en tema oscuro
 mat-card.mat-card {

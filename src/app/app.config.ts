@@ -22,14 +22,14 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 
 // Aquí se declaran los módulos y proveedores globales
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(),
     importProvidersFrom(
       ReactiveFormsModule,
-      HttpClientModule,
       MatButtonModule,
       MatCardModule,
       MatFormFieldModule,
