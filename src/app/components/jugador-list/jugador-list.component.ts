@@ -9,14 +9,20 @@ import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';  // Esto es necesario para el funcionamiento de `mat-datepicker`.
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { Router, RouterLink } from '@angular/router';
+//import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-jugador-list',
   standalone: true,
   imports: [
     CommonModule,
+  //  ReactiveFormsModule,
+  //  FormsModule,
     MatIconModule,
     MatPaginatorModule,
     MatFormFieldModule,
@@ -25,6 +31,8 @@ import { Router, RouterLink } from '@angular/router';
     MatButtonModule,
     MatTableModule,
     MatSortModule,
+    MatDatepickerModule, // Asegúrate de incluirlo aquí
+    MatNativeDateModule,  // Importa también este módulo para las fechas
     FlexLayoutModule,
     RouterLink
   ],
@@ -32,15 +40,45 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './jugador-list.component.scss'
 })
 export class JugadorListComponent implements OnInit, AfterViewInit {
-
   title = 'Lista de Jugadores';
+
+  // Rango de fechas
+  fechaInicio: Date | null = null;
+  fechaFin: Date | null = null;
+
   dibujaColumnas: string[] = ['nombreCompleto', 'email', 'sexo', 'estado', 'lesionado', 'fechaAlta', 'acciones'];
   jugadores = new MatTableDataSource<Jugador>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
-  constructor(private jugadorService: JugadorService, private router: Router) {}
+  constructor(private jugadorService: JugadorService, private router: Router, private snackBar: MatSnackBar) {}
+
+   /**
+   * Aplica un filtro en la tabla de jugadores.
+   * @param event Evento de entrada en el campo de búsqueda.
+   */
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.jugadores.filter = filterValue;
+
+    if (this.jugadores.paginator) {
+      this.jugadores.paginator.firstPage();
+    }
+  }
+
+  /*applyDateFilter() {
+    // Verifica si ambas fechas están definidas
+    if (this.fechaInicio && this.fechaFin) {
+      this.jugadores.data = this.jugadores.data.filter(jugador => {
+        const fechaAlta = new Date(jugador.fechaAlta); // Asegúrate de que "fechaAlta" sea un string en formato fecha
+        return fechaAlta >= this.fechaInicio! && fechaAlta <= this.fechaFin!;
+      });
+    } else {
+      // Si no se seleccionan fechas, carga los datos originales
+      this.loadJugadores();
+    }
+  }*/
 
   /**
    * Recupera la lista de jugadores al inicializar el componente
@@ -74,19 +112,6 @@ export class JugadorListComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Aplica un filtro en la tabla de jugadores.
-   * @param event Evento de entrada en el campo de búsqueda.
-   */
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
-    this.jugadores.filter = filterValue;
-
-    if (this.jugadores.paginator) {
-      this.jugadores.paginator.firstPage();
-    }
-  }
-
-  /**
    * Navega al formulario para editar un jugador existente.
    * @param jugador Jugador a editar.
    */
@@ -107,10 +132,15 @@ export class JugadorListComponent implements OnInit, AfterViewInit {
    * @param jugador Jugador a dar de baja.
    */
   bajaJugador(jugador: Jugador): void {
+    if (confirm(`¿Estás seguro que quieres dar de baja a ${jugador.nombreCompleto}?`)) {
       this.jugadorService.darDeBajaJugador(jugador).subscribe({
-        next: () => this.loadJugadores(),
-        error: (error) => console.error('Error al dar de baja al jugador', error)
+        next: () => {
+          this.snackBar.open('Jugador dado de baja correctamente', 'Cerrar', { duration: 3000 })
+          this.loadJugadores()
+        },
+        error: (error) => this.snackBar.open('Error al dar de baja al jugador', 'Cerrar', { duration: 3000 })
       });
+    }
   }
 
   /**

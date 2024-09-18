@@ -13,6 +13,24 @@
   </mat-form-field>
 </div>
 
+<!--<div class="filtros-fecha">
+  <mat-form-field appearance="outline">
+    <mat-label>Fecha Inicio</mat-label>
+    <input matInput [matDatepicker]="startPicker" [(ngModel)]="fechaInicio">
+    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+    <mat-datepicker #startPicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Fecha Fin</mat-label>
+    <input matInput [matDatepicker]="endPicker" [(ngModel)]="fechaFin">
+    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="applyDateFilter()">Aplicar Filtro</button>
+</div>-->
+
 <div class="list-container mat-elevation-z8">
   <table mat-table #table [dataSource]="jugadores" class="mat-table" matSort>
     <!-- Nombre Completo Column -->
@@ -30,19 +48,31 @@
     <!-- Sexo Column -->
     <ng-container matColumnDef="sexo">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Sexo </th>
-      <td mat-cell *matCellDef="let jugador"> {{jugador.sexo}} </td>
+      <td mat-cell *matCellDef="let jugador"> 
+        <span [ngClass]="{'sexo-masculino': jugador.sexo === 'Masculino', 'sexo-femenino': jugador.sexo !== 'Masculino'}">
+          {{jugador.sexo}} 
+        </span>
+      </td>
     </ng-container>
 
     <!-- Estado Column -->
     <ng-container matColumnDef="estado">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-      <td mat-cell *matCellDef="let jugador"> {{jugador.estado}} </td>
+      <td mat-cell *matCellDef="let jugador"> 
+        <span [ngClass]="{'estado-activo': jugador.estado === 'Alta', 'estado-inactivo': jugador.estado !== 'Alta'}">
+          {{jugador.estado}} 
+        </span>
+      </td>
     </ng-container>
 
     <!-- Lesionado Column -->
     <ng-container matColumnDef="lesionado">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Lesión </th>
-      <td mat-cell *matCellDef="let jugador"> {{jugador.lesionado ? 'Sí' : 'No'}} </td>
+      <td mat-cell *matCellDef="let jugador"> 
+        <span [ngClass]="{'lesionado-si': jugador.lesionado === 'Sí', 'lesionado-no': jugador.lesionado !== 'Sí'}">
+          {{jugador.lesionado ? 'Sí' : 'No'}} 
+        </span>
+      </td>
     </ng-container>
 
     <!-- Fecha Alta Column -->
@@ -55,15 +85,17 @@
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let jugador">
-        <button mat-icon-button color="primary" (click)="verJugador(jugador)">
-          <mat-icon class="mat-18">reorder</mat-icon>
-        </button>
-        <button mat-icon-button color="accent" (click)="editarJugador(jugador)">
-          <mat-icon class="mat-18">edit</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" (click)="bajaJugador(jugador)">
-          <mat-icon class="mat-18">person_off</mat-icon>
-        </button>
+        <div fxLayout="row" fxLayoutGap="10px">
+          <button mat-icon-button color="primary" (click)="verJugador(jugador)">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="editarJugador(jugador)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="bajaJugador(jugador)">
+            <mat-icon>person_off</mat-icon>
+          </button>
+        </div>
       </td>
     </ng-container>
 
