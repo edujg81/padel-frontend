@@ -13,24 +13,6 @@
   </mat-form-field>
 </div>
 
-<!--<div class="filtros-fecha">
-  <mat-form-field appearance="outline">
-    <mat-label>Fecha Inicio</mat-label>
-    <input matInput [matDatepicker]="startPicker" [(ngModel)]="fechaInicio">
-    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-    <mat-datepicker #startPicker></mat-datepicker>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Fecha Fin</mat-label>
-    <input matInput [matDatepicker]="endPicker" [(ngModel)]="fechaFin">
-    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-    <mat-datepicker #endPicker></mat-datepicker>
-  </mat-form-field>
-
-  <button mat-raised-button color="primary" (click)="applyDateFilter()">Aplicar Filtro</button>
-</div>-->
-
 <div class="list-container mat-elevation-z8">
   <table mat-table #table [dataSource]="jugadores" class="mat-table" matSort>
     <!-- Nombre Completo Column -->

@@ -14,15 +14,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';  // Esto es necesario para el funcionamiento de `mat-datepicker`.
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { Router, RouterLink } from '@angular/router';
-//import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { getEspañolPaginatorIntl } from '../../mat-paginator-es';
 
 @Component({
   selector: 'app-jugador-list',
   standalone: true,
   imports: [
     CommonModule,
-  //  ReactiveFormsModule,
-  //  FormsModule,
     MatIconModule,
     MatPaginatorModule,
     MatFormFieldModule,
@@ -35,6 +34,9 @@ import { Router, RouterLink } from '@angular/router';
     MatNativeDateModule,  // Importa también este módulo para las fechas
     FlexLayoutModule,
     RouterLink
+  ],
+  providers: [
+    { provide: MatPaginatorIntl, useValue: getEspañolPaginatorIntl() }
   ],
   templateUrl: './jugador-list.component.html',
   styleUrl: './jugador-list.component.scss'
@@ -67,19 +69,6 @@ export class JugadorListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  /*applyDateFilter() {
-    // Verifica si ambas fechas están definidas
-    if (this.fechaInicio && this.fechaFin) {
-      this.jugadores.data = this.jugadores.data.filter(jugador => {
-        const fechaAlta = new Date(jugador.fechaAlta); // Asegúrate de que "fechaAlta" sea un string en formato fecha
-        return fechaAlta >= this.fechaInicio! && fechaAlta <= this.fechaFin!;
-      });
-    } else {
-      // Si no se seleccionan fechas, carga los datos originales
-      this.loadJugadores();
-    }
-  }*/
-
   /**
    * Recupera la lista de jugadores al inicializar el componente
    * y la asigna al datasource de la tabla.
@@ -102,10 +91,6 @@ export class JugadorListComponent implements OnInit, AfterViewInit {
    */
   loadJugadores(): void {
     this.jugadorService.getJugadores().subscribe({
-      /*next: (data: Jugador[]) => {  
-        this.jugadores.data = data;
-        this.jugadores.paginator = this.paginator;
-      },*/
       next: (data: Jugador[]) => this.jugadores.data = data,
       error: error => console.error('Error al recuperar jugadores', error)
     });
