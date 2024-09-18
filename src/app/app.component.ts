@@ -4,8 +4,6 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { StyleManager } from './services/style-manager.service';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatDialogModule } from '@angular/material/dialog';
 
 // Importa los módulos de Angular Material que necesitas
 
@@ -20,9 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule, 
     MatIcon,
     RouterOutlet,
-    RouterLink,
-    MatPaginator,
-    MatDialogModule
+    RouterLink
   ],
   providers: [StyleManager]
 })
