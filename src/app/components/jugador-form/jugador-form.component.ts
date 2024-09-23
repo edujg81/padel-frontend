@@ -11,6 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-jugador-form',
@@ -36,13 +37,16 @@ export class JugadorFormComponent implements OnInit {
   jugadorForm!: FormGroup;
   jugadorId!: number | null;
   isEditing: boolean = false;
+  jugador$: Observable<Jugador>;
 
   constructor(
     private fb: FormBuilder, 
     private jugadorService: JugadorService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.jugador$ = of(null as unknown as Jugador); // Initialize with null
+  }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -51,8 +55,19 @@ export class JugadorFormComponent implements OnInit {
     // Si existe un id, es edición
     if (this.jugadorId) {
       this.isEditing = true;
-      this.jugadorService.getJugadorById(this.jugadorId).subscribe({
-        next: (jugador: Jugador) => this.jugadorForm.patchValue(jugador),
+      this.jugador$ = this.jugadorService.getJugadorById(this.jugadorId);
+      this.jugador$.subscribe({
+        next: (jugador: Jugador) => this.jugadorForm.patchValue({
+          dni: jugador.dni,
+          nombreCompleto: jugador.nombreCompleto,
+          telefono: jugador.telefono,
+          email: jugador.email,
+          lesionado: jugador.lesionado,
+          fechaAlta: jugador.fechaAlta,
+          fechaBaja: jugador.fechaBaja,
+          sexo: jugador.sexo,
+          estado: jugador.estado
+        }),
         error: error => console.error('Error al recuperar el jugador', error)
       });
     }
@@ -60,10 +75,10 @@ export class JugadorFormComponent implements OnInit {
 
   private initializeForm() {
     this.jugadorForm = this.fb.group({
-      dni: ['', Validators.required],
+      dni: ['', [Validators.required, Validators.pattern('^[0-9]{8}$')]],
       nombreCompleto: ['', Validators.required],
       telefono: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       sexo: ['', Validators.required],
       estado: ['', Validators.required],
       lesionado: ['false'],

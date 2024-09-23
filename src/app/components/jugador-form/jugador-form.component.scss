@@ -1,19 +1,29 @@
 @media (forced-colors: active) {
-    .mat-checkbox {
-      background-color: ButtonFace;
-      color: ButtonText;
-      border: 1px solid ButtonText;
-    }
+  .mat-checkbox {
+    background-color: ButtonFace;
+    color: ButtonText;
+    border: 1px solid ButtonText;
+  }
+}
+
+.mat-form-field {
+    width: 100%;
 }
 
 .jugador-form-container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
 }
   
 .form-buttons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-select-panel {
+  position: fixed !important; /* Cambiar a fixed para evitar problemas de posicionamiento */
+  transform: none !important; /* Eliminar transformaciones que puedan afectar la posición */
+  z-index: 1000; /* Asegurar que el menú se muestre por encima de otros elementos */
 }

@@ -1,3 +1,8 @@
+//@import '~@angular/material/theming';
+
+// Incluye las funciones de Angular Material
+//@include mat-core();
+
 @use '@angular/material' as mat;
 
 // Definir paletas de colores
@@ -17,6 +22,9 @@ $light-theme: mat.m2-define-light-theme((
     background: $background-palette
   ),
 ));
+
+// Aplica el tema a los componentes de Angular Material
+//@include angular-material-theme($custom-theme);
 
 // Aplicar tema a todos los componentes
 @include mat.all-component-themes($light-theme);
