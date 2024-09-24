@@ -4,6 +4,13 @@
 
 @import './assets/styles/custom-typography';
 
+/*:root {
+    @include mat.all-component-themes($light-theme);
+    @include mat.typography-hierarchy($light-theme);
+    @include mat.system-level-colors($light-theme);
+    @include mat.system-level-typography($light-theme);
+}*/
+
 @media (forced-colors: active) {
     /* Estilos específicos para el modo de colores forzados */
     body {

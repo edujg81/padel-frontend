@@ -1,4 +1,12 @@
 <div *ngIf="jugador">
     <h2>Detalles del Jugador</h2>
     <p>Año: {{ jugador.nombreCompleto }}</p>
+
+    <mat-sidenav-container>
+        Some content...
+        <mat-sidenav>
+          Some sidenav content...
+          <mat-checkbox class="danger">Enable admin mode</mat-checkbox>
+        </mat-sidenav>
+    </mat-sidenav-container>
 </div>

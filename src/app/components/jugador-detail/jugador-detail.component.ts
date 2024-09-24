@@ -3,11 +3,17 @@ import { ActivatedRoute } from '@angular/router';
 import { JugadorService } from '../../services/jugador.service';
 import { Jugador } from '../../models/jugador.model';
 import { CommonModule } from '@angular/common';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-jugador-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    MatSidenavModule,
+    MatCheckboxModule
+  ],
   templateUrl: './jugador-detail.component.html',
   styleUrl: './jugador-detail.component.scss'
 })

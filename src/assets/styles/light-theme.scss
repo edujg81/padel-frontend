@@ -1,15 +1,15 @@
 @use '@angular/material' as mat;
 
 // Definir paletas de colores
-$primary-palette: mat.m2-define-palette(mat.$m2-indigo-palette, 200);
-$accent-palette: mat.m2-define-palette(mat.$m2-light-green-palette, 700);
+$primary-palette: mat.m3-define-palette(mat.$m2-indigo-palette, 200);
+$accent-palette: mat.m3-define-palette(mat.$m2-light-green-palette, 700);
 $tertiary-palette: mat.$azure-palette;
-$warn-palette: mat.m2-define-palette(mat.$m2-red-palette, 500);
-$foreground-palette: mat.m2-define-palette(mat.$m2-indigo-palette, 600);
-$background-palette: mat.m2-define-palette(mat.$m2-light-green-palette, 600);
+$warn-palette: mat.m3-define-palette(mat.$m2-red-palette, 500);
+$foreground-palette: mat.m3-define-palette(mat.$m2-indigo-palette, 600);
+$background-palette: mat.m3-define-palette(mat.$m2-light-green-palette, 600);
 
 // Definir tema claro
-$light-theme: mat.m2-define-light-theme((
+$light-theme: mat.m3-define-light-theme((
   color: (
     theme-type: light,
     primary: $primary-palette,

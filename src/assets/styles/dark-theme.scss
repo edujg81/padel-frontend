@@ -29,10 +29,10 @@ $dark-theme: mat.m2-define-dark-theme((
 
 // Ajuste adicional para mat-card en tema oscuro
 mat-card.mat-card {
-  //background:rgba(30, 60, 90, 0.3); // Fondo oscuro en tema oscuro
   background: #4a536550; // Fondo oscuro en tema oscuro
   color: #ccc; // Texto claro en fondo oscuro
   margin-top: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 // Aplicar fondo oscuro al body cuando se use el tema oscuro
