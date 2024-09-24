@@ -21,6 +21,7 @@ $dark-theme: mat.m2-define-dark-theme((
   density: (
     scale: 0,
   ),
+  useMaterial3: true,  // Activa Material 3
   background-color: #333
 ));
 
