@@ -3,6 +3,7 @@
 // Definir paletas de colores
 $primary-palette: mat.m2-define-palette(mat.$m2-blue-gray-palette, 600);
 $accent-palette: mat.m2-define-palette(mat.$m2-green-palette, A200);
+$tertiary-palette: mat.$blue-palette;
 $warn-palette: mat.m2-define-palette(mat.$m2-red-palette, 500);
 $foreground-palette: mat.m2-define-palette(mat.$m2-blue-gray-palette, 200);
 $background-palette: mat.m2-define-palette(mat.$m2-green-palette, 800);
@@ -11,37 +12,20 @@ $background-palette: mat.m2-define-palette(mat.$m2-green-palette, 800);
 $dark-theme: mat.m2-define-dark-theme((
   color: (
     primary: $primary-palette,
+    tertiary: $tertiary-palette,
     accent: $accent-palette,
     warn: $warn-palette,
     foreground: $foreground-palette,
     background: $background-palette
   ),
-  //background-color: rgba(15, 15, 20, 0.9)
+  density: (
+    scale: 0,
+  ),
   background-color: #333
-  /*background: (
-    default: #333, // Fondo gris oscuro
-    app-background: #333,
-    status-bar: black,
-    app-bar: black,
-    background: black,
-    hover: black,
-    card: black,
-    dialog: black,
-    disabled-button: black,
-    raised-button: black,
-    focused-button: black,
-    selected-button: black,
-    selected-disabled-button: black,
-    disabled-button-toggle: black,
-    unselected-chip: black,
-    disabled-list-option: black
-  )*/
 ));
 
 // Aplicar tema a todos los componentes
 @include mat.all-component-themes($dark-theme);
-
-// Estilos para mat-card en tema oscuro
 
 // Ajuste adicional para mat-card en tema oscuro
 mat-card.mat-card {
@@ -50,21 +34,6 @@ mat-card.mat-card {
   color: #ccc; // Texto claro en fondo oscuro
   margin-top: 10px;
 }
-/*
-.mat-form-field {
-  .mat-form-field-flex {
-    background-color: #424242; // Fondo gris oscuro en tema oscuro
-    color: #ffffff; // Texto blanco en fondo oscuro
-  }
-
-  .mat-form-field-label {
-    color: #bbbbbb; // Color del label en tema oscuro
-  }
-
-  .mat-input-element {
-    color: #ffffff; // Color del texto en el input en tema oscuro
-  }
-}*/
 
 // Aplicar fondo oscuro al body cuando se use el tema oscuro
 body.dark-theme {

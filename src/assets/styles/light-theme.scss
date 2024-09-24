@@ -1,13 +1,9 @@
-//@import '~@angular/material/theming';
-
-// Incluye las funciones de Angular Material
-//@include mat-core();
-
 @use '@angular/material' as mat;
 
 // Definir paletas de colores
 $primary-palette: mat.m2-define-palette(mat.$m2-indigo-palette, 200);
 $accent-palette: mat.m2-define-palette(mat.$m2-light-green-palette, 700);
+$tertiary-palette: mat.$azure-palette;
 $warn-palette: mat.m2-define-palette(mat.$m2-red-palette, 500);
 $foreground-palette: mat.m2-define-palette(mat.$m2-indigo-palette, 600);
 $background-palette: mat.m2-define-palette(mat.$m2-light-green-palette, 600);
@@ -15,30 +11,31 @@ $background-palette: mat.m2-define-palette(mat.$m2-light-green-palette, 600);
 // Definir tema claro
 $light-theme: mat.m2-define-light-theme((
   color: (
+    theme-type: light,
     primary: $primary-palette,
+    tertiary: $tertiary-palette,
     accent: $accent-palette,
     warn: $warn-palette,
     foreground: $foreground-palette,
     background: $background-palette
   ),
+  density: (
+    scale: 0,
+  )
 ));
-
-// Aplica el tema a los componentes de Angular Material
-//@include angular-material-theme($custom-theme);
 
 // Aplicar tema a todos los componentes
 @include mat.all-component-themes($light-theme);
-
-// Estilos para mat-card en tema claro
 
 // Ajuste adicional para mat-card en tema claro
 mat-card.mat-card {
   background: #9fa8da50; // Fondo blanco en tema claro
   color: #333; // Texto oscuro en fondo claro
   margin-top: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-// Aplicar fondo oscuro al body cuando se use el tema oscuro
+// Aplicar fondo claro al body cuando se use el tema claro
 body.light-theme {
   background:rgba(245, 245, 250, 0.9); // Fondo oscuro en tema oscuro
   color: #333; // Texto oscuro en fondo claro

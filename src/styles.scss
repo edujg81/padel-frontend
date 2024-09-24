@@ -1,16 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
 @import './assets/styles/custom-typography';
 
 @media (forced-colors: active) {
     /* Estilos específicos para el modo de colores forzados */
+    body {
+        background-color: Window; // Color de fondo en modo forzado //
+        color: WindowText; // Color de texto en modo forzado //
+    }
 }
 
 html, body { 
     height: 100%; 
-}
-
-body { 
-    margin: 0; 
 }
 
 /* Application-wide Styles */
@@ -20,3 +23,10 @@ h1 {
 h2, h3 {
     font-weight: lighter;
 }
+
+// Espaciado para encabezados //
+h1, h2, h3 {
+  margin: 1em 0; // Espaciado vertical //
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
