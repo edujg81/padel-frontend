@@ -14,7 +14,7 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
   providers: [
     provideAnimations(), 
-    ...appConfig.providers, provideAnimationsAsync(), provideAnimationsAsync()
+    ...appConfig.providers, provideAnimationsAsync()
   ],
 })
 .catch((err) => console.error(err));

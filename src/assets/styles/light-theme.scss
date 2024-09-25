@@ -1,46 +1,60 @@
+
 @use '@angular/material' as mat;
 
-$custom-typography: mat.define-typography-config((
-  headline1: mat.define-typography-level(96px, 112px, 300), // h1
-  headline2: mat.define-typography-level(60px, 72px, 300), // h2
-  body1: mat.define-typography-level(14px, 20px, 400), // body-1
-  body2: mat.define-typography-level(16px, 24px, 400), // body-2
-  button: mat.define-typography-level(14px, 16px, 500), // button
-));
-
-// Definir paletas de colores
-$primary-palette: mat.define-palette(mat.$indigo-palette, 200);
-$accent-palette: mat.define-palette(mat.$light-green-palette, 700);
-$tertiary-palette: mat.$azure-palette;
-$warn-palette: mat.define-palette(mat.$red-palette, 500);
-$foreground-palette: mat.define-palette(mat.$indigo-palette, 600);
-$background-palette: mat.define-palette(mat.$light-green-palette, 600);
-
-// Definir tema claro
-$light-theme: mat.m3-define-light-theme((
+$light-theme: mat.define-theme((
   color: (
     theme-type: light,
-    primary: $primary-palette,
-    tertiary: $tertiary-palette,
-    accent: $accent-palette,
-    warn: $warn-palette,
-    foreground: $foreground-palette,
-    background: $background-palette
+    primary: mat.$orange-palette,
+    tertiary: mat.$spring-green-palette
+    //use-system-variables: mat.$red-palette,
+    //system-variables-prefix:
   ),
   density: (
-    scale: 0,
-  ),
-  typography: $custom-typography,
-  useMaterial3: true,  // Activa Material 3
+      scale: 0,
+  )
 ));
 
+// Mixin para aplicar el tema claro
+@mixin light-theme {
+  @include mat.all-component-themes($light-theme);
+}
+
+// Definir paletas de colores
+//$primary-palette: mat.m2-define-palette(mat.$indigo-palette, 200);
+//$accent-palette: mat.m2-define-palette(mat.$light-green-palette, 700);
+//$warn-palette: mat.m2-define-palette(mat.$red-palette, 500);
+//$foreground-palette: mat.m2-define-palette(mat.$indigo-palette, 600);
+//$background-palette: mat.m2-define-palette(mat.$light-green-palette, 600);
+
+// Definir tema claro
+/*$light-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+    //accent: $accent-palette,
+    //warn: $warn-palette,
+    //foreground: $foreground-palette,
+    //background: $background-palette
+  ),
+    density: (
+      scale: 0,
+    ),
+  //typography: $custom-typography,
+  //useMaterial3: true,  // Activa Material 3
+));*/
+
 // Aplicar tema a todos los componentes
-@include mat.all-component-themes($light-theme);
+/*
+:root {
+  @include mat.all-component-themes($light-theme);
+}*/
+//@include mat.all-component-themes($light-theme);
 
 // Ajuste adicional para mat-card en tema claro
 mat-card.mat-card {
-  background: #9fa8da50; // Fondo blanco en tema claro
-  color: #333; // Texto oscuro en fondo claro
+  //background: #9fa8da50; // Fondo blanco en tema claro
+  //color: #333; // Texto oscuro en fondo claro
   margin-top: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }

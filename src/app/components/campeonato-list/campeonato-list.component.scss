@@ -1,6 +1,22 @@
-//@use '@angular/material' as mat;
+@use '@angular/material' as mat;
 
-//@import './../../../styles/custom-theme.scss'; // Asegúrate de que esta ruta sea correcta según la estructura de tu proyecto
+$theme: mat.define-theme();
+
+.tertiary-button {
+  @include mat.button-color($theme, $color-variant: tertiary);
+}
+
+.primary-button {
+    @include mat.button-color($theme, $color-variant: primary);
+}
+
+.secondary-button {
+    @include mat.button-color($theme, $color-variant: secondary);
+  }
+
+.error-button {
+    @include mat.button-color($theme, $color-variant: error);
+}
 
 .elevate{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 10px 20px 0 rgba(0,0,0,0.4);

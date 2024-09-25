@@ -1,18 +1,74 @@
 @use '@angular/material' as mat;
 
-// Tipografía personalizada
+// Definir la configuración de tipografía personalizada
+$custom-typography: (
+  font-family: 'Roboto, "Helvetica Neue", Arial, sans-serif',
+  body-2: (
+    font-size: 14px,
+    line-height: 28px,
+    font-weight: 350
+  ),
+  body-1: (
+    font-size: 14px,
+    line-height: 28px,
+    font-weight: 400
+  ),
+  caption: (
+    font-size: 12px,
+    line-height: 20px,
+    font-weight: 400
+  ),
+  button: (
+    font-size: 16px,
+    line-height: 16px,
+    font-weight: 400
+  )
+);
+
+// Aplicar la configuración de tipografía personalizada
+@mixin custom-typography {
+  @include mat.typography-hierarchy($custom-typography);
+  /*font-family: map-get($custom-typography, font-family);
+
+  body {
+    font-size: map-get(map-get($custom-typography, body-1), font-size);
+    line-height: map-get(map-get($custom-typography, body-1), line-height);
+    font-weight: map-get(map-get($custom-typography, body-1), font-weight);
+  }
+
+  .body-2 {
+    font-size: map-get(map-get($custom-typography, body-2), font-size);
+    line-height: map-get(map-get($custom-typography, body-2), line-height);
+    font-weight: map-get(map-get($custom-typography, body-2), font-weight);
+  }
+
+  .caption {
+    font-size: map-get(map-get($custom-typography, caption), font-size);
+    line-height: map-get(map-get($custom-typography, caption), line-height);
+    font-weight: map-get(map-get($custom-typography, caption), font-weight);
+  }
+
+  .button {
+    font-size: map-get(map-get($custom-typography, button), font-size);
+    line-height: map-get(map-get($custom-typography, button), line-height);
+    font-weight: map-get(map-get($custom-typography, button), font-weight);
+  }*/
+}
+
+
+
+/*@include mat.all-component-typographies($custom-typography);*/
 /*
+@use '@angular/material' as mat;
+
+// Definir la configuración de tipografía personalizada
 $custom-typography: mat.define-typography-config((
-  headline1: mat.define-typography-level(96px, 112px, 300), // h1
-  headline2: mat.define-typography-level(60px, 72px, 300), // h2
-  body1: mat.define-typography-level(14px, 20px, 400), // body-1
-  body2: mat.define-typography-level(16px, 24px, 400), // body-2
-  button: mat.define-typography-level(14px, 16px, 500), // button
-  $font-family:   'Roboto, "Helvetica Neue", Arial, sans-serif',
-  $body-2:        mat.define-typography-level(14px, 28px, 350),
-  $body-1:        mat.define-typography-level(14px, 28px, 400),
-  $caption:       mat.define-typography-level(12px, 20px, 400),
-  $button:        mat.define-typography-level(16px, 16px, 400)
+  font-family: 'Roboto, "Helvetica Neue", Arial, sans-serif',
+  body-2: mat.define-typography-level(14px, 28px, 350),
+  body-1: mat.define-typography-level(14px, 28px, 400),
+  caption: mat.define-typography-level(12px, 20px, 400),
+  button: mat.define-typography-level(16px, 16px, 400)
 ));
 
-@include mat.all-component-typographies($custom-typography);*/
+// Aplicar la configuración de tipografía personalizada
+@include mat.typography-hierarchy($custom-typography);*/

@@ -1,7 +1,7 @@
 
 <div>
 <h2>Lista de Campeonatos</h2>
-<button mat-raised-button color="primary" routerLink="/campeonatos/new">Nuevo Campeonato</button>
+<button mat-raised-button routerLink="/campeonatos/new">Nuevo Campeonato</button>
 <div 
   fxLayout.xs="column"
   fxLayout="column"
@@ -32,10 +32,10 @@
 
       <mat-card-actions>
         <a [routerLink]="['/campeonatos', campeonato.id]">
-          <button mat-button>Detalles</button>
+          <button mat-button class="mat-primary">Detalles</button>
         </a>
-        <button mat-button (click)="editCampeonato(campeonato.id)">Editar</button>
-        <button mat-button color="warn" (click)="deleteCampeonato(campeonato.id)">Eliminar</button>
+        <button mat-button class="mat-accent" (click)="editCampeonato(campeonato.id)">Editar</button>
+        <button mat-button class="error-button" (click)="deleteCampeonato(campeonato.id)">Eliminar</button>
       </mat-card-actions>
     </mat-card>
   </div>

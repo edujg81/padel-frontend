@@ -30,15 +30,16 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss",
               {
                 "input": "src/assets/styles/dark-theme.scss",
-                "bundleName": "dark-theme", 
+                "bundleName": "dark-theme",
                 "inject": false
               },
               {
                 "input": "src/assets/styles/light-theme.scss",
-                "bundleName": "light-theme", 
+                "bundleName": "light-theme",
                 "inject": true
               }
             ],
@@ -106,6 +107,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss"
             ],
             "scripts": []
