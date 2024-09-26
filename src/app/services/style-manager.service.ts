@@ -19,17 +19,15 @@ export class StyleManager {
   }
 
   private applyTheme(themeName: string) {
-    const linkElement = document.getElementById('theme-link') as HTMLLinkElement;
+    let linkElement = document.getElementById('theme-link') as HTMLLinkElement;
 
     if (!linkElement) {
-      const newLinkElement = document.createElement('link');
-      newLinkElement.id = 'theme-link';
-      newLinkElement.rel = 'stylesheet';
-      newLinkElement.href = `${themeName}.css`;
-      document.head.appendChild(newLinkElement);
-    } else {
-      linkElement.href = `${themeName}.css`;
+      linkElement = document.createElement('link');
+      linkElement.id = 'theme-link';
+      linkElement.rel = 'stylesheet';
+      document.head.appendChild(linkElement);
     }
+    linkElement.href = `${themeName}.css`;
   }
 
   constructor() { }

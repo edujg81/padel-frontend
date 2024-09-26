@@ -1,10 +1,17 @@
 <div *ngIf="campeonato">
     <h2>Detalles del Campeonato</h2>
-    <p>Año: {{ campeonato.year }}</p>
-    <p>Categoría: {{ campeonato.categoria }}</p>
-    <p>División: {{ campeonato.division }}</p>
-    <p>Estado: {{ campeonato.estado }}</p>
-    <p>Activo: {{ campeonato.activo }}</p>
-    <p>Puntos por Victoria: {{ campeonato.puntosPorVictoria }}</p>
-    <p>Puntos por Derrota: {{ campeonato.puntosPorDerrota }}</p>
+    <div fxFlex.sm="48" fxFlex="30" class="container">
+        <mat-card class="mat-card">
+          <mat-card-title> {{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }} </mat-card-title>
+          <mat-card-content>
+            <p><strong>Estado:</strong> {{ campeonato.estado }}</p>
+            <p><strong>Activo:</strong> {{ campeonato.activo ? 'Sí' : 'No' }}</p>
+            <p><strong>Puntos por Victoria:</strong> {{ campeonato.puntosPorVictoria }}</p>
+            <p><strong>Puntos por Derrota:</strong> {{ campeonato.puntosPorDerrota }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" routerLink="/campeonatos">Volver a la lista de campeonatos</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
 </div>

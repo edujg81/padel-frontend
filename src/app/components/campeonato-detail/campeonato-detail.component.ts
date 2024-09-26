@@ -3,11 +3,17 @@ import { ActivatedRoute } from '@angular/router';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { Campeonato } from '../../models/campeonato.model';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-campeonato-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatButtonModule
+  ],
   templateUrl: './campeonato-detail.component.html',
   styleUrl: './campeonato-detail.component.scss'
 })

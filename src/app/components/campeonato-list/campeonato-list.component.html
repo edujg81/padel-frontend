@@ -32,9 +32,9 @@
 
       <mat-card-actions>
         <a [routerLink]="['/campeonatos', campeonato.id]">
-          <button mat-button class="mat-primary">Detalles</button>
+          <button mat-button class="primary-button">Detalles</button>
         </a>
-        <button mat-button class="mat-accent" (click)="editCampeonato(campeonato.id)">Editar</button>
+        <button mat-button class="tertiary-button" (click)="editCampeonato(campeonato.id)">Editar</button>
         <button mat-button class="error-button" (click)="deleteCampeonato(campeonato.id)">Eliminar</button>
       </mat-card-actions>
     </mat-card>

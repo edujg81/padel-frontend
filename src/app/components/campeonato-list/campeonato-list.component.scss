@@ -1,36 +1,4 @@
-@use '@angular/material' as mat;
-
-$theme: mat.define-theme();
-
-.tertiary-button {
-  @include mat.button-color($theme, $color-variant: tertiary);
-}
-
-.primary-button {
-    @include mat.button-color($theme, $color-variant: primary);
-}
-
-.secondary-button {
-    @include mat.button-color($theme, $color-variant: secondary);
-  }
-
-.error-button {
-    @include mat.button-color($theme, $color-variant: error);
-}
 
 .elevate{
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4), 0 10px 20px 0 rgba(0,0,0,0.4);
+    box-shadow: 0 8px 16px 0 rgba(15, 240, 15, 0.6), 0 10px 20px 0 rgba(15,240,15,0.6);
 }
-
-button {
-    padding: 10px;
-    //border: solid 1px var(--primary-color);
-    //background: var(--primary-color);
-    //color: white;
-    border-radius: 8px;
-}
-/*
-.accent-background {
-    background-color: var(--mat-primary);
-    color: var(--mat-accent);
-}*/

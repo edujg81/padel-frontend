@@ -1,0 +1,57 @@
+
+@use '@angular/material' as mat;
+
+$light-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$spring-green-palette,
+    tertiary: mat.$yellow-palette
+    //use-system-variables: mat.$red-palette,
+    //system-variables-prefix:
+  ),
+  density: (
+      scale: -1,
+  )
+));
+
+// Definir el tema oscuro
+$dark-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$spring-green-palette,
+    tertiary: mat.$yellow-palette
+    //use-system-variables: mat.$red-palette
+  ),
+  density: (
+    scale: -1,
+  )
+));
+
+// Mixin para aplicar el tema claro
+/*@mixin light-theme {
+  @include mat.all-component-themes($light-theme);
+}
+
+@mixin dark-theme {
+  @include mat.all-component-themes($dark-theme);
+}*/
+
+// Ajuste adicional para mat-card en tema claro
+mat-card.mat-card {
+  //background: #9fa8da50; // Fondo blanco en tema claro
+  //color: #333; // Texto oscuro en fondo claro
+  margin-top: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+// Aplicar fondo claro al body cuando se use el tema claro
+body.light-theme {
+ // @include mat.all-component-themes($light-theme);
+  color: #333; // Texto oscuro en fondo claro
+}
+
+body.dark-theme {
+ // @include mat.all-component-themes($dark-theme);
+  background:rgba(5, 15, 5, 0.9); // Fondo oscuro en tema oscuro
+  color: #ccc; // Texto claro en fondo oscuro
+}

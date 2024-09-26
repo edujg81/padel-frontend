@@ -1,38 +1,34 @@
 @use '@angular/material' as mat;
 
-@include mat.core();
+
+//@include mat.core();
 
 // Importar los temas y la tipografía
-@import './assets/styles/light-theme.scss';
-//@import './assets/styles/dark-theme.scss';
-//@import './assets/styles/custom-typography';
+@import './assets/styles/light-dark-themes.scss';
 
-// Aplicar el tema claro por defecto
-//@include light-theme();
-/*
-body.light-theme {
-    @include light-theme();
-}
- 
-body.dark-theme {
-    @include dark-theme();
-}
-*/
 :root {
-    @include mat.all-component-themes($light-theme);
+   @include mat.all-component-themes($light-theme);
    // @include mat.typography-hierarchy($custom-typography);
     //@include mat.system-level-colors($light-theme);
     //@include mat.system-level-typography($custom-typography);
 }
 
+body.light-theme {
+    @include mat.all-component-colors($light-theme);
+}
+  
+body.dark-theme {
+    @include mat.all-component-colors($dark-theme);
+}
 
+/*
 @media (forced-colors: active) {
     // Estilos específicos para el modo de colores forzados
     body {
         background-color: Window; // Color de fondo en modo forzado //
         color: WindowText; // Color de texto en modo forzado //
     }
-}
+}*/
 
 html, body { 
     height: 100%; 
@@ -52,3 +48,41 @@ h1, h2, h3 {
 }
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.light-theme {
+    .tertiary-button {
+        @include mat.button-color($light-theme, $color-variant: tertiary);
+    }    
+
+    .primary-button {
+        @include mat.button-color($light-theme, $color-variant: primary);
+    }
+
+    .secondary-button {
+        @include mat.button-color($light-theme, $color-variant: secondary);
+    }
+
+    .error-button {
+        @include mat.button-color($light-theme, $color-variant: error);
+    }
+
+}
+
+.dark-theme {
+        .tertiary-button {
+            @include mat.button-color($dark-theme, $color-variant: tertiary);
+        }    
+    
+        .primary-button {
+            @include mat.button-color($dark-theme, $color-variant: primary);
+        }
+    
+        .secondary-button {
+            @include mat.button-color($dark-theme, $color-variant: secondary);
+        }
+    
+        .error-button {
+            @include mat.button-color($dark-theme, $color-variant: error);
+        }
+    
+}
