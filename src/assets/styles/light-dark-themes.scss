@@ -5,7 +5,7 @@ $light-theme: mat.define-theme((
   color: (
     theme-type: light,
     primary: mat.$spring-green-palette,
-    tertiary: mat.$yellow-palette
+    tertiary: mat.$orange-palette
     //use-system-variables: mat.$red-palette,
     //system-variables-prefix:
   ),
@@ -19,7 +19,7 @@ $dark-theme: mat.define-theme((
   color: (
     theme-type: dark,
     primary: mat.$spring-green-palette,
-    tertiary: mat.$yellow-palette
+    tertiary: mat.$orange-palette
     //use-system-variables: mat.$red-palette
   ),
   density: (
@@ -36,22 +36,52 @@ $dark-theme: mat.define-theme((
   @include mat.all-component-themes($dark-theme);
 }*/
 
-// Ajuste adicional para mat-card en tema claro
+// Ajuste adicional para mat-card
 mat-card.mat-card {
-  //background: #9fa8da50; // Fondo blanco en tema claro
-  //color: #333; // Texto oscuro en fondo claro
+  //background: #9fa8da50; // Fondo
+  //color: #333; // Texto
   margin-top: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(40, 80, 30, 0.6);
 }
 
 // Aplicar fondo claro al body cuando se use el tema claro
 body.light-theme {
- // @include mat.all-component-themes($light-theme);
   color: #333; // Texto oscuro en fondo claro
+
+  .tertiary-button {
+    @include mat.button-color($light-theme, $color-variant: tertiary);
+  }
+
+  .primary-button {
+    @include mat.button-color($light-theme, $color-variant: primary);
+  }
+
+  .secondary-button {
+    @include mat.button-color($light-theme, $color-variant: secondary);
+  }
+
+  .error-button {
+    @include mat.button-color($light-theme, $color-variant: error);
+  }
 }
 
 body.dark-theme {
- // @include mat.all-component-themes($dark-theme);
   background:rgba(5, 15, 5, 0.9); // Fondo oscuro en tema oscuro
   color: #ccc; // Texto claro en fondo oscuro
+
+  .tertiary-button {
+    @include mat.button-color($dark-theme, $color-variant: tertiary);
+  }    
+
+  .primary-button {
+    @include mat.button-color($dark-theme, $color-variant: primary);
+  }
+
+  .secondary-button {
+    @include mat.button-color($dark-theme, $color-variant: secondary);
+  }
+
+  .error-button {
+    @include mat.button-color($dark-theme, $color-variant: error);
+  }
 }

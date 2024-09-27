@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { Campeonato } from '../../models/campeonato.model';
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterLink
   ],
   templateUrl: './campeonato-detail.component.html',
   styleUrl: './campeonato-detail.component.scss'

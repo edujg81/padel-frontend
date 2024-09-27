@@ -1,14 +1,8 @@
-
-<div>
 <h2>Lista de Campeonatos</h2>
 <button mat-raised-button routerLink="/campeonatos/new">Nuevo Campeonato</button>
-<div 
-  fxLayout.xs="column"
-  fxLayout="column"
-  fxLayoutGap="10px"
-  *ngIf="campeonatos.length > 0; else noCampeonatos"
->
-  <div fxFlex.sm="48" fxFlex="30" *ngFor="let campeonato of campeonatos; let i = index">
+<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="row" fxLayout.md="row" fxLayout.lg="row" fxLayout.xl="row" fxLayoutGap="10px"
+    *ngIf="campeonatos.length > 0; else noCampeonatos">
+  <div *ngFor="let campeonato of campeonatos; let i = index" fxFlex="48%" fxFlex.sm="48%" fxFlex.md="48%" fxFlex.lg="48%" fxFlex.xl="48%">
     <mat-card class="mat-card" [class.elevate]="selCampeonatoId === campeonato.id" 
       (mouseover)="selCampeonatoId = campeonato.id" 
       (mouseout)="selCampeonatoId = -1"
@@ -17,7 +11,7 @@
 
       <mat-card-header>
         <mat-card-title>
-          {{ campeonato.year }} - {{ campeonato.categoria | uppercase }} - División {{ campeonato.division }}
+        {{ campeonato.year }} - {{ campeonato.categoria | uppercase }} - División {{ campeonato.division }}
         </mat-card-title>
       </mat-card-header>
 
@@ -44,4 +38,3 @@
 <ng-template #noCampeonatos>
   <p>No hay campeonatos disponibles.</p>
 </ng-template>
-</div>
