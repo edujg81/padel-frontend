@@ -15,3 +15,13 @@
 .visited {
   //color: darkslategrey !important;
 }
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-top: 6px;
+    margin-left: 0px;
+  }
+}

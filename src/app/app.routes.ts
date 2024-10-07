@@ -15,6 +15,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full', title: 'Inicio' },
   { path: 'campeonatos', component: CampeonatoListComponent },
   { path: 'campeonatos/new', component: CampeonatoFormComponent },
+  { path: 'campeonatos/edit/:id', component: CampeonatoFormComponent },
   { path: 'campeonatos/:id', component: CampeonatoDetailComponent },
   { path: 'jugadores', component: JugadorListComponent },
   { path: 'jugadores/new', component: JugadorFormComponent }, // Ruta para agregar jugador

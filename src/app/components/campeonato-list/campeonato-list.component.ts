@@ -4,7 +4,7 @@ import { CampeonatoService } from '../../services/campeonato.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 
 @Component({
@@ -32,7 +32,7 @@ export class CampeonatoListComponent implements OnInit {
   verDetalleButton = true;
   selCampeonatoId: number = -1;
 
-  constructor(private campeonatoService: CampeonatoService) { }
+  constructor(private campeonatoService: CampeonatoService, private router: Router) { }
   
   /**
    * OnInit lifecycle hook.
@@ -52,7 +52,7 @@ export class CampeonatoListComponent implements OnInit {
 		throw new Error('Method not implemented.');
 	}
 	editCampeonato(id: number): void {
-		throw new Error('Method not implemented.');
+		this.router.navigate(['/campeonatos/edit', id]);
 	}
 
   onFocus(campeonato: Campeonato): void {
