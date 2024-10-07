@@ -1,8 +1,8 @@
 <h2>Lista de Campeonatos</h2>
 <button mat-raised-button routerLink="/campeonatos/new">Nuevo Campeonato</button>
-<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="row" fxLayout.md="row" fxLayout.lg="row" fxLayout.xl="row" fxLayoutGap="10px"
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="row wrap" fxLayout.md="row wrap" fxLayout.lg="row wrap" fxLayout.xl="row wrap" fxLayoutGap="10px"
     *ngIf="campeonatos.length > 0; else noCampeonatos">
-  <div *ngFor="let campeonato of campeonatos; let i = index" fxFlex="48%" fxFlex.sm="48%" fxFlex.md="48%" fxFlex.lg="48%" fxFlex.xl="48%">
+  <div *ngFor="let campeonato of campeonatos; let i = index" fxFlex="50" fxLayout.xs="98" fxFlex.sm="98" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">
     <mat-card class="mat-card" [class.elevate]="selCampeonatoId === campeonato.id" 
       (mouseover)="selCampeonatoId = campeonato.id" 
       (mouseout)="selCampeonatoId = -1"

@@ -1,5 +1,5 @@
-<mat-toolbar color="primary" fxLayout="row" fxLayout.xs="column" fxLayout.sm="row" fxLayout.md="row" fxLayout.lg="row" fxLayout.xl="row">
-  <a [routerLink]="['/']" routerLinkActive="router-link-active" fxFlex="48" fxFlex.sm="30" fxFlex.md="20" fxFlex.lg="15" fxFlex.xl="10">
+<mat-toolbar color="primary" fxLayout="row">
+  <a [routerLink]="['/']" routerLinkActive="router-link-active">
     <span>{{ title }}</span> <!-- sustituir por logo -->
   </a>
   <span class="spacer" fxHide.xs fxShow.sm></span>
@@ -8,19 +8,18 @@
     (click)="toggleDarkTheme()"
     class="theme-toggle"
     aria-label="Toggle Dark Theme"
-    fxFlex="48" fxFlex.sm="30" fxFlex.md="20" fxFlex.lg="15" fxFlex.xl="10"
   >
     <mat-icon>{{ isDark ? "dark_mode" : "light_mode" }}</mat-icon>
   </button>
   <span class="spacer" fxHide.xs fxShow.sm></span>
   <span fxFlex fxHide.xs fxShow.sm></span>
-  <a mat-button routerLink="/" fxFlex="48" fxFlex.sm="30" fxFlex.md="20" fxFlex.lg="15" fxFlex.xl="10">Inicio</a>
-  <a mat-button [routerLink]="['/jugadores']" routerLinkActive="visited" fxFlex="48" fxFlex.sm="30" fxFlex.md="20" fxFlex.lg="15" fxFlex.xl="10">Jugadores</a>
-  <a mat-button [routerLink]="['/campeonatos']" routerLinkActive="visited" routerLinkActiveOptions="{exact: true}" fxFlex="48" fxFlex.sm="30" fxFlex.md="20" fxFlex.lg="15" fxFlex.xl="10">Campeonatos</a>
-  <a mat-button routerLink="/inscripciones" fxFlex="48" fxFlex.sm="30" fxFlex.md="20" fxFlex.lg="15" fxFlex.xl="10">Inscripciones</a>
+  <a mat-button routerLink="/">Inicio</a>
+  <a mat-button [routerLink]="['/jugadores']" routerLinkActive="visited">Jugadores</a>
+  <a mat-button [routerLink]="['/campeonatos']" routerLinkActive="visited" routerLinkActiveOptions="{exact: true}">Campeonatos</a>
+  <a mat-button routerLink="/inscripciones">Inscripciones</a>
   <a mat-button routerLink="/informes">Informes</a>
 </mat-toolbar>
 
-<div class="container" fxLayout="column" fxLayout.xs="column" fxLayout.sm="row" fxLayout.md="row" fxLayout.lg="row" fxLayout.xl="row">
+<div class="container">
   <router-outlet></router-outlet>
 </div>
