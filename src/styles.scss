@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 
-//@include mat.core();
+@include mat.core();
 
 // Importar los temas y la tipografía
 @import './assets/styles/light-dark-themes.scss';
@@ -10,18 +10,22 @@
   
     .tertiary-button {
         @include mat.button-color($light-theme, $color-variant: tertiary);
+        @include mat.icon-button-color($light-theme, $color-variant: tertiary);
     }    
 
     .primary-button {
         @include mat.button-color($light-theme, $color-variant: primary);
+        @include mat.icon-button-color($light-theme, $color-variant: primary);
     }
 
     .secondary-button {
         @include mat.button-color($light-theme, $color-variant: secondary);
+        @include mat.icon-button-color($light-theme, $color-variant: secondary);
     }
 
     .error-button {
         @include mat.button-color($light-theme, $color-variant: error);
+        @include mat.icon-button-color($light-theme, $color-variant: error);
     }  
 }
 

@@ -1,5 +1,5 @@
 <h2>Lista de Campeonatos</h2>
-<button mat-raised-button routerLink="/campeonatos/new">Nuevo Campeonato</button>
+<button mat-raised-button routerLink="/campeonatos/new" style="margin-bottom: 10px;">Nuevo Campeonato</button>
 <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="row wrap" fxLayout.md="row wrap" fxLayout.lg="row wrap" fxLayout.xl="row wrap" fxLayoutGap="10px"
     *ngIf="campeonatos.length > 0; else noCampeonatos">
   <div *ngFor="let campeonato of campeonatos; let i = index" fxFlex="50" fxLayout.xs="98" fxFlex.sm="98" fxFlex.md="48" fxFlex.lg="48" fxFlex.xl="48">

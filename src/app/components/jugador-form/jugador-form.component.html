@@ -59,8 +59,8 @@
     <mat-checkbox formControlName="lesionado" style="forced-color-adjust: yes;">Lesionado</mat-checkbox>
 
     <div class="form-buttons">
-      <button mat-raised-button color="primary" type="submit">{{ isEditing ? 'Guardar Cambios' : 'Agregar Jugador' }}</button>
-      <button mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
+      <button mat-raised-button classs="primary-button" type="submit">{{ isEditing ? 'Guardar Cambios' : 'Agregar Jugador' }}</button>
+      <button mat-raised-button class="error-button" (click)="onCancel()">Cancelar</button>
     </div>
   </form>
 </div>

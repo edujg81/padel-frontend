@@ -6,7 +6,9 @@ import { CampeonatoFormComponent } from './components/campeonato-form/campeonato
 import { JugadorListComponent } from './components/jugador-list/jugador-list.component';
 import { JugadorFormComponent } from './components/jugador-form/jugador-form.component';
 import { JugadorDetailComponent } from './components/jugador-detail/jugador-detail.component';
+import { JornadaListComponent } from './components/jornada-list/jornada-list.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { InscripcionListComponent } from './components/inscripcion-list/inscripcion-list.component';
 
 // Definimos las rutas de la aplicación
 export const routes: Routes = [
@@ -21,5 +23,7 @@ export const routes: Routes = [
   { path: 'jugadores/new', component: JugadorFormComponent }, // Ruta para agregar jugador
   { path: 'jugadores/edit/:id', component: JugadorFormComponent },  // Ruta para editar jugador
   { path: 'jugadores/:id', component: JugadorDetailComponent },
+  { path: 'jornadas/campeonato/:id', component: JornadaListComponent },
+  { path: 'inscripciones/campeonato/:id', component: InscripcionListComponent },
   { path: '**', component: NotFoundComponent }
 ];
