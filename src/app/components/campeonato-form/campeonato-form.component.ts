@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { CommonModule } from '@angular/common';
 import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-campeonato-form',
@@ -25,7 +25,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatFormFieldModule, 
     MatInputModule, 
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterLink
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -33,9 +34,9 @@ export class CampeonatoFormComponent implements OnInit {
   campeonatoForm: FormGroup;  // Declaración de FormGroup
 
   constructor(
-    private fb: FormBuilder,  // Inyección de FormBuilder en el constructor
-    private campeonatoService: CampeonatoService,
-    private router: Router
+    private readonly fb: FormBuilder,  // Inyección de FormBuilder en el constructor
+    private readonly campeonatoService: CampeonatoService,
+    private readonly router: Router
   ) {
     this.campeonatoForm = this.fb.group({
       year: ['', Validators.required],

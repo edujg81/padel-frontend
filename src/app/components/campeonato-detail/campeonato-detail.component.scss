@@ -1,39 +1,5 @@
-.mat-card {
-    margin: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .mat-card-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .mat-card-content {
-    font-size: 18px;
-    color: #666;
-  }
-  
-  .mat-card-actions {
-    margin-top: 20px;
-  }
-  
-  .mat-card-actions {
-    margin: 10px 10px 10px 0px; /* Agrega un margen de 10px en la parte superior, derecha e inferior, y 0 en la parte izquierda */
-    padding: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
   .mat-raised-button {
     display: flex;
-    margin: 10px;
-    padding: 10px;
   }
 
   .secondary-button {

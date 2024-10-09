@@ -4,12 +4,19 @@
         <mat-card class="mat-card">
           <mat-card-title> {{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }} </mat-card-title>
           <mat-card-content>
-            <p><strong>Estado:</strong> {{ campeonato.estado }}</p>
             <p><strong>Activo:</strong> {{ campeonato.activo ? 'Sí' : 'No' }}</p>
             <p><strong>Puntos por Victoria:</strong> {{ campeonato.puntosPorVictoria }}</p>
             <p><strong>Puntos por Derrota:</strong> {{ campeonato.puntosPorDerrota }}</p>
+            <mat-form-field fxFlex="50">
+              <mat-label for="estado">Estado</mat-label>
+              <mat-select [(ngModel)]="campeonato.estado" (ngModelChange)="actualizarEstado($event)">
+                <mat-option value="Sin iniciar">Sin iniciar</mat-option>
+                <mat-option value="En curso">En curso</mat-option>
+                <mat-option value="Terminado">Terminado</mat-option>
+              </mat-select>
+            </mat-form-field>
           </mat-card-content>
-          <mat-card-actions class="mat-card-actions">
+          <mat-card-actions fxFlex="50" class="mat-card-actions">
             <button mat-raised-button class="secondary-button" routerLink="/campeonatos">Volver</button>
             <button mat-raised-button class="tertiary-button" routerLink="/jornadas/campeonato/{{ campeonato.id }}">
               <mat-icon>arrow_forward</mat-icon>Jornadas
