@@ -8,8 +8,8 @@
             <p><strong>Puntos por Victoria:</strong> {{ campeonato.puntosPorVictoria }}</p>
             <p><strong>Puntos por Derrota:</strong> {{ campeonato.puntosPorDerrota }}</p>
             <mat-form-field fxFlex="50">
-              <mat-label for="estado">Estado</mat-label>
-              <mat-select [(ngModel)]="campeonato.estado" (ngModelChange)="actualizarEstado($event)">
+              <mat-label>Estado</mat-label>
+              <mat-select formControl="estadoControl">
                 <mat-option value="Sin iniciar">Sin iniciar</mat-option>
                 <mat-option value="En curso">En curso</mat-option>
                 <mat-option value="Terminado">Terminado</mat-option>

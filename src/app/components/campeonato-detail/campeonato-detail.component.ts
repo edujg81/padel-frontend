@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-campeonato-detail',
@@ -30,6 +31,8 @@ export class CampeonatoDetailComponent implements OnInit {
   campeonato: Campeonato | undefined;
 
   selCampeonatoId = -1;
+  estadoControl = new FormControl();
+
 
   constructor() {
     this.selCampeonatoId = Number(this.route.snapshot.params['id']);
@@ -39,6 +42,7 @@ export class CampeonatoDetailComponent implements OnInit {
    const id = this.selCampeonatoId;
     this.campeonatoService.getCampeonato(id).subscribe(data => {
       this.campeonato = data;
+      this.estadoControl.setValue(this.campeonato.estado);
     });
   }
 }
