@@ -7,9 +7,9 @@ import { Inscripcion } from '../models/inscripcion.model';
   providedIn: 'root'
 })
 export class InscripcionService {
-  private apiUrl = 'http://localhost:8080/inscripciones';
+  private readonly apiUrl = 'http://localhost:8080/inscripciones';
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   getInscripciones(): Observable<Inscripcion[]> {
     return this.http.get<Inscripcion[]>(this.apiUrl);
@@ -17,6 +17,10 @@ export class InscripcionService {
 
   getInscripcion(id: number): Observable<Inscripcion> {
     return this.http.get<Inscripcion>(`${this.apiUrl}/${id}`);
+  }
+
+  getInscripcionesByCampeonatoId(campeonatoId: number): Observable<Inscripcion[]> {
+    return this.http.get<Inscripcion[]>(`${this.apiUrl}/campeonato/${campeonatoId}`);
   }
 
   createInscripcion(inscripcion: Inscripcion): Observable<Inscripcion> {

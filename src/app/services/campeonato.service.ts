@@ -31,4 +31,8 @@ export class CampeonatoService {
   deleteCampeonato(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  cambiarEstadoCampeonato(id: number, nuevoEstado: string): Observable<Campeonato> {
+    return this.http.put<Campeonato>(`${this.apiUrl}/${id}/estado`, nuevoEstado);
+  } 
 }
