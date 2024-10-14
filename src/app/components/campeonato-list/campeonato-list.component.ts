@@ -49,8 +49,14 @@ export class CampeonatoListComponent implements OnInit {
   }
   
 	deleteCampeonato(id: number): void {
-		throw new Error('Method not implemented.');
+    this.campeonatoService.deleteCampeonato(id).subscribe({
+      next: () => {
+        this.campeonatos = this.campeonatos.filter(campeonato => campeonato.id !== id);
+      },
+      error: error => console.error('Error al borrar campeonato', error)
+    })
 	}
+  
 	editCampeonato(id: number): void {
 		this.router.navigate(['/campeonatos/edit', id]);
 	}
