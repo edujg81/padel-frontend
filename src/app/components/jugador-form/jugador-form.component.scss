@@ -6,24 +6,26 @@
   }
 }
 
-.mat-form-field {
-    width: 100%;
-}
-
 .jugador-form-container {
-  max-width: 600px;
-  margin: auto;
+  max-width: 800px;
   padding: 20px;
 }
-  
+ 
 .form-buttons {
   margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: left-start;
 }
 
-.mat-select-panel {
-  position: fixed !important; /* Cambiar a fixed para evitar problemas de posicionamiento */
-  transform: none !important; /* Eliminar transformaciones que puedan afectar la posición */
-  z-index: 1000; /* Asegurar que el menú se muestre por encima de otros elementos */
+.example-form mat-form-field {
+  margin-right: 10px;
+}
+
+p.alert{
+  color: red !important;
+  font-size:0.9em;
+}
+
+.mat-form-field {
+  width: 100%;
 }

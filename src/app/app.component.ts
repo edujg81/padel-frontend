@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
   title = 'Gestión de Campeonatos de Pádel';
   isDark = this.styleManager.isDark;
 
-  constructor(private styleManager: StyleManager) {}
+  constructor(private readonly styleManager: StyleManager) {}
 
   ngOnInit(): void {
     // Implementación del método

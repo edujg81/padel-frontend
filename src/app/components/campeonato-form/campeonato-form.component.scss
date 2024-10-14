@@ -1,17 +1,12 @@
-.example-form mat-slide-toggle {
-    margin: 10px 10px 10px 10px;
+.mat-form-field {
+    width: 100%;
 }
 
-.example-form mat-form-field + mat-form-field {
-    margin-left: 10px;
-    margin-top: 10px;
+.campeonato-form-container {
+    max-width: 800px;
+    padding: 20px;
 }
-
-p.alert{
-    color: red !important;
-    font-size:0.9em;
-}
-
+  
 @media (forced-colors: active) {
     .mat-checkbox {
       background-color: ButtonFace;
@@ -20,12 +15,22 @@ p.alert{
     }
 }
   
-.mat-form-field {
-    width: 100%;
+.jugador-form-container {
+    max-width: 800px;
+    padding: 20px;
 }
-  
+   
 .form-buttons {
     margin-top: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: left-start;
+}
+  
+.example-form mat-form-field {
+    margin-right: 10px;
+}
+  
+p.alert{
+    color: red !important;
+    font-size:0.9em;
 }

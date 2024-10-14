@@ -1,11 +1,11 @@
 <div class="jugador-form-container">
   <h2>{{ isEditing ? 'Editar Jugador' : 'Agregar Jugador' }}</h2>
-  <form [formGroup]="jugadorForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="jugadorForm" (ngSubmit)="onSubmit()" class="example-form">
     <mat-form-field>
       <mat-label>DNI</mat-label>
       <input matInput formControlName="dni" required>
       <mat-error *ngIf="jugadorForm.get('dni')?.invalid">
-        DNI is required
+        DNI es requerido
       </mat-error>
     </mat-form-field>
     
@@ -19,7 +19,7 @@
       <mat-label>Teléfono</mat-label>
       <input matInput formControlName="telefono" required>
       <mat-error *ngIf="jugadorForm.get('telefono')?.invalid">
-        Teléfono is required
+        Teléfono es requerido
       </mat-error>
     </mat-form-field>
 
@@ -60,6 +60,7 @@
 
     <div class="form-buttons">
       <button mat-raised-button classs="primary-button" type="submit">{{ isEditing ? 'Guardar Cambios' : 'Agregar Jugador' }}</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;
       <button mat-raised-button class="error-button" (click)="onCancel()">Cancelar</button>
     </div>
   </form>

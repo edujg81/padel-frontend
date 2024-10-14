@@ -1,4 +1,4 @@
-<div>
+<div class="campeonato-form-container">
   <h2>{{ isEditing ? 'Editar Campeonato' : 'Nuevo Campeonato' }}</h2>
   <form class="example-form" [formGroup]="campeonatoForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="tertiary-button" hintLabel="Año" appearance="fill">
@@ -46,7 +46,7 @@
     <p class="alert" *ngIf="campeonatoForm.status == 'INVALID'; else muestraBoton">* Rellena todos los campos del formulario</p>
   </form>
 
-  <button mat-raised-button class="secondary-button" routerLink="/campeonatos">Volver</button>
+  <button mat-raised-button class="error-button" routerLink="/campeonatos">Cancelar</button>
 </div>
 
 <ng-template #muestraBoton>
