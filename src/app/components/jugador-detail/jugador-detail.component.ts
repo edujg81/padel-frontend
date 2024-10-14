@@ -18,13 +18,12 @@ import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
   styleUrl: './jugador-detail.component.scss'
 })
 export class JugadorDetailComponent implements OnInit {
-  route: ActivatedRoute = inject(ActivatedRoute);
-  jugadorService = inject(JugadorService);
+  
   jugador: Jugador | undefined;
 
   selJugadorId = -1;
   
-  constructor() {
+  constructor(private readonly jugadorService: JugadorService, private readonly route: ActivatedRoute) {
     this.selJugadorId = Number(this.route.snapshot.params['id']);
   }
 
