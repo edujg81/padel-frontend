@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Campeonato } from '../models/campeonato.model';
 
@@ -8,9 +8,9 @@ import { Campeonato } from '../models/campeonato.model';
 })
 export class CampeonatoService {
 
-  private apiUrl = 'http://localhost:8080/campeonatos'; // Cambia la URL según sea necesario
+  private readonly apiUrl = 'http://localhost:8080/campeonatos'; // Cambia la URL según sea necesario
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   getCampeonatos(): Observable<Campeonato[]> {
     return this.http.get<Campeonato[]>(this.apiUrl);
@@ -32,7 +32,8 @@ export class CampeonatoService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  cambiarEstadoCampeonato(id: number, nuevoEstado: string): Observable<Campeonato> {
-    return this.http.put<Campeonato>(`${this.apiUrl}/${id}/estado`, nuevoEstado);
+  cambiarEstadoCampeonato(id: number, nuevoEstado: string): Observable<void> {
+    const params = new HttpParams().set('nuevoEstado', nuevoEstado);
+    return this.http.put<void>(`${this.apiUrl}/${id}/estado`, null, { params });
   } 
 }

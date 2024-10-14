@@ -32,7 +32,7 @@ export class CampeonatoListComponent implements OnInit {
   verDetalleButton = true;
   selCampeonatoId: number = -1;
 
-  constructor(private campeonatoService: CampeonatoService, private router: Router) { }
+  constructor(private readonly campeonatoService: CampeonatoService, private readonly router: Router) { }
   
   /**
    * OnInit lifecycle hook.

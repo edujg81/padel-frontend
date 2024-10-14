@@ -51,14 +51,13 @@ export class CampeonatoDetailComponent implements OnInit {
       this.getJugadoresInscritos();
     });
 
-    this.estadoControl.valueChanges.subscribe((estado: string) => {
-      this.campeonatoService.cambiarEstadoCampeonato(this.selCampeonatoId, estado).subscribe((campeonato: Campeonato) => {
-          // Actualiza el estado del campeonato en la base de datos
-          this.campeonato = campeonato;
-          this.estadoControl.setValue(campeonato.estado); // Establece el valor del control de formulario `estadoControl`
-        }, 
-        (error) => {console.error(error);}
-      );
+    this.estadoControl.valueChanges.subscribe({
+      next: (estado: string) => {
+        this.campeonatoService.cambiarEstadoCampeonato(this.selCampeonatoId, estado).subscribe({
+          error: error => console.error('Error al cambiar estado del campeonato', error)
+        })
+      }, 
+      error: error => console.error(error)
     });
   }
 
