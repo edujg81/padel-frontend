@@ -40,10 +40,10 @@ export class JugadorFormComponent implements OnInit {
   jugador$: Observable<Jugador>;
 
   constructor(
-    private fb: FormBuilder, 
-    private jugadorService: JugadorService,
-    private route: ActivatedRoute,
-    private router: Router
+    private readonly fb: FormBuilder, 
+    private readonly jugadorService: JugadorService,
+    private readonly route: ActivatedRoute,
+    private readonly router: Router
   ) {
     this.jugador$ = of(null as unknown as Jugador); // Initialize with null
   }

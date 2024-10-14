@@ -11,3 +11,21 @@ p.alert{
     color: red !important;
     font-size:0.9em;
 }
+
+@media (forced-colors: active) {
+    .mat-checkbox {
+      background-color: ButtonFace;
+      color: ButtonText;
+      border: 1px solid ButtonText;
+    }
+}
+  
+.mat-form-field {
+    width: 100%;
+}
+  
+.form-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
