@@ -11,7 +11,7 @@ export class InscripcionService {
 
   constructor(private readonly http: HttpClient) { }
 
-  getInscripciones(): Observable<Inscripcion[]> {
+  getAllInscripciones(): Observable<Inscripcion[]> {
     return this.http.get<Inscripcion[]>(this.apiUrl);
   }
 

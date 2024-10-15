@@ -1,1 +1,8 @@
-<p>inscripcion-list works!</p>
+<div *ngFor="let campeonato of campeonatos">
+    <h2>{{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }}</h2>
+    
+    <h3>Jugadores inscritos</h3>
+    <ul>
+      <li *ngFor="let inscripcion of inscripciones">{{ inscripcion.jugador.nombre }}</li>
+    </ul>
+</div>

@@ -24,6 +24,6 @@ export const routes: Routes = [
   { path: 'jugadores/edit/:id', component: JugadorFormComponent },  // Ruta para editar jugador
   { path: 'jugadores/:id', component: JugadorDetailComponent },
   { path: 'jornadas/campeonato/:id', component: JornadaListComponent },
-  { path: 'inscripciones/campeonato/:id', component: InscripcionListComponent },
+  { path: 'inscripciones', component: InscripcionListComponent },
   { path: '**', component: NotFoundComponent }
 ];
