@@ -91,7 +91,7 @@ export class JugadorListComponent implements OnInit, AfterViewInit {
    */
   loadJugadores(): void {
     this.jugadorService.getJugadores().subscribe({
-      next: (data: Jugador[]) => this.jugadores.data = data,
+      next: (data: Jugador[]) => this.jugadores.data = data.filter(jugador => jugador.id !== -1),
       error: error => console.error('Error al recuperar jugadores', error)
     });
   }

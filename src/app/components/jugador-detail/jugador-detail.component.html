@@ -1,8 +1,24 @@
 <div *ngIf="jugador" class="jugador-detail">
-  <h2>{{ jugador.nombreCompleto }} </h2>
-  <p>DNI: {{ jugador.dni }}</p>
-  <p>Sexo: {{ jugador.sexo }}</p>
-  <p>Estado: {{ jugador.estado }}</p>
-  <p>Lesionado: {{ jugador.lesionado }}</p>
-  <p>Fecha de alta: {{ jugador.fechaAlta }}</p>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title><h2> {{ jugador.nombreCompleto }} </h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>DNI: </strong> {{ jugador.dni }}</p>
+      <p><strong>Email: </strong> {{ jugador.email }}</p>
+      <p><strong>Teléfono: </strong> {{ jugador.telefono }}</p>
+      <p><strong>Sexo: </strong> {{ jugador.sexo }}</p>
+      <p><strong>Estado: </strong> {{ jugador.estado }}</p>
+      <p><strong>Lesionado: </strong> {{ jugador.lesionado ? 'Sí' : 'No' }}</p>
+      <p><strong>Fecha de alta: </strong> {{ jugador.fechaAlta | date: 'dd-MM-yyyy' }}</p>
+      <p *ngIf="jugador.estado === 'Baja'"><strong>Fecha de baja: </strong> {{ jugador.fechaBaja | date: 'dd-MM-yyyy' }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a [routerLink]="['/jugadores']">
+        <button mat-button class="primary-button">Volver</button>
+      </a>
+      <button mat-button class="tertiary-button" (click)="editJugador(jugador.id)">Editar</button>
+      <button mat-button class="error-button" (click)="deleteJugador(jugador.id)">Eliminar</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
