@@ -87,23 +87,25 @@ export class CampeonatoFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.campeonatoForm.valid) {
-      return;
-    }
+      const campeonato: Campeonato = this.campeonatoForm.value;
 
-    const campeonato: Campeonato = this.campeonatoForm.value;
-
-    if (this.isEditing) {
-      this.campeonatoService.updateCampeonato(this.campeonatoId ?? 0, campeonato).subscribe({
-        next: () => {
-          this.router.navigate(['/campeonatos']); // Redirige a la lista de campeonatos
-        },
-        error: error => console.error('Error al actualizar campeonato', error)
-      });
-    } else {
-      this.campeonatoService.createCampeonato(this.campeonatoForm.value).subscribe({
-        next: () => this.router.navigate(['/campeonatos']),
-        error: error => console.error('Error creando campeonato:', error)
-      });
+      if (this.isEditing) {
+        this.campeonatoService.updateCampeonato(this.campeonatoId ?? 0, campeonato).subscribe({
+          next: () => {
+            console.log('Campeonato actualizado');
+            this.router.navigate(['/campeonatos']); // Redirige a la lista de campeonatos
+          },
+          error: error => console.error('Error al actualizar campeonato', error)
+        });
+      } else {
+          this.campeonatoService.createCampeonato(this.campeonatoForm.value).subscribe({
+            next: () => { 
+              console.log('Campeonato creado'); 
+              this.router.navigate(['/campeonatos'])
+            },
+            error: error => console.error('Error creando campeonato:', error)
+          });
+      }
     }
-  }
+  } 
 }
