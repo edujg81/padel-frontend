@@ -4,56 +4,55 @@
     <mat-form-field>
       <mat-label>DNI</mat-label>
       <input matInput formControlName="dni" required>
-      <mat-error *ngIf="jugadorForm.get('dni')?.invalid">
-        DNI es requerido
-      </mat-error>
+      <mat-error *ngIf="jugadorForm.get('dni')?.hasError('required')">DNI es requerido</mat-error>
+      <mat-error *ngIf="jugadorForm.get('dni')?.hasError('pattern')">DNI inválido</mat-error>
     </mat-form-field>
     
     <mat-form-field appearance="fill">
       <mat-label>Nombre Completo</mat-label>
       <input matInput formControlName="nombreCompleto" placeholder="Ingresa el nombre completo" required>
-      <mat-error *ngIf="jugadorForm.get('nombreCompleto')?.hasError('required')">Este campo es obligatorio</mat-error>
+      <mat-error *ngIf="jugadorForm.get('nombreCompleto')?.hasError('required')">Nombre es requerido</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Teléfono</mat-label>
-      <input matInput formControlName="telefono" required>
-      <mat-error *ngIf="jugadorForm.get('telefono')?.invalid">
+      <input matInput formControlName="telefono">
+      <!-- <mat-error *ngIf="jugadorForm.get('telefono')?.invalid">
         Teléfono es requerido
-      </mat-error>
+      </mat-error> -->
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email" placeholder="Ingresa el email" required>
-      <mat-error *ngIf="jugadorForm.get('email')?.hasError('required')">Este campo es obligatorio</mat-error>
+      <mat-error *ngIf="jugadorForm.get('email')?.hasError('required')">Email es obligatorio</mat-error>
       <mat-error *ngIf="jugadorForm.get('email')?.hasError('email')">Email no válido</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Sexo</mat-label>
-      <mat-select formControlName="sexo" required panelClass="mat-select-panel">
-        <mat-option value="masculino">Masculino</mat-option>
-        <mat-option value="femenino">Femenino</mat-option>
+      <mat-select formControlName="sexo" panelClass="mat-select-panel" required>
+        <mat-option value="Masculino">Masculino</mat-option>
+        <mat-option value="Femenino">Femenino</mat-option>
       </mat-select>
-      <mat-error *ngIf="jugadorForm.get('sexo')?.hasError('required')">Este campo es obligatorio</mat-error>
+      <mat-error *ngIf="jugadorForm.get('sexo')?.hasError('required')">Sexo es obligatorio</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Estado</mat-label>
-      <mat-select formControlName="estado" required>
-        <mat-option value="Activo">Activo</mat-option>
-        <mat-option value="Inactivo">Inactivo</mat-option>
+      <mat-select formControlName="estado">
+        <mat-option value="Alta">Alta</mat-option>
+        <mat-option value="Baja">Baja</mat-option>
       </mat-select>
-      <mat-error *ngIf="jugadorForm.get('estado')?.hasError('required')">Este campo es obligatorio</mat-error>
+      <!-- <mat-error *ngIf="jugadorForm.get('estado')?.hasError('required')">Este campo es obligatorio</mat-error> -->
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Fecha de Alta</mat-label>
-      <input matInput formControlName="fechaAlta" [matDatepicker]="picker" placeholder="Selecciona una fecha" required>
+      <input matInput formControlName="fechaAlta" [matDatepicker]="picker" placeholder="Selecciona una fecha">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="jugadorForm.get('fechaAlta')?.hasError('required')">Este campo es obligatorio</mat-error>
+      <!-- <mat-error *ngIf="jugadorForm.get('fechaAlta')?.hasError('required')">Este campo es obligatorio</mat-error> -->
     </mat-form-field>
 
     <mat-checkbox formControlName="lesionado" style="forced-color-adjust: yes;">Lesionado</mat-checkbox>

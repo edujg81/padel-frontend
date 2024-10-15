@@ -58,6 +58,7 @@ export class JugadorFormComponent implements OnInit {
       this.jugador$ = this.jugadorService.getJugadorById(this.jugadorId);
       this.jugador$.subscribe({
         next: (jugador: Jugador) => this.jugadorForm.patchValue({
+          id: jugador.id,
           dni: jugador.dni,
           nombreCompleto: jugador.nombreCompleto,
           telefono: jugador.telefono,
@@ -75,14 +76,15 @@ export class JugadorFormComponent implements OnInit {
 
   private initializeForm() {
     this.jugadorForm = this.fb.group({
-      dni: ['', [Validators.required, Validators.pattern('^[0-9]{8}$')]],
+      id: [''],
+      dni: ['', [Validators.required, Validators.pattern('^[0-9]{8}[A-Z]$')]],
       nombreCompleto: ['', Validators.required],
-      telefono: ['', Validators.required],
+      telefono: [''],
       email: ['', [Validators.required, Validators.email]],
       sexo: ['', Validators.required],
-      estado: ['', Validators.required],
-      lesionado: ['false'],
-      fechaAlta: ['', Validators.required]
+      estado: [''],
+      lesionado: [false],
+      fechaAlta: ['']
       // Agrega más campos según sea necesario
     });
   }
