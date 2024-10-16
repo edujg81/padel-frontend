@@ -1,1 +1,26 @@
-<p>inscripcion-form works!</p>
+<div *ngIf="campeonato" class="inscripcion-form">
+    <h2 class="title">Inscribir jugadores a {{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }}</h2>
+    <div class="mat_card">
+        <mat-select appappearance="fill" [value]="jugadorSeleccionado" (selectionChange)="onChange($event)" class="mat_select">
+            <mat-option *ngFor="let jugador of jugadoresDisponibles" [value]="jugador" class="mat_select_trigger">
+                {{ jugador.nombreCompleto }}
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class="button">
+        <button mat-raised-button class="primary-button" (click)="inscribirJugador()">Inscribir jugador</button>
+    </div>
+    <div class="jugadores-inscritos">
+        <div *ngIf="jugadoresInscritos.length > 0" class="jugadores-inscritos">
+            <h3 class="subtitle">Jugadores inscritos</h3>
+                <mat-list class="list">
+                    <mat-list-item *ngFor="let jugador of jugadoresInscritos" class="jugador">
+                        {{ jugador.nombreCompleto }}
+                        <button mat-icon-button (click)="eliminarJugador(jugador)">
+                            <mat-icon class="error-button">cancel</mat-icon>
+                        </button>
+                    </mat-list-item>
+                </mat-list>
+        </div>
+    </div>
+</div>

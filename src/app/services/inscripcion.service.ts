@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Inscripcion } from '../models/inscripcion.model';
 
@@ -23,8 +23,9 @@ export class InscripcionService {
     return this.http.get<Inscripcion[]>(`${this.apiUrl}/campeonato/${campeonatoId}`);
   }
 
-  createInscripcion(inscripcion: Inscripcion): Observable<Inscripcion> {
-    return this.http.post<Inscripcion>(this.apiUrl, inscripcion);
+  inscribirJugador(campeonatoId: number, jugadorId: number): Observable<Inscripcion> {
+    const params = new HttpParams().set('campeonatoId', campeonatoId).set('jugadorId', jugadorId);
+    return this.http.post<Inscripcion>(this.apiUrl, null, { params });
   }
 
   deleteInscripcion(id: number): Observable<void> {

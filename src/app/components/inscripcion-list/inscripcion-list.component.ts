@@ -47,7 +47,7 @@ export class InscripcionListComponent implements OnInit {
     this.inscripcionesService.getAllInscripciones().subscribe(inscripciones => {
       this.inscripciones = inscripciones.filter(inscripcion => {
         const campeonatoActivo = this.campeonatos.find(campeonato => campeonato.id === inscripcion.campeonatoId);
-        return campeonatoActivo.activo === true;
+        return campeonatoActivo?.activo === true;
       });
     });
   }

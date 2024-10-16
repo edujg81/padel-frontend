@@ -1,0 +1,67 @@
+
+.inscripcion-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+.title {
+    margin-bottom: 40px;
+}
+
+.mat_card {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    flex: 1 1 50%;
+}
+
+.subtitle {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 20px;
+    flex: 1 1 100%;
+}
+
+.list {
+    margin-left: 20px;
+    list-style: none;
+    flex: 1 1 100%;
+}
+
+.list li {
+    padding: 10px;
+}
+
+.mat_select {
+    flex: 1 1 30%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: auto;
+    //background-color: primary-color;
+}
+
+.mat_select-trigger {
+    margin-right: 10px;
+}
+
+.jugadores-inscritos {
+    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.jugador {
+    flex: 1 1 100%;
+    margin-bottom: 1px;
+}
+
+.button {
+    flex: 0 0 45%;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto 20px 10px;
+}
