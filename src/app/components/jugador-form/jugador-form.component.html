@@ -44,7 +44,6 @@
         <mat-option value="Alta">Alta</mat-option>
         <mat-option value="Baja">Baja</mat-option>
       </mat-select>
-      <!-- <mat-error *ngIf="jugadorForm.get('estado')?.hasError('required')">Este campo es obligatorio</mat-error> -->
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -52,7 +51,6 @@
       <input matInput formControlName="fechaAlta" [matDatepicker]="picker" placeholder="Selecciona una fecha">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <!-- <mat-error *ngIf="jugadorForm.get('fechaAlta')?.hasError('required')">Este campo es obligatorio</mat-error> -->
     </mat-form-field>
 
     <mat-checkbox formControlName="lesionado" style="forced-color-adjust: yes;">Lesionado</mat-checkbox>

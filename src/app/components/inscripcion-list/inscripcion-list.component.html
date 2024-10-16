@@ -1,8 +1,19 @@
+<h2>Inscripciones a campeonatos activos</h2>
 <div *ngFor="let campeonato of campeonatos">
-    <h2>{{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }}</h2>
+  <div fxFlex="100" class="container" *ngIf="campeonato.activo">
+    <h3><strong> {{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }} </strong></h3>
+
+    <button mat-raised-button class="primary-button" *ngIf="campeonato.estado === 'Sin iniciar', else completo" [routerLink]="['/inscripciones/campeonato/', campeonato.id]">Inscribir jugadores</button>
     
-    <h3>Jugadores inscritos</h3>
-    <ul>
-      <li *ngFor="let inscripcion of inscripciones">{{ inscripcion.jugador.nombre }}</li>
-    </ul>
+    <div *ngIf="campeonato.jugadoresInscritos > 0">
+      <h4>Jugadores inscritos</h4>
+      <ul>
+        <li *ngFor="let inscripcion of inscripciones | filterByCampeonato:campeonato.id"> {{ inscripcion.jugador.nombre }} </li>
+      </ul>
+    </div>
+  </div>
 </div>
+
+<ng-template #completo>
+  <p class="mensaje">Plazo de inscripción finalizado. Campeonato en curso.</p>
+</ng-template>

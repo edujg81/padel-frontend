@@ -3,13 +3,20 @@ import { CampeonatoService } from '../../services/campeonato.service';
 import { JugadorService } from '../../services/jugador.service';
 import { InscripcionService } from '../../services/inscripcion.service';
 import { NgFor, NgIf } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
+import { FilterByCampeonatoPipe } from '../../shared/filterByCampeonato.pipe';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @Component({
   selector: 'app-inscripcion-list',
   standalone: true,
   imports: [
     NgFor,
-    NgIf
+    NgIf,
+    RouterLink,
+    FilterByCampeonatoPipe,
+    MatButtonModule
   ],
   templateUrl: './inscripcion-list.component.html',
   styleUrl: './inscripcion-list.component.scss'
@@ -24,7 +31,8 @@ export class InscripcionListComponent implements OnInit {
   constructor(
     private readonly campeonatoService: CampeonatoService,
     private readonly jugadorService: JugadorService,
-    private readonly inscripcionesService: InscripcionService
+    private readonly inscripcionesService: InscripcionService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
