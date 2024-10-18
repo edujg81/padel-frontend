@@ -17,9 +17,6 @@
     <mat-form-field>
       <mat-label>Teléfono</mat-label>
       <input matInput formControlName="telefono">
-      <!-- <mat-error *ngIf="jugadorForm.get('telefono')?.invalid">
-        Teléfono es requerido
-      </mat-error> -->
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -56,7 +53,7 @@
     <mat-checkbox formControlName="lesionado" style="forced-color-adjust: yes;">Lesionado</mat-checkbox>
 
     <div class="form-buttons">
-      <button mat-raised-button classs="primary-button" type="submit">{{ isEditing ? 'Guardar Cambios' : 'Agregar Jugador' }}</button>
+      <button mat-raised-button class="tertiary-button" type="submit">{{ isEditing ? 'Guardar Cambios' : 'Agregar Jugador' }}</button>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <button mat-raised-button class="error-button" (click)="onCancel()">Cancelar</button>
     </div>

@@ -4,10 +4,10 @@
 </h2>
 
 <div fxLayout="row" fxLayoutAlign="space-between center" class="mat-form-field-wrapper">
-  <button mat-fab color="primary" (click)="agregarJugador()">
+  <button mat-fab class="tertiary-button" (click)="agregarJugador()">
     <mat-icon>add</mat-icon>
   </button>
-  <mat-form-field fxFlex="30%" appearance="outline">
+  <mat-form-field fxFlex="30%" appearance="outline" class="buscar">
     <mat-label>Buscar</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por nombre">
   </mat-form-field>

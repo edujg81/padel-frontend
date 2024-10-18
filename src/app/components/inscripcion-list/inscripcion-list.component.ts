@@ -6,6 +6,10 @@ import { NgFor, NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { FilterByCampeonatoPipe } from '../../shared/filterByCampeonato.pipe';
 import { MatButtonModule } from '@angular/material/button';
+import { Campeonato } from '../../models/campeonato.model';
+import { Jugador } from '../../models/jugador.model';
+import { Inscripcion } from '../../models/inscripcion.model';
+//import { forkJoin } from 'rxjs';
 
 
 @Component({
@@ -22,33 +26,50 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './inscripcion-list.component.scss'
 })
 export class InscripcionListComponent implements OnInit {
-  campeonatos: any[] = [];
-  jugadores: any[] = [];
-  inscripciones: any[] = [];
-  campeonatoSeleccionado: number = 0;
-  jugadorSeleccionado: number = 0;
+  campeonatos: Campeonato[] = [];
+  jugadores: Jugador[] = [];
+  inscripciones: Inscripcion[] = [];
+  jugadoresInscritos: Jugador[] = [];
+  jugadoresInscritosPorCampeonato: { [key: number]: Jugador[] } = {}
 
   constructor(
     private readonly campeonatoService: CampeonatoService,
     private readonly jugadorService: JugadorService,
-    private readonly inscripcionesService: InscripcionService,
+    private readonly inscripcionService: InscripcionService,
     private readonly router: Router
   ) {}
 
   ngOnInit(): void {
-    this.campeonatoService.getCampeonatos().subscribe(campeonatos => {
-      this.campeonatos = campeonatos.filter(campeonato => campeonato.activo === true);
+    this.getCampeonatos();
+  }
+
+  private getCampeonatos(): void {
+    this.campeonatoService.getCampeonatos().subscribe({
+      next: campeonatos => {
+        this.campeonatos = campeonatos.filter(campeonato => campeonato.activo === true);
+        console.log("campeonatos", this.campeonatos);
+        campeonatos.forEach(campeonato => {
+          this.getJugadoresInscritos(campeonato.id);
+        })
+      },
+      error: error => console.error('Error al recuperar campeonatos', error)
     });
+  }
 
-    this.jugadorService.getJugadores().subscribe((jugadores => {
-      this.jugadores = jugadores;
-    }));
-
-    this.inscripcionesService.getAllInscripciones().subscribe(inscripciones => {
-      this.inscripciones = inscripciones.filter(inscripcion => {
-        const campeonatoActivo = this.campeonatos.find(campeonato => campeonato.id === inscripcion.campeonatoId);
-        return campeonatoActivo?.activo === true;
-      });
+  private getJugadoresInscritos(campeonatoId: number): void {
+    this.inscripcionService.getInscripcionesByCampeonatoId(campeonatoId).subscribe({
+      next: (inscripciones: any[]) => {
+        this.inscripciones = inscripciones;
+        console.log(`Inscripciones para el campeonato ${campeonatoId}`, this.inscripciones);
+        if (inscripciones && inscripciones.length > 0) {
+          this.jugadoresInscritosPorCampeonato[campeonatoId] = inscripciones.map((inscripcion: any) => inscripcion.jugador);
+          console.log(`Jugadores inscritos para el campeonato ${campeonatoId}`, this.jugadoresInscritosPorCampeonato[campeonatoId]);
+        } else {
+          this.jugadoresInscritosPorCampeonato[campeonatoId] = [];
+          console.log(`No hay inscripciones para el campeonato ${campeonatoId}`);
+        }
+      },
+      error: error => console.error('Error al obtener inscripciones', error)
     });
   }
 }

@@ -1,19 +1,26 @@
 <h2>Inscripciones a campeonatos activos</h2>
 <div *ngFor="let campeonato of campeonatos">
-  <div fxFlex="100" class="container" *ngIf="campeonato.activo">
-    <h3><strong> {{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }} </strong></h3>
-
-    <button mat-raised-button class="primary-button" *ngIf="campeonato.estado === 'Sin iniciar', else completo" [routerLink]="['/inscripciones/campeonato/', campeonato.id]">Inscribir jugadores</button>
-    
-    <div *ngIf="campeonato.jugadoresInscritos > 0">
-      <h4>Jugadores inscritos</h4>
-      <ul>
-        <li *ngFor="let inscripcion of inscripciones | filterByCampeonato:campeonato.id"> {{ inscripcion.jugador.nombre }} </li>
-      </ul>
+  <div fxLayout="column" class="container" *ngIf="campeonato.activo">
+      <h3>
+        <strong> {{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }} </strong>
+        <span class="tab"></span>
+        <button *ngIf="jugadoresInscritosPorCampeonato[campeonato.id].length < 20 && campeonato.estado === 'Sin iniciar', else completo" mat-raised-button class="tertiary-button" [routerLink]="['/inscripciones/campeonato/', campeonato.id]">Inscribir jugadores</button>
+      </h3>
+      <div *ngIf="jugadoresInscritosPorCampeonato[campeonato.id] && jugadoresInscritosPorCampeonato[campeonato.id].length > 0">
+        <h4>Jugadores inscritos</h4>
+        <ul>
+          <li *ngFor="let jugador of jugadoresInscritosPorCampeonato[campeonato.id]">
+            {{ jugador.nombreCompleto }}
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="!jugadoresInscritosPorCampeonato[campeonato.id] || jugadoresInscritosPorCampeonato[campeonato.id].length === 0">
+        <p>No hay jugadores inscritos en este campeonato.</p>
+      </div>
     </div>
-  </div>
-</div>
 
-<ng-template #completo>
-  <p class="mensaje">Plazo de inscripción finalizado. Campeonato en curso.</p>
-</ng-template>
+  <ng-template #completo>
+    <p *ngIf="jugadoresInscritosPorCampeonato[campeonato.id].length >= 20" class="mensaje">Máximo de jugadores inscritos alcanzado.</p>
+    <p *ngIf="campeonato.estado === 'En curso'" class="mensaje">Plazo de inscripción finalizado.</p>
+  </ng-template>
+</div>

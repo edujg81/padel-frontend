@@ -7,9 +7,9 @@ import { Jugador } from '../models/jugador.model';
   providedIn: 'root'
 })
 export class JugadorService {
-  private apiUrl = 'http://localhost:8080/jugadores';
+  private readonly apiUrl = 'http://localhost:8080/jugadores';
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   getJugadores(): Observable<Jugador[]> {
     return this.http.get<Jugador[]>(this.apiUrl);
