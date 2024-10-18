@@ -106,6 +106,22 @@ export class InscripcionFormComponent implements OnInit {
   }
 
   eliminarJugador(jugador: Jugador): void {
-    throw new Error('Method not implemented.');
+    const index = this.jugadoresInscritos.indexOf(jugador);
+    if (index !== -1) {
+      this.jugadoresInscritos.splice(index, 1);
+      this.inscripcionService.getInscripcion(jugador.id).subscribe({
+        next: inscripcion => {
+          if (inscripcion) {
+            this.inscripcionService.desinscribirJugador(this.campeonatoId, jugador.id).subscribe({
+            next: () => console.log('Inscripción eliminada correctamente'),
+            error: error => console.error('Error al eliminar inscripción', error)
+          });
+        }
+        },
+        error: error => {
+          console.error('Error al obtener ID de la inscripción', error);
+        }
+      });
+    }
   }
 }

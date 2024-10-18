@@ -28,7 +28,7 @@ export class InscripcionService {
     return this.http.post<Inscripcion>(this.apiUrl, null, { params });
   }
 
-  deleteInscripcion(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  desinscribirJugador(campeonatoId: number, jugadorId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${campeonatoId}/${jugadorId}`);
   }
 }
