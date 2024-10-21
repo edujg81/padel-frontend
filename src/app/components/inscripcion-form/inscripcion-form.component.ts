@@ -121,7 +121,7 @@ export class InscripcionFormComponent implements OnInit {
             },
             error: (error: any) => console.error('Error al obtener los jugadores inscritos en otros campeonatos activos', error)
           });
-        });
+        });   
   
         console.log('Jugadores inscritos en otros campeonatos activos (global):', this.jugadoresInscritosEnOtrosCampeonatosActivos);
       },
