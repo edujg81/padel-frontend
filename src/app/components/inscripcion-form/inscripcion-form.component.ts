@@ -13,7 +13,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { Campeonato } from '../../models/campeonato.model';
 import { Inscripcion } from '../../models/inscripcion.model';
-import { catchError, forkJoin, map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-inscripcion-form',
@@ -65,20 +64,12 @@ export class InscripcionFormComponent implements OnInit {
   }
 
   getJugadoresDisponibles(): void {
-    this.getJugadoresInscritosEnOtrosCampeonatosActivos();
-    this.jugadorService.getJugadores().subscribe({
-      next: jugadores => {
-        const noInscrito = (jugador: Jugador) => !this.jugadoresInscritos.some(jugadorInscrito => jugadorInscrito.id === jugador.id) && !this.jugadoresInscritosEnOtrosCampeonatosActivos.some(jugadorInscrito => jugadorInscrito.id === jugador.id);
-        this.jugadoresDisponibles = jugadores.filter(jugador => {
-          if (this.campeonato.categoria === 'Mixto') {
-            return jugador.estado === 'Alta' && !jugador.lesionado && noInscrito(jugador);
-          } else {
-            return jugador.sexo === this.campeonato.categoria && jugador.estado === 'Alta' && !jugador.lesionado && noInscrito(jugador);
-          }
-        });
+    this.jugadorService.getJugadoresDisponiblesParaCampeonato(this.campeonatoId).subscribe({
+      next: (jugadores: any[]) => {
+        this.jugadoresDisponibles = jugadores;
       },
       error: error => console.error('Error al obtener los jugadores disponibles', error)
-    });
+    })
   }
 
   getJugadoresInscritos(): void {
@@ -105,71 +96,6 @@ export class InscripcionFormComponent implements OnInit {
       }
     }
   }
-
-  getJugadoresInscritosEnOtrosCampeonatosActivos(): void {
-    //const jugadoresInscritosEnOtrosCampeonatosActivos: Jugador[] = [];
-    this.campeonatoService.getCampeonatos().subscribe({
-      next: (campeonatos: Campeonato[]) => {
-        const campeonatosActivos = campeonatos.filter((campeonato: Campeonato) => campeonato.activo === true && campeonato.categoria === this.campeonato.categoria && campeonato.id !== this.campeonato.id);
-                        
-        campeonatosActivos.forEach((campeonato: Campeonato) => {
-          this.obtenerInscripcionesPorCampeonato(campeonato).subscribe({
-            next: (jugadoresEnCampeonato: Jugador[]) => {
-              console.log('Jugadores inscritos en el campeonato:', jugadoresEnCampeonato);
-              this.jugadoresInscritosEnOtrosCampeonatosActivos.push(...jugadoresEnCampeonato);
-              console.log('Jugadores inscritos en otros campeonatos activos:', this.jugadoresInscritosEnOtrosCampeonatosActivos);
-            },
-            error: (error: any) => console.error('Error al obtener los jugadores inscritos en otros campeonatos activos', error)
-          });
-        });   
-  
-        console.log('Jugadores inscritos en otros campeonatos activos (global):', this.jugadoresInscritosEnOtrosCampeonatosActivos);
-      },
-      error: error => console.error('Error al obtener los campeonatos activos', error)
-    });
-  }
-
-  obtenerInscripcionesPorCampeonato(campeonato: Campeonato): Observable<Jugador[]> {
-    if (!campeonato.id) {
-      throw new Error('No se proporcionó un ID de campeonato válido');
-    }
-    
-    const jugadoresInscritos: Jugador[] = [];
-
-    this.inscripcionService.getInscripcionesByCampeonatoId(campeonato.id).subscribe({
-      next: (inscripciones: Inscripcion[]) => {
-        inscripciones.forEach((inscripcion: Inscripcion) => {
-          if (inscripcion) {
-            //jugadoresInscritos.push(this.buscarJugadores(inscripcion));
-            jugadoresInscritos.push(Object.values(inscripcion)[1]);
-          }
-        });
-        return jugadoresInscritos;
-      },
-      error: error => console.error('Error al obtener las inscripciones', error)
-    });
-    return of(jugadoresInscritos) as Observable<Jugador[]>; // Retornar un observable de jugadoresInscritos;
-  }
-
-  // buscarJugadores(inscripcion: Inscripcion): Jugador {
-  //   if (!Object.values(inscripcion)[1].id) {
-  //     throw new Error('No se proporcionó un ID de jugador válido');
-  //   } 
-    
-  //   let jugadorEncontrado: Jugador | null = null;
-    
-  //   console.log('Jugador a buscar:', Object.values(inscripcion)[1].id);
-  //   this.jugadorService.getJugadorById(Object.values(inscripcion)[1].id).subscribe({
-  //       next: jugador => {
-  //         console.log('Jugador encontrado:', jugador);
-  //         //return jugador;
-  //         jugadorEncontrado = jugador;
-  //       },
-  //       error: error => console.error('Error al obtener el jugador con ID: ' + Object.values(inscripcion)[1].id, error)
-  //   });
-
-  //   return jugadorEncontrado as unknown as Jugador;
-  // }
 
   onChange(event: MatSelectChange) {
     this.jugadorSeleccionado = event.value;

@@ -34,4 +34,8 @@ export class JugadorService {
   darDeBajaJugador(jugador: Jugador): Observable<void> {
     return this.http.put<void>(`${this.apiUrl}/baja/${jugador.id}`, jugador);
   }
+
+  getJugadoresDisponiblesParaCampeonato(campeonatoId: number): Observable<Jugador[]> {
+    return this.http.get<Jugador[]>(`${this.apiUrl}/disponibles/${campeonatoId}`);
+  }
 }
