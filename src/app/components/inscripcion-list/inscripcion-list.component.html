@@ -22,5 +22,6 @@
   <ng-template #completo>
     <p *ngIf="(jugadoresInscritosPorCampeonato[campeonato.id]?.length || 0)>= 20" class="mensaje">Máximo de jugadores inscritos alcanzado.</p>
     <p *ngIf="campeonato.estado === 'En curso'" class="mensaje">Plazo de inscripción finalizado.</p>
+    <p *ngIf="campeonato.estado === 'Finalizado'" class="mensaje">Campeonato finalizado.</p>
   </ng-template>
 </div>
