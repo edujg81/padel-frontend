@@ -105,7 +105,7 @@ export class InscripcionFormComponent implements OnInit {
     const index = this.jugadoresInscritos.indexOf(jugador);
     if (index !== -1) {
       this.jugadoresInscritos.splice(index, 1);
-      this.inscripcionService.getInscripcion(jugador.id).subscribe({
+      this.inscripcionService.getInscripcionByCampeonatoIdAndJugadorId(this.campeonatoId, jugador.id).subscribe({
         next: inscripcion => {
           if (inscripcion) {
             this.inscripcionService.desinscribirJugador(this.campeonatoId, jugador.id).subscribe({

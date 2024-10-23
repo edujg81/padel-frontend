@@ -9,8 +9,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { Campeonato } from '../../models/campeonato.model';
 import { Jugador } from '../../models/jugador.model';
 import { Inscripcion } from '../../models/inscripcion.model';
-//import { forkJoin } from 'rxjs';
-
 
 @Component({
   selector: 'app-inscripcion-list',
@@ -47,7 +45,6 @@ export class InscripcionListComponent implements OnInit {
     this.campeonatoService.getCampeonatos().subscribe({
       next: campeonatos => {
         this.campeonatos = campeonatos.filter(campeonato => campeonato.activo === true);
-        console.log("campeonatos", this.campeonatos);
         campeonatos.forEach(campeonato => {
           this.getJugadoresInscritos(campeonato.id);
         })
@@ -60,16 +57,23 @@ export class InscripcionListComponent implements OnInit {
     this.inscripcionService.getInscripcionesByCampeonatoId(campeonatoId).subscribe({
       next: (inscripciones: any[]) => {
         this.inscripciones = inscripciones;
-        console.log(`Inscripciones para el campeonato ${campeonatoId}`, this.inscripciones);
         if (inscripciones && inscripciones.length > 0) {
           this.jugadoresInscritosPorCampeonato[campeonatoId] = inscripciones.map((inscripcion: any) => inscripcion.jugador);
-          console.log(`Jugadores inscritos para el campeonato ${campeonatoId}`, this.jugadoresInscritosPorCampeonato[campeonatoId]);
         } else {
           this.jugadoresInscritosPorCampeonato[campeonatoId] = [];
-          console.log(`No hay inscripciones para el campeonato ${campeonatoId}`);
         }
       },
       error: error => console.error('Error al obtener inscripciones', error)
     });
+  }
+
+  isInscripcionDisponible(campeonatoId: number): boolean {
+    const jugadores = this.jugadoresInscritosPorCampeonato[campeonatoId];
+    return jugadores ? jugadores.length < 20 : false;
+  }
+
+  hayInscripciones(campeonatoId: number): boolean {
+    const jugadores = this.jugadoresInscritosPorCampeonato[campeonatoId];
+    return jugadores ? jugadores.length > 0 : false;
   }
 }

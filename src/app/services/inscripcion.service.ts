@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Inscripcion } from '../models/inscripcion.model';
 
 @Injectable({
@@ -19,8 +19,16 @@ export class InscripcionService {
     return this.http.get<Inscripcion>(`${this.apiUrl}/${id}`);
   }
 
+  getInscripcionesByJugadorId(jugadorId: number): Observable<Inscripcion[]> {
+    return this.http.get<Inscripcion[]>(`${this.apiUrl}/jugador/${jugadorId}`);
+  }
+
   getInscripcionesByCampeonatoId(campeonatoId: number): Observable<Inscripcion[]> {
     return this.http.get<Inscripcion[]>(`${this.apiUrl}/campeonato/${campeonatoId}`);
+  }
+
+  getInscripcionByCampeonatoIdAndJugadorId(campeonatoId: number, jugadorId: number): Observable<Inscripcion> {
+    return this.http.get<Inscripcion>(`${this.apiUrl}/campeonato/${campeonatoId}/jugador/${jugadorId}`);
   }
 
   inscribirJugador(campeonatoId: number, jugadorId: number): Observable<Inscripcion> {
