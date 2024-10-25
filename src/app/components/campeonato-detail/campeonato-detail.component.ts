@@ -12,6 +12,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InscripcionService } from '../../services/inscripcion.service';
 import { Inscripcion } from '../../models/inscripcion.model';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-campeonato-detail',
@@ -35,7 +36,7 @@ export class CampeonatoDetailComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
   campeonatoService = inject(CampeonatoService);
   campeonato: Campeonato | undefined;
-  selCampeonatoId = -1;
+  selCampeonatoId: number = -1;
   estadoControl = new FormControl();
   jugadoresInscritos: number = 0;
 
@@ -45,41 +46,72 @@ export class CampeonatoDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.selCampeonatoId;
-    this.campeonatoService.getCampeonato(id).subscribe(data => {
-      this.campeonato = data;
-      this.estadoControl.setValue(this.campeonato.estado);
+    this.obtenerCampeonato();
 
-      this.getJugadoresInscritos();
-    });
-
-    this.estadoControl.valueChanges.subscribe({
+    // Suscribirse al control de cambios en el estado con 'distinctUntilChanged' y confirmación de usuario
+    this.estadoControl.valueChanges.pipe(distinctUntilChanged()).subscribe({
       next: (estado: string) => {
-        if ((this.campeonato?.estado === 'Sin iniciar' && estado === 'En curso' && this.jugadoresInscritos >= 12) || 
-            (this.campeonato?.estado === 'En curso' && estado === 'Finalizado')) {
+        if (this.permiteCambioEstado(estado)) {
+          const confirmChange = window.confirm(`¿Estás seguro de que quieres cambiar el estado a "${estado}"?`);
+          if (confirmChange) {
             this.campeonatoService.cambiarEstadoCampeonato(this.selCampeonatoId, estado).subscribe({
+              next: () => {
+                console.log('Campeonato con ID', this.selCampeonatoId, 'cambiado a estado', estado, 'con éxito');
+                this.toggleEstadoControl();
+              },
               error: error => console.error('Error al cambiar estado del campeonato', error)
-          })
+            });
+          } else {
+            // Restaurar el estado anterior si el usuario cancela
+            this.estadoControl.setValue(this.campeonato?.estado, { emitEvent: false });
+          }
         }
-        else {
-          console.log('No se puede cambiar el estado del campeonato');
-        }
-      }, 
+      },
       error: error => console.error(error)
     });
+  }
+
+  private obtenerCampeonato(): void {
+    if (isNaN(this.selCampeonatoId)) {
+      console.error('ID de campeonato no válido');
+      return;
+    }
+
+    const id = this.selCampeonatoId;
+
+    this.campeonatoService.getCampeonato(id).subscribe({
+      next: data => {
+        this.campeonato = data;
+        this.estadoControl.setValue(this.campeonato.estado);
+        this.getJugadoresInscritos();
+      },
+      error: error => console.error('Error al obtener el campeonato:', error)
+    });
+  }
+
+  private permiteCambioEstado(estado: string): boolean {
+    return (
+      (this.campeonato?.estado === 'Sin iniciar' && estado === 'En curso' && this.jugadoresInscritos >= 12) ||
+      (this.campeonato?.estado === 'En curso' && estado === 'Finalizado')
+    );
   }
 
   getJugadoresInscritos():void {
     this.inscripcionesService.getInscripcionesByCampeonatoId(this.selCampeonatoId).subscribe({
       next: (inscripciones: Inscripcion[]) => {
-        this.jugadoresInscritos = inscripciones.length
+        this.jugadoresInscritos = inscripciones.length;
 
-        this.estadoControl = new FormControl({
-          value: this.campeonato?.estado,
-          disabled: !(this.campeonato?.estado === 'Sin iniciar' && this.jugadoresInscritos >= 12)
-        });
+        this.toggleEstadoControl();
       },
-      error: error => console.error(error)
+      error: error => console.error('Error al obtener jugadores inscritos:', error)
     });
+  }
+
+  private toggleEstadoControl(): void {
+    const habilitarCambioEstado = 
+      (this.estadoControl.value === 'Sin iniciar' && this.jugadoresInscritos >= 12) ||
+      (this.estadoControl.value === 'En curso');
+
+    habilitarCambioEstado ? this.estadoControl.enable() : this.estadoControl.disable();
   }
 }
