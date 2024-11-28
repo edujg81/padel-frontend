@@ -25,7 +25,7 @@
       </mat-card-content>
 
       <mat-card-actions>
-        <a [routerLink]="['/campeonatos', campeonato.id]">
+        <a routerLink="'/campeonatos/' + campeonato.id">
           <button mat-button class="primary-button">Detalles</button>
         </a>
         <button mat-button class="tertiary-button" (click)="editCampeonato(campeonato.id)">Editar</button>

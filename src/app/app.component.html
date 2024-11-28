@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" fxLayout="row">
-  <a routerLink="/" routerLinkActive="router-link-active" class="logo">
+  <a [routerLink]="['/']" routerLinkActive="router-link-active" class="logo">
     <span><img src="assets/images/logo.jpg" alt="Logo de la aplicación"></span>
   </a>
   <span class="spacer" fxHide.xs fxShow.sm></span>
@@ -13,11 +13,11 @@
   </button>
   <span class="spacer" fxHide.xs fxShow.sm></span>
   <span fxFlex fxHide.xs fxShow.sm></span>
-  <a mat-button routerLink="/">Inicio</a>
-  <a mat-button routerLink="/jugadores" routerLinkActive="visited">Jugadores</a>
-  <a mat-button routerLink="/campeonatos" routerLinkActive="visited" routerLinkActiveOptions="{exact: true}">Campeonatos</a>
-  <a mat-button routerLink="/inscripciones">Inscripciones</a>
-  <a mat-button routerLink="/informes">Informes</a>
+  <mat-button routerLink="['/']">Inicio</mat-button>
+  <mat-button routerLink="/jugadores" routerLinkActive="visited">Jugadores</mat-button>
+  <mat-button routerLink="/campeonatos" routerLinkActive="visited" [routerLinkActiveOptions]="{exact: true}">Campeonatos</mat-button>
+  <mat-button routerLink="/inscripciones">Inscripciones</mat-button>
+  <mat-button routerLink="/informes">Informes</mat-button>
 </mat-toolbar>
 
 <div class="container">

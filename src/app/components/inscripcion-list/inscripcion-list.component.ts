@@ -14,7 +14,7 @@ import { Inscripcion } from '../../models/inscripcion.model';
     standalone: true,
     imports: [
         CommonModule,
-        // RouterModule,
+        RouterModule,
         MatButtonModule
     ],
     templateUrl: './inscripcion-list.component.html',

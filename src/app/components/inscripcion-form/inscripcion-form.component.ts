@@ -19,14 +19,14 @@ import { Inscripcion } from '../../models/inscripcion.model';
     standalone: true,
     imports: [
       CommonModule,
-      // FormsModule,
-      // ReactiveFormsModule,
+      FormsModule,
+      ReactiveFormsModule,
       MatButtonModule,
       MatCardModule,
       MatSelectModule,
       MatListModule,
       MatIconModule,
-      // RouterModule
+      RouterModule
     ],
     templateUrl: './inscripcion-form.component.html',
     styleUrl: './inscripcion-form.component.scss'

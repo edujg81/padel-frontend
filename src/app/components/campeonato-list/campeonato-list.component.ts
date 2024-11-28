@@ -14,7 +14,7 @@ import { FlexLayoutModule } from '@ngbracket/ngx-layout';
         CommonModule,
         MatButtonModule,
         MatCardModule,
-        // RouterModule,
+        RouterModule,
         FlexLayoutModule
     ],
     templateUrl: './campeonato-list.component.html',

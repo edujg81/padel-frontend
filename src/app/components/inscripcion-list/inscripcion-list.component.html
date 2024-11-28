@@ -4,7 +4,7 @@
       <h3>
         <strong> {{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }} </strong>
         <span class="tab"></span>
-        <button *ngIf="isInscripcionDisponible(campeonato.id) && campeonato.estado === 'Sin iniciar', else completo" mat-raised-button class="tertiary-button" [routerLink]="['/inscripciones/campeonato/', campeonato.id]">Inscribir jugadores</button>
+        <button *ngIf="isInscripcionDisponible(campeonato.id) && campeonato.estado === 'Sin iniciar', else completo" mat-raised-button class="tertiary-button" routerLink="'/inscripciones/campeonato/' + campeonato.id">Inscribir jugadores</button>
       </h3>
       <div *ngIf="hayInscripciones(campeonato.id)">  
         <h4>Jugadores inscritos</h4>

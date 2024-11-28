@@ -14,7 +14,7 @@
       <p *ngIf="jugador.estado === 'Baja'"><strong>Fecha de baja: </strong> {{ jugador.fechaBaja | date: 'dd-MM-yyyy' }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <a [routerLink]="['/jugadores']">
+      <a routerLink="/jugadores">
         <button mat-button class="primary-button">Volver</button>
       </a>
       <button mat-button class="tertiary-button" (click)="editJugador(jugador.id)">Editar</button>

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { CommonModule } from '@angular/common';
 import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
@@ -18,16 +18,16 @@ import { Observable, of } from 'rxjs';
     styleUrls: ['./campeonato-form.component.scss'],
     imports: [
         CommonModule, // Añade CommonModule a la lista de imports
-        // ReactiveFormsModule,
+        ReactiveFormsModule,
         MatFormFieldModule,
         MatSlideToggleModule,
-        // FormsModule,
+        FormsModule,
         MatSlideToggleModule,
         MatFormFieldModule,
         MatInputModule,
         MatSelectModule,
         MatButtonModule,
-        // RouterModule
+        RouterModule
     ],
     // changeDetection: ChangeDetectionStrategy.OnPush
 })

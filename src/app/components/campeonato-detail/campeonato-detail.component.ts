@@ -25,10 +25,10 @@ import { distinctUntilChanged } from 'rxjs/operators';
         MatFormFieldModule,
         MatSelectModule,
         MatGridListModule,
-        // RouterModule,
+        RouterModule,
         // RouterLink,
-        // FormsModule,
-        // ReactiveFormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     templateUrl: './campeonato-detail.component.html',
     styleUrl: './campeonato-detail.component.scss'
