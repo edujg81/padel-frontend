@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { InscripcionService } from '../../services/inscripcion.service';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { JugadorService } from '../../services/jugador.service';
 import { Jugador } from '../../models/jugador.model';
-import { NgIf, NgFor, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
@@ -16,18 +16,17 @@ import { Inscripcion } from '../../models/inscripcion.model';
 
 @Component({
     selector: 'app-inscripcion-form',
+    standalone: true,
     imports: [
-        NgIf,
-        NgFor,
-        RouterLink,
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatButtonModule,
-        MatCardModule,
-        MatSelectModule,
-        MatListModule,
-        MatIconModule
+      CommonModule,
+      // FormsModule,
+      // ReactiveFormsModule,
+      MatButtonModule,
+      MatCardModule,
+      MatSelectModule,
+      MatListModule,
+      MatIconModule,
+      // RouterModule
     ],
     templateUrl: './inscripcion-form.component.html',
     styleUrl: './inscripcion-form.component.scss'
@@ -48,7 +47,8 @@ export class InscripcionFormComponent implements OnInit {
     private readonly inscripcionService: InscripcionService,
     private readonly campeonatoService: CampeonatoService,
     private readonly jugadorService: JugadorService,
-    private readonly route: ActivatedRoute
+    @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
+    @Inject(Router) private readonly router: Router
   ) { }
 
   ngOnInit(): void {

@@ -8,7 +8,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(),
     importProvidersFrom(
-      
     ),
     provideRouter(routes, withComponentInputBinding())
   ]

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CampeonatoService } from '../../services/campeonato.service';
@@ -13,23 +13,23 @@ import { Observable, of } from 'rxjs';
 
 @Component({
     selector: 'app-campeonato-form',
+    standalone: true,
     templateUrl: './campeonato-form.component.html',
     styleUrls: ['./campeonato-form.component.scss'],
     imports: [
         CommonModule, // Añade CommonModule a la lista de imports
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
+        // ReactiveFormsModule,
+        MatFormFieldModule,
         MatSlideToggleModule,
-        FormsModule,
-        MatSlideToggle,
+        // FormsModule,
+        MatSlideToggleModule,
         MatFormFieldModule,
         MatInputModule,
         MatSelectModule,
         MatButtonModule,
-        RouterLink
+        // RouterModule
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CampeonatoFormComponent implements OnInit {
   campeonatoForm!: FormGroup;  // Declaración de FormGroup
@@ -38,10 +38,10 @@ export class CampeonatoFormComponent implements OnInit {
   campeonato$: Observable<Campeonato>;
 
   constructor(
-    private readonly fb: FormBuilder,  // Inyección de FormBuilder en el constructor
+    @Inject(FormBuilder) private readonly fb: FormBuilder,  // Inyección de FormBuilder en el constructor
     private readonly campeonatoService: CampeonatoService,
-    private readonly route: ActivatedRoute,
-    private readonly router: Router
+    @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
+    @Inject(Router) private readonly router: Router
   ) {
     this.campeonato$ = of(null as unknown as Campeonato); // Initialize with null
   }

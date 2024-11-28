@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { Campeonato } from '../../models/campeonato.model';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ import { distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: 'app-campeonato-detail',
+    standalone: true,
     imports: [
         CommonModule,
         MatCardModule,
@@ -24,9 +25,10 @@ import { distinctUntilChanged } from 'rxjs/operators';
         MatFormFieldModule,
         MatSelectModule,
         MatGridListModule,
-        FormsModule,
-        ReactiveFormsModule,
-        RouterLink
+        // RouterModule,
+        // RouterLink,
+        // FormsModule,
+        // ReactiveFormsModule
     ],
     templateUrl: './campeonato-detail.component.html',
     styleUrl: './campeonato-detail.component.scss'
@@ -40,7 +42,8 @@ export class CampeonatoDetailComponent implements OnInit {
   jugadoresInscritos: number = 0;
 
 
-  constructor(private readonly inscripcionesService: InscripcionService) {
+  constructor(private readonly inscripcionesService: InscripcionService
+  ) {
     this.selCampeonatoId = Number(this.route.snapshot.params['id']);
   }
 
@@ -66,7 +69,7 @@ export class CampeonatoDetailComponent implements OnInit {
           }
         }
       },
-      error: error => console.error(error)
+      error: (error: any) => console.error(error)
     });
   }
 

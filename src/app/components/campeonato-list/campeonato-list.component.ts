@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Campeonato } from '../../models/campeonato.model';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,15 +9,13 @@ import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 
 @Component({
     selector: 'app-campeonato-list',
+    standalone: true,
     imports: [
         CommonModule,
         MatButtonModule,
         MatCardModule,
-        RouterModule,
-        NgFor,
-        NgIf,
-        FlexLayoutModule,
-        RouterLink
+        // RouterModule,
+        FlexLayoutModule
     ],
     templateUrl: './campeonato-list.component.html',
     styleUrls: ['./campeonato-list.component.scss']
@@ -31,7 +29,7 @@ export class CampeonatoListComponent implements OnInit {
   verDetalleButton = true;
   selCampeonatoId: number = -1;
 
-  constructor(private readonly campeonatoService: CampeonatoService, private readonly router: Router) { }
+  constructor(private readonly campeonatoService: CampeonatoService, @Inject(Router) private readonly router: Router) { }
   
   /**
    * OnInit lifecycle hook.

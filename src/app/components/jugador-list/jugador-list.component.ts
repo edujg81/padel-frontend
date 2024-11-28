@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JugadorService } from '../../services/jugador.service';
 import { Jugador } from '../../models/jugador.model';
@@ -19,20 +19,20 @@ import { getEspañolPaginatorIntl } from '../../mat-paginator-es';
 
 @Component({
     selector: 'app-jugador-list',
+    standalone: true,
     imports: [
         CommonModule,
         MatIconModule,
         MatPaginatorModule,
         MatFormFieldModule,
         MatInputModule,
-        MatPaginator,
+        MatPaginatorModule,
         MatButtonModule,
         MatTableModule,
         MatSortModule,
         MatDatepickerModule, // Asegúrate de incluirlo aquí
         MatNativeDateModule, // Importa también este módulo para las fechas
-        FlexLayoutModule,
-        RouterLink
+        FlexLayoutModule
     ],
     providers: [
         { provide: MatPaginatorIntl, useValue: getEspañolPaginatorIntl() }
@@ -53,7 +53,7 @@ export class JugadorListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
-  constructor(private jugadorService: JugadorService, private router: Router, private snackBar: MatSnackBar) {}
+  constructor(private jugadorService: JugadorService, @Inject(Router) private router: Router, private snackBar: MatSnackBar) {}
 
    /**
    * Aplica un filtro en la tabla de jugadores.
