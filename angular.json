@@ -30,8 +30,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/assets/styles/light-dark-themes.scss"
+              "src/assets/styles/light-dark-themes.scss",
+              "src/styles.scss"
             ],
             "scripts": []
           },

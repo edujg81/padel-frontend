@@ -1,44 +1,49 @@
 @use '@angular/material' as mat;
 
+// Importar los temas y la tipografía
+@use './assets/styles/light-dark-themes.scss';
+
 @include mat.core();
 
-// Importar los temas y la tipografía
-@import './assets/styles/light-dark-themes.scss';
+html {
+  //@include mat.all-component-themes(m3-theme.$light-theme);
+  @include mat.all-component-themes(light-dark-themes.$light-theme);
+}
 
-:root {
-    @include mat.all-component-themes($light-theme);
+//:root {
+    // @include mat.all-component-themes($light-theme);
   
-    .tertiary-button {
-        @include mat.button-color($light-theme, $color-variant: tertiary);
-        @include mat.icon-button-color($light-theme, $color-variant: tertiary);
-        @include mat.fab-color($light-theme, $color-variant: tertiary);
-    }    
+    // .tertiary-button {
+    //     @include mat.button-color($light-theme, $color-variant: tertiary);
+    //     @include mat.icon-button-color($light-theme, $color-variant: tertiary);
+    //     @include mat.fab-color($light-theme, $color-variant: tertiary);
+    // }    
 
-    .primary-button {
-        @include mat.button-color($light-theme, $color-variant: primary);
-        @include mat.icon-button-color($light-theme, $color-variant: primary);
-        @include mat.fab-color($light-theme, $color-variant: primary);
-    }
+    // .primary-button {
+    //     @include mat.button-color($light-theme, $color-variant: primary);
+    //     @include mat.icon-button-color($light-theme, $color-variant: primary);
+    //     @include mat.fab-color($light-theme, $color-variant: primary);
+    // }
 
-    .secondary-button {
-        @include mat.button-color($light-theme, $color-variant: secondary);
-        @include mat.icon-button-color($light-theme, $color-variant: secondary);
-        @include mat.fab-color($light-theme, $color-variant: secondary);
-    }
+    // .secondary-button {
+    //     @include mat.button-color($light-theme, $color-variant: secondary);
+    //     @include mat.icon-button-color($light-theme, $color-variant: secondary);
+    //     @include mat.fab-color($light-theme, $color-variant: secondary);
+    // }
 
-    .error-button {
-        @include mat.button-color($light-theme, $color-variant: error);
-        @include mat.icon-button-color($light-theme, $color-variant: error);
-    }  
-}
+    // .error-button {
+    //     @include mat.button-color($light-theme, $color-variant: error);
+    //     @include mat.icon-button-color($light-theme, $color-variant: error);
+    // }  
+//}
 
-body.light-theme {
-    @include mat.all-component-colors($light-theme);
-}
+// body.light-theme {
+//     @include mat.all-component-colors($light-theme);
+// }
   
-body.dark-theme {
-    @include mat.all-component-colors($dark-theme);
-}
+// body.dark-theme {
+//     @include mat.all-component-colors($dark-theme);
+// }
 
 @media (forced-colors: active) {
     // Estilos específicos para el modo de colores forzados
@@ -65,7 +70,9 @@ h1, h2, h3 {
   margin: 1em 0; // Espaciado vertical //
 }
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background: var(--mat-sys-surface);
+    color: var(--mat-sys-on-surface);}
 
 .tab {
     margin-left: 30px;  

@@ -1,11 +1,16 @@
 
+@use 'sass:map';
 @use '@angular/material' as mat;
 
 $light-theme: mat.define-theme((
   color: (
     theme-type: light,
     primary: mat.$spring-green-palette,
-    tertiary: mat.$orange-palette
+    tertiary: mat.$orange-palette,
+    use-system-variables: true,
+  ),
+  typography: (
+    use-system-variables: true,
   ),
   density: (
       scale: -1,
@@ -18,11 +23,15 @@ $dark-theme: mat.define-theme((
     theme-type: dark,
     primary: mat.$spring-green-palette,
     tertiary: mat.$orange-palette
-  ),
-  density: (
-    scale: -1,
-  )
-));
+    //use-system-variables: true,
+    ),
+    typography: (
+      use-system-variables: true,
+    ),
+    density: (
+        scale: -1,
+    )
+  ));
 
 // Ajuste adicional para mat-card
 .mat-card {
@@ -46,58 +55,68 @@ $dark-theme: mat.define-theme((
   cursor: pointer;
 }
 
+@mixin theme($theme) {
+  @include mat.all-component-themes($theme);
+}
+
 // Aplicar fondo claro al body cuando se use el tema claro
-body.light-theme {
-  color: #333; // Texto oscuro en fondo claro
+.light-theme {
+  // color: #333; // Texto oscuro en fondo claro
 
-  .tertiary-button {
-    @include mat.button-color($light-theme, $color-variant: tertiary);
-    @include mat.icon-button-color($light-theme, $color-variant: tertiary);
-    @include mat.fab-color($light-theme, $color-variant: tertiary);
-  }    
+  // .tertiary-button {
+  //   @include mat.button-color($light-theme, $color-variant: tertiary);
+  //   @include mat.icon-button-color($light-theme, $color-variant: tertiary);
+  //   @include mat.fab-color($light-theme, $color-variant: tertiary);
+  // }    
 
-  .primary-button {
-      @include mat.button-color($light-theme, $color-variant: primary);
-      @include mat.icon-button-color($light-theme, $color-variant: primary);
-      @include mat.fab-color($light-theme, $color-variant: primary);
-  }
+  // .primary-button {
+  //     @include mat.button-color($light-theme, $color-variant: primary);
+  //     @include mat.icon-button-color($light-theme, $color-variant: primary);
+  //     @include mat.fab-color($light-theme, $color-variant: primary);
+  // }
 
-  .secondary-button {
-      @include mat.button-color($light-theme, $color-variant: secondary);
-      @include mat.icon-button-color($light-theme, $color-variant: secondary);
-      @include mat.fab-color($light-theme, $color-variant: secondary);
-  }
+  // .secondary-button {
+  //     @include mat.button-color($light-theme, $color-variant: secondary);
+  //     @include mat.icon-button-color($light-theme, $color-variant: secondary);
+  //     @include mat.fab-color($light-theme, $color-variant: secondary);
+  // }
 
-  .error-button {
-      @include mat.button-color($light-theme, $color-variant: error);
-      @include mat.icon-button-color($light-theme, $color-variant: error);
-  }  
+  // .error-button {
+  //     @include mat.button-color($light-theme, $color-variant: error);
+  //     @include mat.icon-button-color($light-theme, $color-variant: error);
+  // }  
+  @include theme($light-theme);
 }
 
-body.dark-theme {
-  background:rgba(5, 15, 5, 0.9); // Fondo oscuro en tema oscuro
-  color: #ccc; // Texto claro en fondo oscuro
+.dark-theme {
+  // background:rgba(5, 15, 5, 0.9); // Fondo oscuro en tema oscuro
+  // color: #ccc; // Texto claro en fondo oscuro
 
-  .tertiary-button {
-    @include mat.button-color($dark-theme, $color-variant: tertiary);
-    @include mat.icon-button-color($dark-theme, $color-variant: tertiary);
-    @include mat.fab-color($dark-theme, $color-variant: tertiary);
-  }    
+  // .tertiary-button {
+  //   @include mat.button-color($dark-theme, $color-variant: tertiary);
+  //   @include mat.icon-button-color($dark-theme, $color-variant: tertiary);
+  //   @include mat.fab-color($dark-theme, $color-variant: tertiary);
+  // }    
 
-  .primary-button {
-    @include mat.button-color($dark-theme, $color-variant: primary);
-    @include mat.icon-button-color($dark-theme, $color-variant: primary);
-    @include mat.fab-color($dark-theme, $color-variant: primary);
-  }
+  // .primary-button {
+  //   @include mat.button-color($dark-theme, $color-variant: primary);
+  //   @include mat.icon-button-color($dark-theme, $color-variant: primary);
+  //   @include mat.fab-color($dark-theme, $color-variant: primary);
+  // }
 
-  .secondary-button {
-    @include mat.button-color($dark-theme, $color-variant: secondary);
-    @include mat.icon-button-color($dark-theme, $color-variant: secondary);
-    @include mat.fab-color($dark-theme, $color-variant: secondary);
-  }
+  // .secondary-button {
+  //   @include mat.button-color($dark-theme, $color-variant: secondary);
+  //   @include mat.icon-button-color($dark-theme, $color-variant: secondary);
+  //   @include mat.fab-color($dark-theme, $color-variant: secondary);
+  // }
 
-  .error-button {
-    @include mat.button-color($dark-theme, $color-variant: error);
-    @include mat.icon-button-color($dark-theme, $color-variant: error);
-  }
+  // .error-button {
+  //   @include mat.button-color($dark-theme, $color-variant: error);
+  //   @include mat.icon-button-color($dark-theme, $color-variant: error);
+  // }
+  @include theme($dark-theme);
 }
+
+// :root {
+//   @include theme($light-theme);
+// }
