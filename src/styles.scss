@@ -3,7 +3,8 @@
 // Importar los temas y la tipografía
 @use './assets/styles/light-dark-themes.scss';
 
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 
 html {
   //@include mat.all-component-themes(m3-theme.$light-theme);

@@ -8,9 +8,11 @@ $light-theme: mat.define-theme((
     primary: mat.$spring-green-palette,
     tertiary: mat.$orange-palette,
     use-system-variables: true,
+    system-variables-prefix: sys,
   ),
   typography: (
     use-system-variables: true,
+    system-variables-prefix: sys,
   ),
   density: (
       scale: -1,
@@ -24,9 +26,11 @@ $dark-theme: mat.define-theme((
     primary: mat.$spring-green-palette,
     tertiary: mat.$orange-palette
     //use-system-variables: true,
+    system-variables-prefix: sys,
     ),
     typography: (
       use-system-variables: true,
+    system-variables-prefix: sys,
     ),
     density: (
         scale: -1,
