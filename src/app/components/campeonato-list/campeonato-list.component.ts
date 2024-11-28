@@ -8,20 +8,19 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 
 @Component({
-  selector: 'app-campeonato-list',
-  standalone: true,
-  imports: [
-    CommonModule, 
-    MatButtonModule, 
-    MatCardModule, 
-    RouterModule,
-    NgFor,
-    NgIf,
-    FlexLayoutModule,
-    RouterLink
-  ],
-  templateUrl: './campeonato-list.component.html',
-  styleUrls: ['./campeonato-list.component.scss']
+    selector: 'app-campeonato-list',
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatCardModule,
+        RouterModule,
+        NgFor,
+        NgIf,
+        FlexLayoutModule,
+        RouterLink
+    ],
+    templateUrl: './campeonato-list.component.html',
+    styleUrls: ['./campeonato-list.component.scss']
 })
 export class CampeonatoListComponent implements OnInit {
 

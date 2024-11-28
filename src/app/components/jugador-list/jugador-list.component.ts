@@ -18,28 +18,27 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { getEspañolPaginatorIntl } from '../../mat-paginator-es';
 
 @Component({
-  selector: 'app-jugador-list',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatPaginator,
-    MatButtonModule,
-    MatTableModule,
-    MatSortModule,
-    MatDatepickerModule, // Asegúrate de incluirlo aquí
-    MatNativeDateModule,  // Importa también este módulo para las fechas
-    FlexLayoutModule,
-    RouterLink
-  ],
-  providers: [
-    { provide: MatPaginatorIntl, useValue: getEspañolPaginatorIntl() }
-  ],
-  templateUrl: './jugador-list.component.html',
-  styleUrl: './jugador-list.component.scss'
+    selector: 'app-jugador-list',
+    imports: [
+        CommonModule,
+        MatIconModule,
+        MatPaginatorModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatPaginator,
+        MatButtonModule,
+        MatTableModule,
+        MatSortModule,
+        MatDatepickerModule, // Asegúrate de incluirlo aquí
+        MatNativeDateModule, // Importa también este módulo para las fechas
+        FlexLayoutModule,
+        RouterLink
+    ],
+    providers: [
+        { provide: MatPaginatorIntl, useValue: getEspañolPaginatorIntl() }
+    ],
+    templateUrl: './jugador-list.component.html',
+    styleUrl: './jugador-list.component.scss'
 })
 export class JugadorListComponent implements OnInit, AfterViewInit {
   title = 'Lista de Jugadores';

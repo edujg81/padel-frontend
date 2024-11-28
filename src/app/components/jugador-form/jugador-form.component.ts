@@ -14,24 +14,23 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Observable, of } from 'rxjs';
 
 @Component({
-  selector: 'app-jugador-form',
-  standalone: true,
-  imports: [
-    CommonModule, 
-    ReactiveFormsModule,
-    MatFormField,
-    MatLabel,
-    MatError,
-    MatOption,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatSelectModule
-  ],
-  templateUrl: './jugador-form.component.html',
-  styleUrl: './jugador-form.component.scss'
+    selector: 'app-jugador-form',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        MatError,
+        MatOption,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatSelectModule
+    ],
+    templateUrl: './jugador-form.component.html',
+    styleUrl: './jugador-form.component.scss'
 })
 export class JugadorFormComponent implements OnInit {
   jugadorForm!: FormGroup;

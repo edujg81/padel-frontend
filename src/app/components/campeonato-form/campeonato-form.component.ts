@@ -12,25 +12,24 @@ import { Campeonato } from '../../models/campeonato.model';
 import { Observable, of } from 'rxjs';
 
 @Component({
-  selector: 'app-campeonato-form',
-  standalone: true,
-  templateUrl: './campeonato-form.component.html',
-  styleUrls: ['./campeonato-form.component.scss'],
-  imports: [
-    CommonModule,  // Añade CommonModule a la lista de imports
-    ReactiveFormsModule,
-    MatFormField,
-    MatLabel,
-    MatSlideToggleModule,
-    FormsModule,
-    MatSlideToggle,
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatSelectModule,
-    MatButtonModule,
-    RouterLink
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-campeonato-form',
+    templateUrl: './campeonato-form.component.html',
+    styleUrls: ['./campeonato-form.component.scss'],
+    imports: [
+        CommonModule, // Añade CommonModule a la lista de imports
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        MatSlideToggleModule,
+        FormsModule,
+        MatSlideToggle,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule,
+        RouterLink
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CampeonatoFormComponent implements OnInit {
   campeonatoForm!: FormGroup;  // Declaración de FormGroup

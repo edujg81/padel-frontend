@@ -7,16 +7,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-jugador-detail',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterLink,
-    MatCardModule,
-    MatButtonModule
-  ],
-  templateUrl: './jugador-detail.component.html',
-  styleUrl: './jugador-detail.component.scss'
+    selector: 'app-jugador-detail',
+    imports: [
+        CommonModule,
+        RouterLink,
+        MatCardModule,
+        MatButtonModule
+    ],
+    templateUrl: './jugador-detail.component.html',
+    styleUrl: './jugador-detail.component.scss'
 })
 export class JugadorDetailComponent implements OnInit {
   

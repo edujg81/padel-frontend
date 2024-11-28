@@ -15,22 +15,21 @@ import { Inscripcion } from '../../models/inscripcion.model';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-campeonato-detail',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatGridListModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterLink
-  ],
-  templateUrl: './campeonato-detail.component.html',
-  styleUrl: './campeonato-detail.component.scss'
+    selector: 'app-campeonato-detail',
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatGridListModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterLink
+    ],
+    templateUrl: './campeonato-detail.component.html',
+    styleUrl: './campeonato-detail.component.scss'
 })
 export class CampeonatoDetailComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);

@@ -9,18 +9,17 @@ import { StyleManager } from './services/style-manager.service';
 
 // Componente principal de la aplicación. Solo debe importar lo necesario para su funcionamiento.
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  standalone: true,
-  imports: [
-    MatToolbar, 
-    MatButtonModule, 
-    MatIcon,
-    RouterOutlet,
-    RouterLink
-  ],
-  providers: [StyleManager]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    imports: [
+        MatToolbar,
+        MatButtonModule,
+        MatIcon,
+        RouterOutlet,
+        RouterLink
+    ],
+    providers: [StyleManager]
 })
 export class AppComponent implements OnInit {
 

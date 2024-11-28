@@ -11,17 +11,16 @@ import { Jugador } from '../../models/jugador.model';
 import { Inscripcion } from '../../models/inscripcion.model';
 
 @Component({
-  selector: 'app-inscripcion-list',
-  standalone: true,
-  imports: [
-    NgFor,
-    NgIf,
-    RouterLink,
-    FilterByCampeonatoPipe,
-    MatButtonModule
-  ],
-  templateUrl: './inscripcion-list.component.html',
-  styleUrl: './inscripcion-list.component.scss'
+    selector: 'app-inscripcion-list',
+    imports: [
+        NgFor,
+        NgIf,
+        RouterLink,
+        FilterByCampeonatoPipe,
+        MatButtonModule
+    ],
+    templateUrl: './inscripcion-list.component.html',
+    styleUrl: './inscripcion-list.component.scss'
 })
 export class InscripcionListComponent implements OnInit {
   campeonatos: Campeonato[] = [];

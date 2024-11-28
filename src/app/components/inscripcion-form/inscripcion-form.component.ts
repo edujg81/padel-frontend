@@ -15,23 +15,22 @@ import { Campeonato } from '../../models/campeonato.model';
 import { Inscripcion } from '../../models/inscripcion.model';
 
 @Component({
-  selector: 'app-inscripcion-form',
-  standalone: true,
-  imports: [
-    NgIf,
-    NgFor,
-    RouterLink,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatSelectModule,
-    MatListModule,
-    MatIconModule
-  ],
-  templateUrl: './inscripcion-form.component.html',
-  styleUrl: './inscripcion-form.component.scss'
+    selector: 'app-inscripcion-form',
+    imports: [
+        NgIf,
+        NgFor,
+        RouterLink,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatSelectModule,
+        MatListModule,
+        MatIconModule
+    ],
+    templateUrl: './inscripcion-form.component.html',
+    styleUrl: './inscripcion-form.component.scss'
 })
 export class InscripcionFormComponent implements OnInit {
   campeonatoId!: number;
