@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { Campeonato } from '../../models/campeonato.model';
@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,7 +26,7 @@ import { distinctUntilChanged } from 'rxjs/operators';
         MatSelectModule,
         MatGridListModule,
         RouterModule,
-        // RouterLink,
+        RouterLink,
         FormsModule,
         ReactiveFormsModule
     ],
@@ -34,8 +34,8 @@ import { distinctUntilChanged } from 'rxjs/operators';
     styleUrl: './campeonato-detail.component.scss'
 })
 export class CampeonatoDetailComponent implements OnInit {
-  route: ActivatedRoute = inject(ActivatedRoute);
-  campeonatoService = inject(CampeonatoService);
+  route: ActivatedRoute = Inject(ActivatedRoute);
+  campeonatoService = Inject(CampeonatoService);
   campeonato: Campeonato | undefined;
   selCampeonatoId: number = -1;
   estadoControl = new FormControl();
@@ -61,7 +61,7 @@ export class CampeonatoDetailComponent implements OnInit {
                 console.log('Campeonato con ID', this.selCampeonatoId, 'cambiado a estado', estado, 'con éxito');
                 this.toggleEstadoControl();
               },
-              error: error => console.error('Error al cambiar estado del campeonato', error)
+              error: (error: any) => console.error('Error al cambiar estado del campeonato', error)
             });
           } else {
             // Restaurar el estado anterior si el usuario cancela
@@ -82,12 +82,12 @@ export class CampeonatoDetailComponent implements OnInit {
     const id = this.selCampeonatoId;
 
     this.campeonatoService.getCampeonato(id).subscribe({
-      next: data => {
+      next: (data: Campeonato) => {
         this.campeonato = data;
-        this.estadoControl.setValue(this.campeonato.estado);
+        this.estadoControl.setValue(this.campeonato!.estado);
         this.getJugadoresInscritos();
       },
-      error: error => console.error('Error al obtener el campeonato:', error)
+      error: (error: any) => console.error('Error al obtener el campeonato:', error)
     });
   }
 

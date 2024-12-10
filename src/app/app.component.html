@@ -1,25 +1,4 @@
-<mat-toolbar color="primary" fxLayout="row">
-  <a [routerLink]="['/']" routerLinkActive="router-link-active" class="logo">
-    <span><img src="assets/images/logo.jpg" alt="Logo de la aplicación"></span>
-  </a>
-  <span class="spacer" fxHide.xs fxShow.sm></span>
-  <button
-    mat-icon-button
-    (click)="toggleDarkTheme()"
-    class="theme-toggle"
-    aria-label="Toggle Dark Theme"
-  >
-    <mat-icon>{{ isDark ? "dark_mode" : "light_mode" }}</mat-icon>
-  </button>
-  <span class="spacer" fxHide.xs fxShow.sm></span>
-  <span fxFlex fxHide.xs fxShow.sm></span>
-  <mat-button routerLink="['/']">Inicio</mat-button>
-  <mat-button routerLink="/jugadores" routerLinkActive="visited">Jugadores</mat-button>
-  <mat-button routerLink="/campeonatos" routerLinkActive="visited" [routerLinkActiveOptions]="{exact: true}">Campeonatos</mat-button>
-  <mat-button routerLink="/inscripciones">Inscripciones</mat-button>
-  <mat-button routerLink="/informes">Informes</mat-button>
-</mat-toolbar>
-
+<app-header></app-header>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

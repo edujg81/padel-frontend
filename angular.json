@@ -30,8 +30,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/styles/light-dark-themes.scss",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@angular/material/prebuilt-themes/cyan-orange.css",
+              "src/assets/styles/light-dark-themes.scss"
             ],
             "scripts": []
           },

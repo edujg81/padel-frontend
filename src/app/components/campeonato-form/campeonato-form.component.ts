@@ -29,7 +29,7 @@ import { Observable, of } from 'rxjs';
         MatButtonModule,
         RouterModule
     ],
-    // changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CampeonatoFormComponent implements OnInit {
   campeonatoForm!: FormGroup;  // Declaración de FormGroup

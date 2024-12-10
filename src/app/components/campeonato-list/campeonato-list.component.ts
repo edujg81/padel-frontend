@@ -15,7 +15,11 @@ import { FlexLayoutModule } from '@ngbracket/ngx-layout';
         MatButtonModule,
         MatCardModule,
         RouterModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        NgFor,
+        NgIf,
+        RouterModule,
+        RouterLink
     ],
     templateUrl: './campeonato-list.component.html',
     styleUrls: ['./campeonato-list.component.scss']

@@ -6,46 +6,6 @@
 @include mat.elevation-classes();
 @include mat.app-background();
 
-html {
-  //@include mat.all-component-themes(m3-theme.$light-theme);
-  @include mat.all-component-themes(light-dark-themes.$light-theme);
-}
-
-//:root {
-    // @include mat.all-component-themes($light-theme);
-  
-    // .tertiary-button {
-    //     @include mat.button-color($light-theme, $color-variant: tertiary);
-    //     @include mat.icon-button-color($light-theme, $color-variant: tertiary);
-    //     @include mat.fab-color($light-theme, $color-variant: tertiary);
-    // }    
-
-    // .primary-button {
-    //     @include mat.button-color($light-theme, $color-variant: primary);
-    //     @include mat.icon-button-color($light-theme, $color-variant: primary);
-    //     @include mat.fab-color($light-theme, $color-variant: primary);
-    // }
-
-    // .secondary-button {
-    //     @include mat.button-color($light-theme, $color-variant: secondary);
-    //     @include mat.icon-button-color($light-theme, $color-variant: secondary);
-    //     @include mat.fab-color($light-theme, $color-variant: secondary);
-    // }
-
-    // .error-button {
-    //     @include mat.button-color($light-theme, $color-variant: error);
-    //     @include mat.icon-button-color($light-theme, $color-variant: error);
-    // }  
-//}
-
-// body.light-theme {
-//     @include mat.all-component-colors($light-theme);
-// }
-  
-// body.dark-theme {
-//     @include mat.all-component-colors($dark-theme);
-// }
-
 @media (forced-colors: active) {
     // Estilos específicos para el modo de colores forzados
     body {
@@ -79,3 +39,36 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 .tab {
     margin-left: 30px;  
 }
+
+// Ajuste adicional para mat-card
+.mat-card {
+    margin: 15px 5px 0px 0px;
+    box-shadow: 0 2px 10px rgba(40, 80, 30, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .mat-card-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .mat-card-content {
+    font-size: 16px;
+  }
+  
+  .mat-card-actions {
+    margin: 10px 10px 0px 0px; /* Agrega un margen de 10px en la parte superior, derecha e inferior, y 0 en la parte izquierda */
+    cursor: pointer;
+  }
+
+  mat-button {
+    margin: 0px 10px 0px 0px;
+  }
+
+  :host {
+    background: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+    border: 1px solid var(--mat-sys-outline-variant);
+    font: var(--mat-sys-body-large);
+  }

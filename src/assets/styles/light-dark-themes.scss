@@ -1,256 +1,75 @@
+@use "sass:map";
+@use "@angular/material" as mat;
 
-@use 'sass:map';
-@use '@angular/material' as mat;
+// Definir la paleta primaria (verde hierba)
+$primary-palette: mat.$green-palette;
 
-$_palettes: (
-  primary: (
-    0: #000000,
-    10: #001e31,
-    20: #003350,
-    25: #003f61,
-    30: #004b72,
-    35: #005784,
-    40: #69db7c,
-    50: #257db5,
-    60: #4797d1,
-    70: #37b24d,
-    80: #2f9e44,
-    90: #2b8a3e,
-    95: #e7f2ff,
-    98: #f7f9ff,
-    99: #fcfcff,
-    100: #ffffff,
-  ),
-  secondary: (
-    0: #000000,
-    10: #171c1f,
-    20: #2c3134,
-    25: #373c3f,
-    30: #43474b,
-    35: #4e5356,
-    40: #5a5f62,
-    50: #73787b,
-    60: #8d9195,
-    70: #a7acb0,
-    80: #c3c7cb,
-    90: #dfe3e7,
-    95: #edf1f5,
-    98: #f6fafe,
-    99: #fbfcff,
-    100: #ffffff,
-  ),
-  tertiary: (
-    0: #000000,
-    10: #2b1700,
-    20: #482a00,
-    25: #573300,
-    30: #663d00,
-    35: #754909,
-    40: #835416,
-    50: #9f6c2d,
-    60: #bd8644,
-    70: #daa05b,
-    80: #f9bb73,
-    90: #ffddba,
-    95: #ffeedf,
-    98: #fff8f4,
-    99: #fffbff,
-    100: #ffffff,
-  ),
-  neutral: (
-    0: #000000,
-    10: #181c20,
-    20: #2d3135,
-    25: #383c40,
-    30: #44474b,
-    35: #4f5357,
-    40: #5b5f63,
-    50: #74777c,
-    60: #8e9196,
-    70: #a9abb0,
-    80: #c4c7cb,
-    90: #e0e2e7,
-    95: #eff1f6,
-    98: #f7f9fe,
-    99: #fcfcff,
-    100: #ffffff,
-    4: #0b0f12,
-    6: #101417,
-    12: #1c2024,
-    17: #272a2e,
-    22: #323539,
-    24: #36393e,
-    87: #d8dadf,
-    92: #e6e8ed,
-    94: #eceef3,
-    96: #f1f4f9,
-  ),
-  neutral-variant: (
-    0: #000000,
-    10: #151c23,
-    20: #2a3139,
-    25: #353c44,
-    30: #40484f,
-    35: #4c535b,
-    40: #575f67,
-    50: #707880,
-    60: #8a919a,
-    70: #a4acb5,
-    80: #c0c7d1,
-    90: #dce3ed,
-    95: #eaf1fb,
-    98: #f7f9ff,
-    99: #fcfcff,
-    100: #ffffff,
-  ),
-  error: (
-    0: #000000,
-    10: #410002,
-    20: #690005,
-    25: #7e0007,
-    30: #93000a,
-    35: #a80710,
-    40: #ba1a1a,
-    50: #de3730,
-    60: #ff5449,
-    70: #ff897d,
-    80: #ffb4ab,
-    90: #ffdad6,
-    95: #ffedea,
-    98: #fff8f7,
-    99: #fffbff,
-    100: #ffffff,
-  ),
-);
+// Definir la paleta secundaria (amarillo ocre)
+$secondary-palette: mat.$yellow-palette;
 
-$_rest: (
-  secondary: map.get($_palettes, secondary),
-  neutral: map.get($_palettes, neutral),
-  neutral-variant: map.get($_palettes,  neutral-variant),
-  error: map.get($_palettes, error),
-);
-$_primary: map.merge(map.get($_palettes, primary), $_rest);
-$_tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
+// Definir la paleta terciaria (marrón anaranjado)
+$tertiary-palette: mat.$orange-palette;
 
-$light-theme: mat.define-theme((
-  color: (
-    theme-type: light,
-    primary: $_primary,
-    tertiary: $_tertiary,
-    use-system-variables: true,
-    system-variables-prefix: sys
-  ),
-  typography: (
-    use-system-variables: true,
-    system-variables-prefix: sys
-  ),
-  density: (
-      scale: -1,
+// Definir la paleta de error (rojo)
+$error-palette: mat.$red-palette;
+
+// Definir el tema claro
+$light-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: $primary-palette,
+      tertiary: $tertiary-palette,
+      // use-system-variables: true,
+      // system-variables-prefix: sys,
+    ),
+     typography: (
+      //use-system-variables: true,
+      system-variables-prefix: sys,
+      plain-family: Roboto,
+      brand-family: Open Sans,
+      bold-weight: 900,
+      medium-weight: 500,
+      //regular-weight: 300,
+    ),
+     density: (scale: -1,),
   )
-));
+);
 
 // Definir el tema oscuro
-$dark-theme: mat.define-theme((
-  color: (
-    theme-type: dark,
-    primary: $_primary,
-    tertiary: $_tertiary,
-    use-system-variables: true,
-    system-variables-prefix: sys
+$dark-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: $primary-palette,
+      tertiary: $tertiary-palette,
+      // use-system-variables: true,
+      // system-variables-prefix: sys,
     ),
-    typography: (
-      use-system-variables: true,
-    system-variables-prefix: sys
-    ),
-    density: (
-        scale: -1,
-    )
-  ));
-
-// Ajuste adicional para mat-card
-.mat-card {
-  margin: 15px 5px 0px 0px;
-  box-shadow: 0 2px 10px rgba(40, 80, 30, 0.6);
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.mat-card-title {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.mat-card-content {
-  font-size: 16px;
-}
-
-.mat-card-actions {
-  margin: 10px 10px 0px 0px; /* Agrega un margen de 10px en la parte superior, derecha e inferior, y 0 en la parte izquierda */
-  cursor: pointer;
-}
+     typography: (
+      plain-family: Roboto,
+      brand-family: Open Sans,
+      bold-weight: 900,
+      medium-weight: 500,
+     ),
+     density: (
+       scale: -1,
+     ),
+  )
+);
 
 @mixin theme($theme) {
   @include mat.all-component-themes($theme);
 }
 
-// Aplicar fondo claro al body cuando se use el tema claro
 .light-theme {
-  // color: #333; // Texto oscuro en fondo claro
-
-  // .tertiary-button {
-  //   @include mat.button-color($light-theme, $color-variant: tertiary);
-  //   @include mat.icon-button-color($light-theme, $color-variant: tertiary);
-  //   @include mat.fab-color($light-theme, $color-variant: tertiary);
-  // }    
-
-  // .primary-button {
-  //     @include mat.button-color($light-theme, $color-variant: primary);
-  //     @include mat.icon-button-color($light-theme, $color-variant: primary);
-  //     @include mat.fab-color($light-theme, $color-variant: primary);
-  // }
-
-  // .secondary-button {
-  //     @include mat.button-color($light-theme, $color-variant: secondary);
-  //     @include mat.icon-button-color($light-theme, $color-variant: secondary);
-  //     @include mat.fab-color($light-theme, $color-variant: secondary);
-  // }
-
-  // .error-button {
-  //     @include mat.button-color($light-theme, $color-variant: error);
-  //     @include mat.icon-button-color($light-theme, $color-variant: error);
-  // }  
   @include theme($light-theme);
 }
 
 .dark-theme {
-  // background:rgba(5, 15, 5, 0.9); // Fondo oscuro en tema oscuro
-  // color: #ccc; // Texto claro en fondo oscuro
-
-  // .tertiary-button {
-  //   @include mat.button-color($dark-theme, $color-variant: tertiary);
-  //   @include mat.icon-button-color($dark-theme, $color-variant: tertiary);
-  //   @include mat.fab-color($dark-theme, $color-variant: tertiary);
-  // }    
-
-  // .primary-button {
-  //   @include mat.button-color($dark-theme, $color-variant: primary);
-  //   @include mat.icon-button-color($dark-theme, $color-variant: primary);
-  //   @include mat.fab-color($dark-theme, $color-variant: primary);
-  // }
-
-  // .secondary-button {
-  //   @include mat.button-color($dark-theme, $color-variant: secondary);
-  //   @include mat.icon-button-color($dark-theme, $color-variant: secondary);
-  //   @include mat.fab-color($dark-theme, $color-variant: secondary);
-  // }
-
-  // .error-button {
-  //   @include mat.button-color($dark-theme, $color-variant: error);
-  //   @include mat.icon-button-color($dark-theme, $color-variant: error);
-  // }
   @include theme($dark-theme);
 }
 
-// :root {
-//   @include theme($light-theme);
-// }
+:root {
+  @include theme($light-theme);
+}
