@@ -1,4 +1,4 @@
-<mat-toolbar fxLayout="row" color="primary">
+<mat-toolbar fxLayout="row" class="mat-toolbar">
   <a [routerLink]="['/']" routerLinkActive="router-link-active" class="logo">
     <span><img src="assets/images/logo.jpg" alt="Logo de la aplicación"></span>
   </a>
@@ -8,7 +8,7 @@
     (click)="toggleDarkTheme()"
     aria-label="Toggle Dark Theme"
   >
-    <mat-icon>{{ isDark ? "dark_mode" : "light_mode" }}</mat-icon>
+    <mat-icon class="mat-icon-button">{{ isDark ? "dark_mode" : "light_mode" }}</mat-icon>
   </button>
   <span class="spacer" fxHide.xs fxShow.sm></span>
   <span fxFlex fxHide.xs fxShow.sm></span>

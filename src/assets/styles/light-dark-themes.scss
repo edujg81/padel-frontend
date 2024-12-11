@@ -1,75 +1,162 @@
-@use "sass:map";
-@use "@angular/material" as mat;
+// @use "sass:map";
+// @use "@angular/material" as mat;
 
-// Definir la paleta primaria (verde hierba)
-$primary-palette: mat.$green-palette;
+// //@include mat.core();
 
-// Definir la paleta secundaria (amarillo ocre)
-$secondary-palette: mat.$yellow-palette;
+// // Definir la paleta primaria (verde hierba)
+// $primary-palette: mat.$green-palette;
 
-// Definir la paleta terciaria (marrón anaranjado)
-$tertiary-palette: mat.$orange-palette;
+// // Definir la paleta secundaria (amarillo ocre)
+// $secondary-palette: mat.$yellow-palette;
 
-// Definir la paleta de error (rojo)
-$error-palette: mat.$red-palette;
+// // Definir la paleta terciaria (marrón anaranjado)
+// $tertiary-palette: mat.$orange-palette;
 
-// Definir el tema claro
-$light-theme: mat.define-theme(
-  (
-    color: (
-      theme-type: light,
-      primary: $primary-palette,
-      tertiary: $tertiary-palette,
-      // use-system-variables: true,
-      // system-variables-prefix: sys,
-    ),
-     typography: (
-      //use-system-variables: true,
-      system-variables-prefix: sys,
-      plain-family: Roboto,
-      brand-family: Open Sans,
-      bold-weight: 900,
-      medium-weight: 500,
-      //regular-weight: 300,
-    ),
-     density: (scale: -1,),
-  )
-);
+// // Definir la paleta de error (rojo)
+// $error-palette: mat.$red-palette;
+
+// @include mat.theme(
+
+// // Definir el tema claro
+// //$light-theme: mat.define-theme(
+//   (
+//     color: (
+//       theme-type: light,
+//       primary: $primary-palette,
+//       tertiary: $tertiary-palette,
+//     ),
+//      typography: (
+//       plain-family: Roboto,
+//       brand-family: Open Sans,
+//       bold-weight: 900,
+//       medium-weight: 500,
+//     ),
+//      density: (scale: -1,),
+//   )
+// );
 
 // Definir el tema oscuro
-$dark-theme: mat.define-theme(
-  (
-    color: (
-      theme-type: dark,
-      primary: $primary-palette,
-      tertiary: $tertiary-palette,
-      // use-system-variables: true,
-      // system-variables-prefix: sys,
-    ),
-     typography: (
-      plain-family: Roboto,
-      brand-family: Open Sans,
-      bold-weight: 900,
-      medium-weight: 500,
-     ),
-     density: (
-       scale: -1,
-     ),
-  )
-);
+// $dark-theme: mat.define-theme(
+//   (
+//     color: (
+//       theme-type: dark,
+//       primary: $primary-palette,
+//       tertiary: $tertiary-palette,
+//     ),
+//      typography: (
+//       plain-family: Roboto,
+//       brand-family: Open Sans,
+//       bold-weight: 900,
+//       medium-weight: 500,
+//      ),
+//      density: (
+//        scale: -1,
+//      ),
+//   )
+// );
 
-@mixin theme($theme) {
-  @include mat.all-component-themes($theme);
-}
+// @mixin theme($theme) {
+//   @include mat.all-component-themes($theme);
+// }
 
-.light-theme {
-  @include theme($light-theme);
-}
+// .light-theme {
+//   @include theme($light-theme);
+// }
 
-.dark-theme {
-  @include theme($dark-theme);
-}
+// .dark-theme {
+//   @include theme($dark-theme);
+// }
 
-:root {
-  @include theme($light-theme);
-}
+// :root {
+//   @include theme($light-theme);
+// }
+
+
+// $green-palette
+// $chartreuse-palette
+// $spring-green-palette
+// $cyan-palette
+// $blue-palette
+// $azure-palette
+// $yellow-palette
+// $orange-palette
+// $rose-palette
+// $red-palette
+// $magenta-palette
+// $violet-palette
+
+
+// COLORES PRIMARIOS DEL TEMA //
+  //--mat-sys-primary // cyan claro (color principal del tema)
+  //--mat-sys-primary-container // cyan oscuro (color de contenedor del color primario)
+  //--mat-sys-primary-dark // blanco / negro (color primario oscuro)
+  //--mat-sys-primary-light // blanco / negro (color primario claro)
+  //--mat-sys-inverse-primary // cyan
+
+// COLORES SECUNDARIOS //
+  //--mat-sys-secondary // gris claro (color secundario)
+  //--mat-sys-secondary-container // gris oscuro (color de contenedor del color secundario)
+  //--mat-sys-secondary-dark // blanco / negro (color secundario oscuro)
+  //--mat-sys-secondary-light // blanco / negro (color secundario claro)
+
+// COLORES TERCIARIOS O RESALTADOS DEL TEMA //
+  //--mat-sys-tertiary // naranja claro (color resaltado del tema)
+  //--mat-sys-tertiary-container // naranja oscuro (color de contenedor del color resaltado)
+  //--mat-sys-tertiary-dark // blanco / negro (color resaltado oscuro)
+  //--mat-sys-tertiary-light // blanco / negro (color resaltado claro)
+
+// COLORES DE ERROR DEL TEMA //
+  //--mat-sys-error // rojo claro (color de error)
+  //--mat-sys-error-container // rojo oscuro (color de contenedor de error)
+  //--mat-sys-error-dark // blanco / negro (color de error oscuro)
+  //--mat-sys-error-light // blanco /negro (color de error claro)
+  //--mat-sys-on-error // rojo oscuro (color para texto o iconos de error)
+
+
+// COLORES DE FONDO //
+  //--mat-sys-background // negro (color de fondo)
+  //--mat-sys-surface // negro (superficie de fondo de los elementos)
+  //--mat-sys-surface-variant // gris (variante de superficie de fondo)
+  //--mat-sys-elevation // blanco / negro (color de elevación para sombras y efectos de profundidad)
+
+// COLORES DE TEXTO //
+  //--mat-sys-on-primary // cyan oscuro (texto sobre color primario)
+  //--mat-sys-on-secondary // gris oscuro (texto sobre color secundario)
+  //--mat-sys-on-tertiary // naranja oscuro (texto sobre color resaltado)
+  //--mat-sys-on-error // rojo oscuro (texto sobre color de error)
+  //--mat-sys-on-surface // gris claro (texto sobre superficie de fondo)
+  //--mat-sys-on-background // gris claro (texto sobre color de fondo)
+  //--mat-sys-on-surface-variant // gris claro
+  //--mat-sys-on-outline // blanco / negro
+  //--mat-sys-inverse-on-primary //blanco / negro
+  //--mat-sys-inverse-on-secondary // blanco / negro
+  //--mat-sys-inverse-on-tertiary // blanco / negro
+  //--mat-sys-inverse-on-error // blanco / negro
+  //--mat-sys-inverse-on-surface // gris oscuro
+  //--mat-sys-inverse-on-surface-variant // blanco / negro
+  //--mat-sys-inverse-on-background // blanco / negro
+  //--mat-sys-inverse-on-outline // blanco / negro
+
+// OTROS COLORES Y ACENTOS //
+  //--mat-sys-outline // gris (color de borde de elementos)
+  //--mat-sys-shadow // negro (color de sombra de elementos)
+  //--mat-sys-surface // negro (color general de las superficies de los componentes)
+  //--mat-sys-outline-variant // gris oscuro
+  //--mat-sys-variant // blanco / negro
+  //--mat-sys-inverse-surface // gris claro
+  //--mat-sys-inverse-surface-variant // blanco / negro
+  //--mat-sys-inverse-background // blanco / negro
+  //--mat-sys-inverse-outline // blanco / negro
+  //--mat-sys-inverse-outline-variant // blanco / negro
+  //--mat-sys-scrim // negro
+  //--mat-sys-scrim // negro
+
+// COLORES DE TEXTO SOBRE CONTENEDORES //
+  //--mat-sys-on-primary-container // cyan claro
+  //--mat-sys-on-secondary-container // gris claro
+  //--mat-sys-on-tertiary-container // naranja claro
+  //--mat-sys-on-error-container // rojo claro
+  //--mat-sys-inverse-on-primary-container // blanco / negro
+  //--mat-sys-inverse-on-secondary-container // blanco / negro
+  //--mat-sys-inverse-on-tertiary-container // blanco / negro
+  //--mat-sys-inverse-on-error-container // blanco / negro

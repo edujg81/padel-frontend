@@ -1,8 +1,5 @@
 @use '@angular/material' as mat;
 
-// Importar los temas y la tipografía
-@use './assets/styles/light-dark-themes.scss';
-
 @include mat.elevation-classes();
 @include mat.app-background();
 
@@ -12,6 +9,54 @@
         background-color: Window; // Color de fondo en modo forzado //
         color: WindowText; // Color de texto en modo forzado //
     }
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+html {
+  color-scheme: light;
+  @include mat.theme((
+    color: (
+      primary: mat.$spring-green-palette,
+      tertiary: mat.$orange-palette
+    ),
+    typography: (
+      plain-family: Roboto,
+      brand-family: Open Sans,
+      bold-weight: 900,
+      medium-weight: 500
+    ),
+    density: (scale: -1)
+    ),
+    $overrides: (
+      primary-container: green,
+      on-primary-container: lightgreen
+    )
+  );
+}
+
+.bright-container {
+  @include mat.theme((
+    color: mat.$cyan-palette,
+  ));
+}
+
+.orange-primary-container {
+  @include mat.theme-overrides((
+    primary-container: #84ffff
+  ));
+}
+
+@include mat.card-overrides((
+    //elevated-container-color: red,
+    elevated-container-shape: 32px,
+    //title-text-size: 2rem,
+  ));
+
+body.dark-theme {
+  color-scheme: dark;
 }
 
 html, body { 
@@ -46,6 +91,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
     box-shadow: 0 2px 10px rgba(40, 80, 30, 0.6);
     padding: 20px;
     border-radius: 10px;
+    //background-color: var(--mat-sys-tertiary-container) !important;
   }
   
   .mat-card-title {
@@ -67,8 +113,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
   }
 
   :host {
-    background: var(--mat-sys-primary-container);
-    color: var(--mat-sys-on-primary-container);
-    border: 1px solid var(--mat-sys-outline-variant);
-    font: var(--mat-sys-body-large);
+    //background: var(--mat-sys-primary-container) !important;
+    //color: var(--mat-sys-on-primary-container) !important;
+    //border: 1px solid var(--mat-sys-outline-variant) !important;
+    //font: var(--mat-sys-body-large) !important;
   }
