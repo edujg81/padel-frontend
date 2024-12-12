@@ -24,7 +24,7 @@ html {
   color-scheme: light;
   @include mat.theme((
     color: (
-      primary: $primary_color,
+      primary: $primary-color,
       tertiary: $tertiary_color
     ),
     typography: (

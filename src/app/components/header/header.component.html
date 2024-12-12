@@ -23,14 +23,14 @@
   <div class="color-picker-menu">
     <div>
       <label for="primary-color">Selecciona el color primario:</label>
-      <mat-select id="primary-color" [(value)]="primaryColor" (selectionChange)="updateTheme()">
+      <mat-select id="primary-color" [(value)]="primaryColor" (selectionChange)="setColor(primaryColor, 1)">
         <mat-option *ngFor="let color of colorOptions" [value]="color">{{ color | titlecase }}</mat-option>
       </mat-select>
     </div>
 
     <div>
       <label for="secondary-color">Selecciona el color secundario:</label>
-      <mat-select id="secondary-color" [(value)]="secondaryColor" (selectionChange)="updateTheme()">
+      <mat-select id="secondary-color" [(value)]="secondaryColor" (selectionChange)="setColor(secondaryColor, 2)">
         <mat-option *ngFor="let color of colorOptions" [value]="color">{{ color | titlecase }}</mat-option>
       </mat-select>
     </div>
