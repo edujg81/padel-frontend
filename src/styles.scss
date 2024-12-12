@@ -3,6 +3,9 @@
 @include mat.elevation-classes();
 @include mat.app-background();
 
+$primary-color: mat.$green-palette;    // Obtiene el valor de la variable CSS
+$tertiary-color: mat.$orange-palette;  // Obtiene el valor de la variable CSS
+
 @media (forced-colors: active) {
     // Estilos específicos para el modo de colores forzados
     body {
@@ -13,14 +16,16 @@
 
 :root {
   color-scheme: light dark;
+  --primary-color: green;  // Color predeterminado (verde)
+  --tertiary-color: orange; // Color predeterminado (naranja)
 }
 
 html {
   color-scheme: light;
   @include mat.theme((
     color: (
-      primary: mat.$spring-green-palette,
-      tertiary: mat.$orange-palette
+      primary: $primary_color,
+      tertiary: $tertiary_color
     ),
     typography: (
       plain-family: Roboto,
@@ -31,8 +36,10 @@ html {
     density: (scale: -1)
     ),
     $overrides: (
-      primary-container: green,
-      on-primary-container: lightgreen
+      primary-container: var(--primary-color),
+      on-primary-container: var(--tertiary-color),
+      primary: var(--primary-color),
+      tertiary: var(--tertiary-color)
     )
   );
 }

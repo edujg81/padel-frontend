@@ -25,3 +25,23 @@
     cursor: pointer;
     padding-right: 10px;
   }
+
+button {
+   margin-right: 16px;
+}
+
+.color-picker-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  min-width: 200px;
+}
+
+mat-select {
+  margin: 10px 0;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+}
