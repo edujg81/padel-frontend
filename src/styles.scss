@@ -3,8 +3,26 @@
 @include mat.elevation-classes();
 @include mat.app-background();
 
-$primary-color: mat.$green-palette;    // Obtiene el valor de la variable CSS
-$tertiary-color: mat.$orange-palette;  // Obtiene el valor de la variable CSS
+$primary-color: mat.$green-palette;    
+$tertiary-color: mat.$orange-palette;  
+
+$primario: blue;
+$terciario: azure;
+
+$colores: (
+  green: mat.$green-palette,
+  chartreuse: mat.$chartreuse-palette,
+  lightgreen: mat.$spring-green-palette,
+  cyan: mat.$cyan-palette,
+  blue: mat.$blue-palette,
+  azure: mat.$azure-palette,
+  yellow: mat.$yellow-palette,
+  orange: mat.$orange-palette,
+  pink: mat.$rose-palette,
+  red: mat.$red-palette,
+  magenta: mat.$magenta-palette,
+  violet: mat.$violet-palette
+);
 
 @media (forced-colors: active) {
     // Estilos específicos para el modo de colores forzados
@@ -15,7 +33,7 @@ $tertiary-color: mat.$orange-palette;  // Obtiene el valor de la variable CSS
 }
 
 :root {
-  color-scheme: light dark;
+  //color-scheme: light dark;
   --primary-color: green;  // Color predeterminado (verde)
   --tertiary-color: orange; // Color predeterminado (naranja)
 }
@@ -25,7 +43,7 @@ html {
   @include mat.theme((
     color: (
       primary: $primary-color,
-      tertiary: $tertiary_color
+      tertiary: $tertiary-color
     ),
     typography: (
       plain-family: Roboto,
@@ -36,12 +54,29 @@ html {
     density: (scale: -1)
     ),
     $overrides: (
-      primary-container: var(--primary-color),
-      on-primary-container: var(--tertiary-color),
-      primary: var(--primary-color),
-      tertiary: var(--tertiary-color)
+      // color: (
+      //   primary: $primary-color,
+      //   tertiary: $tertiary-color
+      // )
+      //primary-container: var(--primary-color),
+      //on-primary-container: var(--tertiary-color),
+      //primary: var(--primary-color),
+      //tertiary: var(--tertiary-color)
     )
   );
+}
+
+.cambio-tema {
+  $primario: var(--primary-color);
+  $terciario: var(--tertiary-color);
+  $primary-color: map-get($colores, $primario);
+  $tertiary-color: map-get($colores, $terciario);
+@include mat.theme((
+  color: (
+        primary: $primary-color,
+        tertiary: $tertiary-color
+      )
+))
 }
 
 .bright-container {
@@ -98,7 +133,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
     box-shadow: 0 2px 10px rgba(40, 80, 30, 0.6);
     padding: 20px;
     border-radius: 10px;
-    //background-color: var(--mat-sys-tertiary-container) !important;
+    background-color: var(--mat-sys-tertiary-container) !important;
   }
   
   .mat-card-title {

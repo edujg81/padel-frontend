@@ -31,9 +31,6 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent implements OnInit {
   title = 'Gestión de Campeonatos de Pádel';
   isDark = this.styleManager.isDark;
-  // Variable para almacenar la paleta primaria seleccionada
-  primaryPalette: any;
-  secondaryPalette: any;
 
   // Opciones de colores
   colorOptions: string[] = [
@@ -72,56 +69,21 @@ export class HeaderComponent implements OnInit {
   };
 
   constructor(private readonly styleManager: StyleManager) {
-    // Inicializar con una paleta predeterminada, por ejemplo, verde
-    this.primaryPalette = 'mat.$green-palette'; 
-    this.secondaryPalette = 'mat.$orange-palette';
+ 
   }
 
   ngOnInit(): void {
-    this.updateTheme();
+    //this.updateTheme();
   }
 
   toggleDarkTheme() {
     this.styleManager.toggleDarkTheme();
   }
 
-  // Método para cambiar la paleta primaria según la selección
-  setColor(color: string, option: number): void {
-    switch (color) {
-      case 'verde':
-        color = '#349934';
-        break;
-      case 'azul':
-        color = '#343499';
-        break;
-      case 'rojo':
-        color = '#993434';
-        break;
-      // Agrega más casos según los colores que quieras manejar
-      default:
-        color = '#008000'; // Valor por defecto
-        break;
-    }
-
-    if (option === 1) {
-      this.primaryPalette = color;
-    } else {
-      this.secondaryPalette = color;
-    }
-
-    this.updateTheme();
-  }
-
   // Función para actualizar el tema con los colores seleccionados
   updateTheme() {
-    document.documentElement.style.setProperty(
-      '--primary-color', this.primaryPalette
-    );
-
-    document.documentElement.style.setProperty(
-      '--tertiary-color', this.secondaryPalette
-    );
-
-    console.log(this.primaryPalette, this.secondaryPalette);
+    document.documentElement.style.setProperty('--primary-color', this.colorMap[this.primaryColor]);
+    document.documentElement.style.setProperty('--tertiary-color', this.colorMap[this.secondaryColor]);
+    this.styleManager.cambioColorTema();
   }
 }

@@ -25,6 +25,14 @@ export class StyleManager {
     this.dark = !this.dark;
   }
 
+  cambioColorTema() {
+    const body = document.body;
+
+    body.classList.add('cambio-tema');
+    console.log("cambio de tema");
+
+  }
+
   constructor() { }
 
 }
