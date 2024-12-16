@@ -1,13 +1,10 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 @include mat.elevation-classes();
 @include mat.app-background();
 
-$primary-color: mat.$green-palette;    
-$tertiary-color: mat.$orange-palette;  
-
-$primario: blue;
-$terciario: azure;
+$primary-color: mat.$green-palette;
+$tertiary-color: mat.$orange-palette;
 
 $colores: (
   green: mat.$green-palette,
@@ -21,142 +18,312 @@ $colores: (
   pink: mat.$rose-palette,
   red: mat.$red-palette,
   magenta: mat.$magenta-palette,
-  violet: mat.$violet-palette
+  violet: mat.$violet-palette,
 );
 
 @media (forced-colors: active) {
-    // Estilos específicos para el modo de colores forzados
-    body {
-        background-color: Window; // Color de fondo en modo forzado //
-        color: WindowText; // Color de texto en modo forzado //
-    }
+  // Estilos específicos para el modo de colores forzados
+  body {
+    background-color: Window; // Color de fondo en modo forzado //
+    color: WindowText; // Color de texto en modo forzado //
+  }
 }
 
 :root {
-  //color-scheme: light dark;
-  --primary-color: green;  // Color predeterminado (verde)
-  --tertiary-color: orange; // Color predeterminado (naranja)
+  color-scheme: light;
 }
 
 html {
-  color-scheme: light;
-  @include mat.theme((
-    color: (
-      primary: $primary-color,
-      tertiary: $tertiary-color
-    ),
-    typography: (
-      plain-family: Roboto,
-      brand-family: Open Sans,
-      bold-weight: 900,
-      medium-weight: 500
-    ),
-    density: (scale: -1)
-    ),
-    $overrides: (
-      // color: (
-      //   primary: $primary-color,
-      //   tertiary: $tertiary-color
-      // )
-      //primary-container: var(--primary-color),
-      //on-primary-container: var(--tertiary-color),
-      //primary: var(--primary-color),
-      //tertiary: var(--tertiary-color)
+  //color-scheme: light;
+  @include mat.theme(
+    (
+      color: (
+        primary: $primary-color,
+        tertiary: $tertiary-color,
+      ),
+      typography: (
+        plain-family: Roboto,
+        brand-family: Open Sans,
+        bold-weight: 900,
+        medium-weight: 500,
+      ),
+      density: (
+        scale: -1,
+      ),
     )
   );
 }
 
-.cambio-tema {
-  $primario: var(--primary-color);
-  $terciario: var(--tertiary-color);
+.magenta-theme {
+  $primario: magenta;
+  $terciario: lightgreen;
   $primary-color: map-get($colores, $primario);
   $tertiary-color: map-get($colores, $terciario);
-@include mat.theme((
-  color: (
+  @include mat.theme(
+    (
+      color: (
         primary: $primary-color,
-        tertiary: $tertiary-color
-      )
-))
+        tertiary: $tertiary-color,
+      ),
+    )
+  );
 }
 
-.bright-container {
-  @include mat.theme((
-    color: mat.$cyan-palette,
-  ));
+.yellow-theme {
+  $primario: yellow;
+  $terciario: pink;
+  $primary-color: map-get($colores, $primario);
+  $tertiary-color: map-get($colores, $terciario);
+  @include mat.theme(
+    (
+      color: (
+        primary: $primary-color,
+        tertiary: $tertiary-color,
+      ),
+    )
+  );
 }
 
-.orange-primary-container {
-  @include mat.theme-overrides((
-    primary-container: #84ffff
-  ));
+.orange-theme {
+  $primario: orange;
+  $terciario: violet;
+  $primary-color: map-get($colores, $primario);
+  $tertiary-color: map-get($colores, $terciario);
+  @include mat.theme(
+    (
+      color: (
+        primary: $primary-color,
+        tertiary: $tertiary-color,
+      ),
+    )
+  );
 }
 
-@include mat.card-overrides((
+.chartreuse-theme {
+  $primario: chartreuse;
+  $terciario: magenta;
+  $primary-color: map-get($colores, $primario);
+  $tertiary-color: map-get($colores, $terciario);
+  @include mat.theme(
+    (
+      color: (
+        primary: $primary-color,
+        tertiary: $tertiary-color,
+      ),
+    )
+  );
+}
+
+.cyan-theme {
+  $primario: cyan;
+  $terciario: orange;
+  $primary-color: map-get($colores, $primario);
+  $tertiary-color: map-get($colores, $terciario);
+  @include mat.theme(
+    (
+      color: (
+        primary: $primary-color,
+        tertiary: $tertiary-color,
+      ),
+    )
+  );
+}
+
+.azure-theme {
+  $primario: azure;
+  $terciario: blue;
+  $primary-color: map-get($colores, $primario);
+  $tertiary-color: map-get($colores, $terciario);
+  @include mat.theme(
+    (
+      color: (
+        primary: $primary-color,
+        tertiary: $tertiary-color,
+      ),
+    )
+  );
+}
+
+.red-theme {
+  $primario: red;
+  $terciario: violet;
+  $primary-color: map-get($colores, $primario);
+  $tertiary-color: map-get($colores, $terciario);
+  @include mat.theme(
+    (
+      color: (
+        primary: $primary-color,
+        tertiary: $tertiary-color,
+      ),
+    )
+  );
+}
+
+.green-theme {
+  $primario: green;
+  $terciario: orange;
+
+  $primary-color: map-get($colores, $primario);
+  $tertiary-color: map-get($colores, $terciario);
+  @include mat.theme(
+    (
+      color: (
+        primary: $primary-color,
+        tertiary: $tertiary-color,
+      ),
+    )
+  );
+}
+
+.blue-theme {
+  $primario: blue;
+  $terciario: orange;
+
+  $primary-color: map-get($colores, $primario);
+  $tertiary-color: map-get($colores, $terciario);
+  @include mat.theme(
+    (
+      color: (
+        primary: $primary-color,
+        tertiary: $tertiary-color,
+      ),
+    )
+  );
+}
+
+.violet-theme {
+  $primario: violet;
+  $terciario: green;
+
+  $primary-color: map-get($colores, $primario);
+  $tertiary-color: map-get($colores, $terciario);
+  @include mat.theme(
+    (
+      color: (
+        primary: $primary-color,
+        tertiary: $tertiary-color,
+      ),
+    )
+  );
+}
+
+.pink-theme {
+  $primario: pink;
+  $terciario: red;
+
+  $primary-color: map-get($colores, $primario);
+  $tertiary-color: map-get($colores, $terciario);
+  @include mat.theme(
+    (
+      color: (
+        primary: $primary-color,
+        tertiary: $tertiary-color,
+      ),
+    )
+  );
+}
+
+.lightgreen-theme {
+  $primario: lightgreen;
+  $terciario: yellow;
+
+  $primary-color: map-get($colores, $primario);
+  $tertiary-color: map-get($colores, $terciario);
+  @include mat.theme(
+    (
+      color: (
+        primary: $primary-color,
+        tertiary: $tertiary-color,
+      ),
+    )
+  );
+}
+
+// .bright-container {
+//   @include mat.theme((
+//     color: mat.$cyan-palette,
+//   ));
+// }
+
+// .orange-primary-container {
+//   @include mat.theme-overrides((
+//     primary-container: #84ffff
+//   ));
+// }
+
+@include mat.card-overrides(
+  (
     //elevated-container-color: red,
     elevated-container-shape: 32px,
     //title-text-size: 2rem,
-  ));
+  )
+);
 
 body.dark-theme {
   color-scheme: dark;
 }
 
-html, body { 
-    height: 100%; 
+html,
+body {
+  height: 100%;
 }
 
 /* Application-wide Styles */
 h1 {
-    font-size: 250%;
+  font-size: 250%;
 }
-h2, h3 {
-    font-weight: lighter;
+h2,
+h3 {
+  font-weight: lighter;
 }
 
 // Espaciado para encabezados //
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 1em 0; // Espaciado vertical //
 }
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
-    background: var(--mat-sys-surface);
-    color: var(--mat-sys-on-surface);
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
 }
 
 .tab {
-    margin-left: 30px;  
+  margin-left: 30px;
 }
 
 // Ajuste adicional para mat-card
 .mat-card {
-    margin: 15px 5px 0px 0px;
-    box-shadow: 0 2px 10px rgba(40, 80, 30, 0.6);
-    padding: 20px;
-    border-radius: 10px;
-    background-color: var(--mat-sys-tertiary-container) !important;
-  }
-  
-  .mat-card-title {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .mat-card-content {
-    font-size: 16px;
-  }
-  
-  .mat-card-actions {
-    margin: 10px 10px 0px 0px; /* Agrega un margen de 10px en la parte superior, derecha e inferior, y 0 en la parte izquierda */
-    cursor: pointer;
-  }
+  margin: 15px 5px 0px 0px;
+  //box-shadow: 0 2px 10px rgba(40, 80, 30, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+}
 
-  mat-button {
-    margin: 0px 10px 0px 0px;
-  }
+.mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
 
-  :host {
-    //background: var(--mat-sys-primary-container) !important;
-    //color: var(--mat-sys-on-primary-container) !important;
-    //border: 1px solid var(--mat-sys-outline-variant) !important;
-    //font: var(--mat-sys-body-large) !important;
-  }
+.mat-card-content {
+  font-size: 16px;
+}
+
+.mat-card-actions {
+  margin: 10px 10px 0px 0px; /* Agrega un margen de 10px en la parte superior, derecha e inferior, y 0 en la parte izquierda */
+  cursor: pointer;
+}
+
+mat-button {
+  margin: 0px 10px 0px 0px;
+}
+
+// :host {
+//   background: var(--mat-sys-primary-container) !important;
+//   color: var(--mat-sys-on-primary-container) !important;
+//   border: 1px solid var(--mat-sys-outline-variant) !important;
+//   font: var(--mat-sys-body-large) !important;
+// }

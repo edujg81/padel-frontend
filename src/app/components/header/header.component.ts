@@ -22,58 +22,36 @@ import { CommonModule } from '@angular/common';
     MatOptionModule,
     MatMenuModule,
     MatListModule,
-    RouterModule
+    RouterModule,
   ],
   providers: [StyleManager],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   title = 'Gestión de Campeonatos de Pádel';
   isDark = this.styleManager.isDark;
 
-  // Opciones de colores
-  colorOptions: string[] = [
-    'verde',
-    'verde claro',
-    'verde amarillento',
-    'rojo',
-    'naranja',
-    'amarillo',
-    'azul',
-    'celeste',
-    'rosa',
-    'violeta',
-    'magenta',
-    'cyan',
-  ];
+  themes = [
+    'azure-theme',
+    'blue-theme',
+    'chartreuse-theme',
+    'cyan-theme',
+    'green-theme',
+    'lightgreen-theme',
+    'magenta-theme',
+    'orange-theme',
+    'pink-theme',
+    'red-theme',
+    'violet-theme',
+    'yellow-theme'
+  ]; // Lista de temas disponibles
+  selectedTheme = this.themes[0];
 
-  // Variables para almacenar los colores seleccionados
-  primaryColor: string = 'verde';
-  secondaryColor: string = 'naranja';
-
-  // Mapeo de los colores a las variables de SCSS
-  colorMap: { [key: string]: string } = {
-    'verde': 'green',        // Valor correcto como cadena hexadecimal
-    'verde claro': 'lightgreen',
-    'verde amarillento': 'chartreuse',
-    'rojo': 'red',
-    'naranja': 'orange',
-    'amarillo': 'yellow',
-    'azul': 'blue',
-    'celeste': 'azure',
-    'rosa': 'pink',
-    'violeta': 'violet',
-    'magenta': 'magenta',
-    'cyan': 'cyan',
-  };
-
-  constructor(private readonly styleManager: StyleManager) {
- 
-  }
+  constructor(private readonly styleManager: StyleManager) {}
 
   ngOnInit(): void {
-    //this.updateTheme();
+    //this.updateTheme(selectedTheme);
   }
 
   toggleDarkTheme() {
@@ -81,9 +59,8 @@ export class HeaderComponent implements OnInit {
   }
 
   // Función para actualizar el tema con los colores seleccionados
-  updateTheme() {
-    document.documentElement.style.setProperty('--primary-color', this.colorMap[this.primaryColor]);
-    document.documentElement.style.setProperty('--tertiary-color', this.colorMap[this.secondaryColor]);
-    this.styleManager.cambioColorTema();
+  updateTheme(theme: string): void {
+    document.body.classList.remove(...this.themes);
+    this.styleManager.cambioColorTema(theme);
   }
 }

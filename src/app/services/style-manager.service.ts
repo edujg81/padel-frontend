@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StyleManager {
-
   private dark = false;
 
   get isDark(): boolean {
@@ -25,14 +24,10 @@ export class StyleManager {
     this.dark = !this.dark;
   }
 
-  cambioColorTema() {
+  cambioColorTema(theme: string) {
     const body = document.body;
-
-    body.classList.add('cambio-tema');
-    console.log("cambio de tema");
-
+    body.classList.add(theme);
   }
 
-  constructor() { }
-
+  constructor() {}
 }

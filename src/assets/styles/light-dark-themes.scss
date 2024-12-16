@@ -70,10 +70,7 @@
 // :root {
 //   @include theme($light-theme);
 // }
-algo {
-color: hex(green);
 
-}
 
 // $green-palette
 // $chartreuse-palette
@@ -90,11 +87,11 @@ color: hex(green);
 
 
 // COLORES PRIMARIOS DEL TEMA //
-  //--mat-sys-primary // cyan claro (color principal del tema)
-  //--mat-sys-primary-container // cyan oscuro (color de contenedor del color primario)
+  //--mat-sys-primary // color claro (color principal del tema)
+  //--mat-sys-primary-container // color oscuro (color de contenedor del color primario)
   //--mat-sys-primary-dark // blanco / negro (color primario oscuro)
   //--mat-sys-primary-light // blanco / negro (color primario claro)
-  //--mat-sys-inverse-primary // cyan
+  //--mat-sys-inverse-primary // color oscuro en tema claro / color claro en tema oscuro
 
 // COLORES SECUNDARIOS //
   //--mat-sys-secondary // gris claro (color secundario)
@@ -103,8 +100,8 @@ color: hex(green);
   //--mat-sys-secondary-light // blanco / negro (color secundario claro)
 
 // COLORES TERCIARIOS O RESALTADOS DEL TEMA //
-  //--mat-sys-tertiary // naranja claro (color resaltado del tema)
-  //--mat-sys-tertiary-container // naranja oscuro (color de contenedor del color resaltado)
+  //--mat-sys-tertiary // color claro (color resaltado del tema)
+  //--mat-sys-tertiary-container // color oscuro (color de contenedor del color resaltado)
   //--mat-sys-tertiary-dark // blanco / negro (color resaltado oscuro)
   //--mat-sys-tertiary-light // blanco / negro (color resaltado claro)
 
@@ -117,15 +114,15 @@ color: hex(green);
 
 
 // COLORES DE FONDO //
-  //--mat-sys-background // negro (color de fondo)
+  //--mat-sys-background // blanco / negro (color de fondo)
   //--mat-sys-surface // negro (superficie de fondo de los elementos)
   //--mat-sys-surface-variant // gris (variante de superficie de fondo)
   //--mat-sys-elevation // blanco / negro (color de elevación para sombras y efectos de profundidad)
 
 // COLORES DE TEXTO //
-  //--mat-sys-on-primary // cyan oscuro (texto sobre color primario)
+  //--mat-sys-on-primary // color oscuro (texto sobre color primario)
   //--mat-sys-on-secondary // gris oscuro (texto sobre color secundario)
-  //--mat-sys-on-tertiary // naranja oscuro (texto sobre color resaltado)
+  //--mat-sys-on-tertiary // color oscuro (texto sobre color resaltado)
   //--mat-sys-on-error // rojo oscuro (texto sobre color de error)
   //--mat-sys-on-surface // gris claro (texto sobre superficie de fondo)
   //--mat-sys-on-background // gris claro (texto sobre color de fondo)
@@ -155,9 +152,9 @@ color: hex(green);
   //--mat-sys-scrim // negro
 
 // COLORES DE TEXTO SOBRE CONTENEDORES //
-  //--mat-sys-on-primary-container // cyan claro
+  //--mat-sys-on-primary-container // color primario claro
   //--mat-sys-on-secondary-container // gris claro
-  //--mat-sys-on-tertiary-container // naranja claro
+  //--mat-sys-on-tertiary-container // color resaltado claro
   //--mat-sys-on-error-container // rojo claro
   //--mat-sys-inverse-on-primary-container // blanco / negro
   //--mat-sys-inverse-on-secondary-container // blanco / negro
