@@ -56,7 +56,7 @@ html {
 
 .magenta-theme {
   $primario: magenta;
-  $terciario: lightgreen;
+  $terciario: green; //pink, violet, chartreuse
   $primary-color: map-get($colores, $primario);
   $tertiary-color: map-get($colores, $terciario);
   @include mat.theme(
@@ -71,7 +71,7 @@ html {
 
 .yellow-theme {
   $primario: yellow;
-  $terciario: pink;
+  $terciario: blue; //chartreuse, orange, violet
   $primary-color: map-get($colores, $primario);
   $tertiary-color: map-get($colores, $terciario);
   @include mat.theme(
@@ -86,7 +86,7 @@ html {
 
 .orange-theme {
   $primario: orange;
-  $terciario: violet;
+  $terciario: blue; //yellow, red, cyan
   $primary-color: map-get($colores, $primario);
   $tertiary-color: map-get($colores, $terciario);
   @include mat.theme(
@@ -101,7 +101,7 @@ html {
 
 .chartreuse-theme {
   $primario: chartreuse;
-  $terciario: magenta;
+  $terciario: violet; //green, yellow, magenta
   $primary-color: map-get($colores, $primario);
   $tertiary-color: map-get($colores, $terciario);
   @include mat.theme(
@@ -116,7 +116,7 @@ html {
 
 .cyan-theme {
   $primario: cyan;
-  $terciario: orange;
+  $terciario: red; //blue, azure, yellow
   $primary-color: map-get($colores, $primario);
   $tertiary-color: map-get($colores, $terciario);
   @include mat.theme(
@@ -131,7 +131,7 @@ html {
 
 .azure-theme {
   $primario: azure;
-  $terciario: blue;
+  $terciario: pink; //cyan, blue, yellow
   $primary-color: map-get($colores, $primario);
   $tertiary-color: map-get($colores, $terciario);
   @include mat.theme(
@@ -146,7 +146,7 @@ html {
 
 .red-theme {
   $primario: red;
-  $terciario: violet;
+  $terciario: cyan; //orange, pink, blue
   $primary-color: map-get($colores, $primario);
   $tertiary-color: map-get($colores, $terciario);
   @include mat.theme(
@@ -161,7 +161,7 @@ html {
 
 .green-theme {
   $primario: green;
-  $terciario: orange;
+  $terciario: magenta; //chartreuse, lightgreen, cyan
 
   $primary-color: map-get($colores, $primario);
   $tertiary-color: map-get($colores, $terciario);
@@ -177,7 +177,7 @@ html {
 
 .blue-theme {
   $primario: blue;
-  $terciario: orange;
+  $terciario: orange; //cyan, azure, red
 
   $primary-color: map-get($colores, $primario);
   $tertiary-color: map-get($colores, $terciario);
@@ -193,7 +193,7 @@ html {
 
 .violet-theme {
   $primario: violet;
-  $terciario: green;
+  $terciario: yellow; // magenta, blue, chartreuse
 
   $primary-color: map-get($colores, $primario);
   $tertiary-color: map-get($colores, $terciario);
@@ -209,7 +209,7 @@ html {
 
 .pink-theme {
   $primario: pink;
-  $terciario: red;
+  $terciario: chartreuse; //magenta, violet, azure
 
   $primary-color: map-get($colores, $primario);
   $tertiary-color: map-get($colores, $terciario);
@@ -225,7 +225,7 @@ html {
 
 .lightgreen-theme {
   $primario: lightgreen;
-  $terciario: yellow;
+  $terciario: pink; //chartreuse, green, orange
 
   $primary-color: map-get($colores, $primario);
   $tertiary-color: map-get($colores, $terciario);

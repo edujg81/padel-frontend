@@ -1,1 +1,11 @@
-<p>jornada-list works!</p>
+<h2>Jornadas del Campeonato</h2>
+
+<ul>
+  <li *ngFor="let jornada of jornadas">
+    <a (click)="verDetalleJornada(jornada.id)">
+      Jornada {{ jornada.numero }}
+    </a>
+  </li>
+</ul>
+
+<button [disabled]="!campeonatoId" (click)="generarNuevaJornada()">Generar Nueva Jornada</button>

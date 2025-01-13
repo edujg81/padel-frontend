@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Inscripcion } from '../models/inscripcion.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InscripcionService {
-  private readonly apiUrl = 'http://localhost:8080/inscripciones';
+  private baseUrl = environment.apiUrl; // URL base de la API
+  private endPoint = '/public/inscripciones'; // Ruta específica del endpoint
+  private apiUrl = `${this.baseUrl}${this.endPoint}`;	// Concatena URL base con endpoint
 
   constructor(private readonly http: HttpClient) { }
 

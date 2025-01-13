@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { Campeonato } from '../../models/campeonato.model';
 import { CommonModule } from '@angular/common';
@@ -31,23 +31,30 @@ import { distinctUntilChanged } from 'rxjs/operators';
         ReactiveFormsModule
     ],
     templateUrl: './campeonato-detail.component.html',
-    styleUrl: './campeonato-detail.component.scss'
+    styleUrls: ['./campeonato-detail.component.scss']
 })
 export class CampeonatoDetailComponent implements OnInit {
-  route: ActivatedRoute = Inject(ActivatedRoute);
-  campeonatoService = Inject(CampeonatoService);
+  //route: ActivatedRoute = Inject(ActivatedRoute);
+  //campeonatoService = Inject(CampeonatoService);
   campeonato: Campeonato | undefined;
   selCampeonatoId: number = -1;
   estadoControl = new FormControl();
   jugadoresInscritos: number = 0;
 
 
-  constructor(private readonly inscripcionesService: InscripcionService
+  constructor(
+    private readonly inscripcionesService: InscripcionService,
+    private readonly campeonatoService: CampeonatoService,
+    @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
+    @Inject(Router) private readonly router: Router
   ) {
-    this.selCampeonatoId = Number(this.route.snapshot.params['id']);
+
   }
 
   ngOnInit(): void {
+
+    this.selCampeonatoId = +this.route.snapshot.paramMap.get('id')!;
+
     this.obtenerCampeonato();
 
     // Suscribirse al control de cambios en el estado con 'distinctUntilChanged' y confirmación de usuario
