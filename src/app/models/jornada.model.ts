@@ -1,6 +1,9 @@
+import { Partido } from "./partido.model";
+
 export interface Jornada {
     id: number;
     numero: number;
-    campeonatoId: number;
-    fecha: Date;
+    fechaInicio: Date;
+    ampeonatoId: number;
+    partidos: Partido[];
 }

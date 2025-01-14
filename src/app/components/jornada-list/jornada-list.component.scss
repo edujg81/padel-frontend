@@ -1,0 +1,35 @@
+.jornada-list {
+    .header-card {
+      margin-bottom: 20px;
+      padding: 15px;
+      text-align: center;
+    }
+  
+    .jornada-card {
+      margin-bottom: 30px;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: var(--mat-sys-surface);
+      color: var(--mat-sys-on-surface);
+  
+      mat-card-title {
+        font-size: 18px;
+        font-weight: bold;
+      }
+  
+      .partido {
+        margin-bottom: 15px;
+  
+        p {
+          margin: 0;
+          line-height: 1.5;
+        }
+  
+        .pendiente {
+          color: var(--mat-sys-error);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  

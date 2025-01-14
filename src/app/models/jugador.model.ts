@@ -9,4 +9,4 @@ export interface Jugador {
     lesionado: boolean;
     fechaAlta: Date;
     fechaBaja: Date;
-  }
+}
