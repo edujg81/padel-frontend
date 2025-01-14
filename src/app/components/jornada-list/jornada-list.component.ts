@@ -11,6 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { Jugador } from '../../models/jugador.model';
 import { Partido } from '../../models/partido.model';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
     selector: 'app-jornada-list',
@@ -20,7 +22,9 @@ import { Partido } from '../../models/partido.model';
         RouterModule,
         MatButtonModule,
         MatCardModule,
-        MatDividerModule
+        MatDividerModule,
+        MatFormFieldModule,
+        MatDatepickerModule
     ],
     templateUrl: './jornada-list.component.html',
     styleUrls: ['./jornada-list.component.scss']
@@ -36,6 +40,7 @@ export class JornadaListComponent implements OnInit {
     jugadores: Jugador[] = []; // Lista de jugadores obtenidos de la API
 
     campeonato!: Campeonato;
+    fechaInicio = this.formatDateToYYYYMMDD(new Date()); // Valor inicial (opcional)
 
      constructor(
         private readonly jornadaService: JornadaService,
@@ -119,16 +124,40 @@ export class JornadaListComponent implements OnInit {
     }  
 
     generarNuevaJornada(): void {
-      this.jornadaService.generarJornada(this.campeonatoId!).subscribe({
-        next: (jornada: Jornada) => {
-          console.log('Nueva jornada generada:', jornada);
+      console.log('Generando jornada para el campeonato ID:', this.campeonatoId);
+
+      if (!this.campeonatoId) {
+        console.error('No se puede generar una jornada sin un ID de campeonato');
+        return;
+      }
+
+      console.log('Generando jornada para el campeonato ID:', this.campeonatoId, 'con fecha de inicio:', this.fechaInicio);
+
+      if (!this.fechaInicio) {
+        alert('Por favor, selecciona una fecha de inicio válida.');
+        return;
+      }
+
+      this.jornadaService.createJornada(this.campeonatoId, this.fechaInicio).subscribe({
+        next: (nuevaJornada: Jornada) => {
+          console.log('Nueva jornada generada:', nuevaJornada);
           this.obtenerJornadas(); // Actualizar la lista
         },
-        error: (err: any) => console.error('Error al generar jornada:', err)
+        error: (err: any) => {
+          console.error('Error al generar una nueva jornada:', err);
+          alert('Ocurrió un error al intentar generar la jornada. Revisa la consola para más detalles.');
+        },
       });
     }
   
     verDetalleJornada(jornadaId: number): void {
       this.router.navigate(['/jornadas', jornadaId]);
+    }
+
+    private formatDateToYYYYMMDD(date: Date): string {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses son base 0
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
     }
   }

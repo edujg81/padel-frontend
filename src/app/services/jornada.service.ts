@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Jornada } from '../models/jornada.model';
 import { environment } from '../../environments/environment';
@@ -18,8 +18,9 @@ export class JornadaService {
     return this.http.get<Jornada[]>(`${this.apiUrl}/campeonato/${campeonatoId}`);
   }
 
-  generarJornada(campeonatoId: number): Observable<Jornada> {
-    return this.http.post<Jornada>(`${this.apiUrl}`, {campeonatoId: campeonatoId, fechaInicio: new Date()});
+  createJornada(campeonatoId: number, fechaInicio: string): Observable<Jornada> {
+    const params = new HttpParams().set('campeonatoId', campeonatoId).set('fechaInicio', fechaInicio);
+    return this.http.post<Jornada>(this.apiUrl, null, { params });
   }
 
   getJornadaDetalle(jornadaId: number): Observable<any> {
