@@ -12,11 +12,17 @@ import { MatDividerModule } from '@angular/material/divider';
 import { Jugador } from '../../models/jugador.model';
 import { Partido } from '../../models/partido.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerControl, MatDatepickerModule, MatDatepickerPanel } from '@angular/material/datepicker';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-jornada-list',
     standalone: true,
+    providers: [
+      { provide: MAT_DATE_LOCALE, useValue: 'es-ES' } // Opcional: Configura el idioma para el Datepicker
+    ],
     imports: [
         CommonModule,
         RouterModule,
@@ -24,7 +30,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
         MatCardModule,
         MatDividerModule,
         MatFormFieldModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatInputModule,
+        FormsModule
     ],
     templateUrl: './jornada-list.component.html',
     styleUrls: ['./jornada-list.component.scss']
@@ -40,7 +49,8 @@ export class JornadaListComponent implements OnInit {
     jugadores: Jugador[] = []; // Lista de jugadores obtenidos de la API
 
     campeonato!: Campeonato;
-    fechaInicio = this.formatDateToYYYYMMDD(new Date()); // Valor inicial (opcional)
+    fechaInicio: Date = new Date();
+    //fechaInicio = this.formatDateToYYYYMMDD(new Date()); // Valor inicial (opcional)
 
      constructor(
         private readonly jornadaService: JornadaService,
@@ -131,14 +141,14 @@ export class JornadaListComponent implements OnInit {
         return;
       }
 
-      console.log('Generando jornada para el campeonato ID:', this.campeonatoId, 'con fecha de inicio:', this.fechaInicio);
+      console.log('Generando jornada para el campeonato ID:', this.campeonatoId, 'con fecha de inicio:', this.formatDateToYYYYMMDD(this.fechaInicio));
 
       if (!this.fechaInicio) {
         alert('Por favor, selecciona una fecha de inicio válida.');
         return;
       }
 
-      this.jornadaService.createJornada(this.campeonatoId, this.fechaInicio).subscribe({
+      this.jornadaService.createJornada(this.campeonatoId, this.formatDateToYYYYMMDD(this.fechaInicio)).subscribe({
         next: (nuevaJornada: Jornada) => {
           console.log('Nueva jornada generada:', nuevaJornada);
           this.obtenerJornadas(); // Actualizar la lista
