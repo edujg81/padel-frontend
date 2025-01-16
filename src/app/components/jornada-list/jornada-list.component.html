@@ -7,9 +7,18 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   
-    <button mat-raised-button color="primary" (click)="generarNuevaJornada()">
+    <button 
+      mat-raised-button 
+      color="primary" 
+      [disabled]="!puedeGenerarJornada()"
+      (click)="generarNuevaJornada()">
       Generar Nueva Jornada
     </button>
+  </div>
+
+  <!-- Mostrar mensaje si no hay jornadas -->
+  <div *ngIf="jornadas.length === 0" class="no-jornadas">
+    <p>No hay ninguna jornada generada para este campeonato.</p>
   </div>
 
   <!-- Lista de jornadas -->

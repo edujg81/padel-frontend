@@ -39,18 +39,12 @@ import { FormsModule } from '@angular/forms';
     styleUrls: ['./jornada-list.component.scss']
 })
 export class JornadaListComponent implements OnInit {
-    //jornadaService = Inject(JornadaService);
-    //campeonatoService = Inject(CampeonatoService);
-    //route = Inject(ActivatedRoute);
-    //router = Inject(Router);
-  
     campeonatoId: number | null = null;
     jornadas: Jornada[] = []; // Jornadas con los partidos asociados
     jugadores: Jugador[] = []; // Lista de jugadores obtenidos de la API
 
     campeonato!: Campeonato;
     fechaInicio: Date = new Date();
-    //fechaInicio = this.formatDateToYYYYMMDD(new Date()); // Valor inicial (opcional)
 
      constructor(
         private readonly jornadaService: JornadaService,
@@ -84,30 +78,19 @@ export class JornadaListComponent implements OnInit {
     }
   
     obtenerJornadas(): void {
-      // this.jornadaService.getJornadasByCampeonatoId(this.campeonatoId!).subscribe({
-      //   next: (data: Jornada[]) => {
-      //     this.jornadas = data;
-      //   },
-      //   error: (err: any) => console.error('Error al obtener jornadas:', err)
-      // });
       this.jornadaService.getJornadasByCampeonatoId(this.campeonatoId!).subscribe({
-        next: (data: Jornada[]) => {
-          // Transformar los datos para incluir las propiedades `equipo1` y `equipo2`
+        next: (data: Jornada[] | null) => {
+          if (!data) {
+            //console.warn('El backend devolvió null o undefined para las jornadas.');
+            this.jornadas = [];
+            return;
+          }
+
           this.jornadas = data.map((jornada) => {
             return {
               ...jornada,
-              partidos: jornada.partidos.map((partido: Partido) => ({
+              partidos: (jornada.partidos || []).map((partido: Partido) => ({
                 ...partido,
-                // equipo1: [partido.equipo1Jugador1Id, partido.equipo1Jugador2Id],
-                // equipo2: [partido.equipo2Jugador1Id, partido.equipo2Jugador2Id],
-                // equipo1: this.mapearEquipo([
-                //   { id: partido.equipo1Jugador1Id, nombre: this.obtenerNombreJugador(partido.equipo1Jugador1Id) },
-                //   { id: partido.equipo1Jugador2Id, nombre: this.obtenerNombreJugador(partido.equipo1Jugador2Id) },
-                // ]),
-                // equipo2: this.mapearEquipo([
-                //   { id: partido.equipo2Jugador1Id, nombre: this.obtenerNombreJugador(partido.equipo2Jugador1Id) },
-                //   { id: partido.equipo2Jugador2Id, nombre: this.obtenerNombreJugador(partido.equipo2Jugador2Id) },
-                // ]),
                 equipo1Jugador1Nombre: this.obtenerNombreJugador(partido.equipo1Jugador1Id),
                 equipo1Jugador2Nombre: this.obtenerNombreJugador(partido.equipo1Jugador2Id),
                 equipo2Jugador1Nombre: this.obtenerNombreJugador(partido.equipo2Jugador1Id),
@@ -117,21 +100,21 @@ export class JornadaListComponent implements OnInit {
             };
           });
         },
-        error: (err: any) => console.error('Error al obtener jornadas:', err),
+        error: (err: any) => {
+          console.error('Error al obtener jornadas:', err);
+          this.jornadas = []; // Inicializa jornadas como vacío en caso de error
+        },
       });
     }
-  
-    // mapearEquipo(equipo: { id: number; nombre: string }[]): { id: number; nombre: string }[] {
-    //   return equipo.map((jugador) => ({
-    //     ...jugador,
-    //     nombre: this.obtenerNombreJugador(jugador.id),
-    //   }));
-    // }
   
     obtenerNombreJugador(jugadorId: number): string {
       const jugador = this.jugadores.find((j) => j.id === jugadorId);
       return jugador ? jugador.nombreCompleto : 'Desconocido';
     }  
+
+    puedeGenerarJornada(): boolean {
+      return this.campeonato?.estado === 'En curso';
+    }
 
     generarNuevaJornada(): void {
       console.log('Generando jornada para el campeonato ID:', this.campeonatoId);

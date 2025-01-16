@@ -13,7 +13,7 @@ if (environment.production) {
 // Se encarga de iniciar la aplicación
 bootstrapApplication(AppComponent, {
   providers: [
-    provideClientHydration(withEventReplay()),
+    //provideClientHydration(withEventReplay()),
     provideAnimations(), 
     ...appConfig.providers, provideAnimationsAsync()
   ],
