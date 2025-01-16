@@ -45,6 +45,9 @@
               {{ partido.resultado || 'Pendiente' }}
             </span>
           </p>
+          <button mat-raised-button color="primary" (click)="verPartido(partido.id)">
+            Ver Partido
+          </button>
         </div>
       </mat-card-content>
     </mat-card>

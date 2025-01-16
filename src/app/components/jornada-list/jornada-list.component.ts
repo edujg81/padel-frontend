@@ -153,4 +153,8 @@ export class JornadaListComponent implements OnInit {
       const day = String(date.getDate()).padStart(2, '0');
       return `${year}-${month}-${day}`;
     }
+
+    verPartido(partidoId: number): void {
+      this.router.navigate(['/partidos', partidoId]);
+    }
   }
