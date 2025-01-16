@@ -13,6 +13,9 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InscripcionService } from '../../services/inscripcion.service';
 import { Inscripcion } from '../../models/inscripcion.model';
 import { distinctUntilChanged } from 'rxjs/operators';
+import { ClasificacionService } from '../../services/clasificacion.service';
+import { Clasificacion } from '../../models/clasificacion.model';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
     selector: 'app-campeonato-detail',
@@ -25,6 +28,7 @@ import { distinctUntilChanged } from 'rxjs/operators';
         MatFormFieldModule,
         MatSelectModule,
         MatGridListModule,
+        MatTableModule,
         RouterModule,
         RouterLink,
         FormsModule,
@@ -40,11 +44,14 @@ export class CampeonatoDetailComponent implements OnInit {
   selCampeonatoId: number = -1;
   estadoControl = new FormControl();
   jugadoresInscritos: number = 0;
+  clasificacion: Clasificacion[] = [];
+  displayedColumns: string[] = ['posicion', 'jugador', 'puntos', 'jugados', 'ganados', 'perdidos', 'sets', 'juegos'];
 
 
   constructor(
     private readonly inscripcionesService: InscripcionService,
     private readonly campeonatoService: CampeonatoService,
+    private readonly clasificacionService: ClasificacionService,
     @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
     @Inject(Router) private readonly router: Router
   ) {
@@ -93,6 +100,7 @@ export class CampeonatoDetailComponent implements OnInit {
         this.campeonato = data;
         this.estadoControl.setValue(this.campeonato!.estado);
         this.getJugadoresInscritos();
+        this.cargarClasificacion();
       },
       error: (error: any) => console.error('Error al obtener el campeonato:', error)
     });
@@ -113,6 +121,15 @@ export class CampeonatoDetailComponent implements OnInit {
         this.toggleEstadoControl();
       },
       error: error => console.error('Error al obtener jugadores inscritos:', error)
+    });
+  }
+
+  cargarClasificacion(): void {
+    this.clasificacionService.getClasificacionByCampeonatoId(this.selCampeonatoId!).subscribe({
+      next: (data: Clasificacion[]) => {
+        this.clasificacion = data;
+      },
+      error: (err: any) => console.error('Error al obtener la clasificación:', err),
     });
   }
 
