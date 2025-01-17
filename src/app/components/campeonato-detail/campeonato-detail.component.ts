@@ -16,6 +16,8 @@ import { distinctUntilChanged } from 'rxjs/operators';
 import { ClasificacionService } from '../../services/clasificacion.service';
 import { Clasificacion } from '../../models/clasificacion.model';
 import { MatTableModule } from '@angular/material/table';
+import { Jugador } from '../../models/jugador.model';
+import { JugadorService } from '../../services/jugador.service';
 
 @Component({
     selector: 'app-campeonato-detail',
@@ -45,6 +47,7 @@ export class CampeonatoDetailComponent implements OnInit {
   estadoControl = new FormControl();
   jugadoresInscritos: number = 0;
   clasificacion: Clasificacion[] = [];
+  jugadores: Jugador[] = [];
   displayedColumns: string[] = ['posicion', 'jugador', 'puntos', 'jugados', 'ganados', 'perdidos', 'sets', 'juegos'];
 
 
@@ -52,6 +55,7 @@ export class CampeonatoDetailComponent implements OnInit {
     private readonly inscripcionesService: InscripcionService,
     private readonly campeonatoService: CampeonatoService,
     private readonly clasificacionService: ClasificacionService,
+    private readonly jugadorService: JugadorService,
     @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
     @Inject(Router) private readonly router: Router
   ) {
@@ -128,6 +132,24 @@ export class CampeonatoDetailComponent implements OnInit {
     this.clasificacionService.getClasificacionByCampeonatoId(this.selCampeonatoId!).subscribe({
       next: (data: Clasificacion[]) => {
         this.clasificacion = data;
+        // Obtener la lista de jugadores
+        this.jugadorService.getJugadores().subscribe({
+          next: (jugadores: Jugador[]) => {
+            this.jugadores = jugadores;
+
+            // Mapear los nombres de los jugadores a la clasificación
+            this.clasificacion = this.clasificacion.map((clasif) => {
+              const jugador = this.jugadores.find((j) => j.id === clasif.jugadorId);
+              return {
+                ...clasif,
+                jugadorNombre: jugador ? jugador.nombreCompleto : 'Desconocido'
+              };
+            });
+
+            console.log('Clasificación cargada con nombres:', this.clasificacion);
+          },
+          error: (err: any) => console.error('Error al obtener los jugadores:', err)
+        });
       },
       error: (err: any) => console.error('Error al obtener la clasificación:', err),
     });
