@@ -1,3 +1,27 @@
+.mat-card.campeonato-card {
+  padding: 20px; /* Espaciado interno */
+  margin-bottom: 20px;
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.mat-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.mat-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.estado-selector {
+  min-width: 200px;
+}
+
 .primary-button {
    display: flex;
    margin-top: 20px;
@@ -15,8 +39,45 @@
 
 .clasificacion-container {
    margin-top: 20px;
-   .mat-table {
-     width: 100%;
-     margin: auto;
-   }
+   h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .clasificacion-table {
+    width: 100%;
+    text-align: center;
+    border-spacing: 0 10px;
+    border-collapse: separate;
+  }
+
+  .mat-header-cell {
+    background-color: var(--mat-mdc-theme-primary);
+    color: var(--mat-mdc-theme-on-primary);
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+  }
+
+  .mat-cell {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  /* Colores para los primeros 3 puestos */
+  .gold {
+    color: #FFD700; /* Oro */
+    font-weight: bold;
+  }
+
+  .silver {
+    color: #C0C0C0; /* Plata */
+    font-weight: bold;
+  }
+
+  .bronze {
+    color: #CD7F32; /* Bronce */
+    font-weight: bold;
+  }
  }

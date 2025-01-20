@@ -18,6 +18,7 @@ import { Clasificacion } from '../../models/clasificacion.model';
 import { MatTableModule } from '@angular/material/table';
 import { Jugador } from '../../models/jugador.model';
 import { JugadorService } from '../../services/jugador.service';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
     selector: 'app-campeonato-detail',
@@ -31,6 +32,7 @@ import { JugadorService } from '../../services/jugador.service';
         MatSelectModule,
         MatGridListModule,
         MatTableModule,
+        MatDividerModule,
         RouterModule,
         RouterLink,
         FormsModule,

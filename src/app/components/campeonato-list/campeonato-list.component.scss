@@ -1,5 +1,21 @@
-.elevate{
-    //box-shadow: 0 4px 8px 0 rgba(15, 240, 15, 0.6), 0 5px 10px 0 rgba(15,240,15,0.6);
-    //box-shadow: 0 4px 8px 0 var(--mat-sys-inverse-primary), 0 5px 10px 0 var(--mat-sys-inverse-primary); 
-    box-shadow: 0 4px 8px 0 var(--mat-sys-tertiary), 0 5px 10px 0 var(--mat-sys-tertiary); 
-}
+.container {
+    padding: 16px;
+  }
+  
+  .header-actions {
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  
+  .campeonato-list {
+    margin-top: 16px;
+  }
+  
+  .campeonato-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .campeonato-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 15px var(--mat-sys-tertiary);
+  }

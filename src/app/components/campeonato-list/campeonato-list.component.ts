@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { Campeonato } from '../../models/campeonato.model';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,7 +22,8 @@ import { FlexLayoutModule } from '@ngbracket/ngx-layout';
         RouterLink
     ],
     templateUrl: './campeonato-list.component.html',
-    styleUrls: ['./campeonato-list.component.scss']
+    styleUrls: ['./campeonato-list.component.scss'],
+    encapsulation: ViewEncapsulation.None // Esto permite que los estilos globales se apliquen
 })
 export class CampeonatoListComponent implements OnInit {
 

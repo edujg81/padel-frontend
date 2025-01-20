@@ -1,7 +1,32 @@
+.container {
+    padding: 16px;
+}
+
+.header-actions {
+    margin-bottom: 16px;
+  }
+
+  .table-container {
+    overflow: auto; /* Hacer la tabla desplazable en dispositivos pequeños */
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    min-width: 550px;
+  }
+
 .mat-form-field-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.mat-header-row {
+    background-color: var(--mat-sys-primary);
+    color: var(--mat-sys-on-primary);
+}
+  
+.mat-row:hover {
+    background-color: var(--mat-sys-secondary-container);
 }
 
 .buscar {
@@ -13,12 +38,6 @@
     justify-content: center;
 }
 
-.list-container {
-    display: flex;
-    flex-direction: column;
-    min-width: 550px;
-}
-  
 mat-paginator {
     display: flex;
     justify-content: center;
@@ -31,7 +50,8 @@ mat-paginator {
 }
   
 .estado-inactivo {
-    color: red;
+    //color: red;
+    color: var(--mat-sys-error);
     font-weight: normal;
 }
 
@@ -41,16 +61,19 @@ mat-paginator {
 }
   
 .lesionado-si {
-    color: red;
+    //color: red;
+    color: var(--mat-sys-error);
     font-weight: normal;
 }
 
 .sexo-masculino {
-    color: rgb(102, 198, 230);
+    //color: rgb(102, 198, 230);
+    color: var(--mat-sys-primary);
     font-weight:normal;
 }
   
 .sexo-femenino {
-    color: rgb(243, 130, 149);
+    //color: rgb(243, 130, 149);
+    color: var(--mat-sys-tertiary);
     font-weight: normal;
 }   

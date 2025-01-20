@@ -1,7 +1,12 @@
     <h2>Detalles del Campeonato</h2>
     <div *ngIf="campeonato" class="container">
-        <mat-card class="mat-card">
-          <mat-card-title> {{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }} </mat-card-title>
+        <mat-card class="campeonato-card">
+          <mat-card-title class="mat-card-title"> 
+            {{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }} 
+          </mat-card-title>
+          
+          <mat-divider></mat-divider>
+          
           <mat-card-content>
             <p>
               <strong>Activo:</strong> {{ campeonato.activo ? 'Sí' : 'No' }} <span class="tab"></span>
@@ -10,9 +15,11 @@
               <strong>Jugadores Inscritos:</strong> {{ jugadoresInscritos }} <span class="tab"></span>
             </p>
           </mat-card-content>
+
+          <mat-divider></mat-divider>
          
           <mat-card-actions class="mat-card-actions">
-            <mat-form-field>
+            <mat-form-field appearance="fill" class="estado-selector">
               <mat-label>Estado</mat-label>
               <mat-select [formControl]="estadoControl">
                 <mat-option value="Sin iniciar">Sin iniciar</mat-option>
@@ -21,10 +28,10 @@
               </mat-select>
             </mat-form-field>
             <span class="tab"></span>
-            <button mat-button class="tertiary-button" routerLink="/jornadas/campeonato/{{ campeonato.id }}">
+            <button mat-button class="tertiary" routerLink="/jornadas/campeonato/{{ campeonato.id }}">
               <mat-icon>arrow_forward</mat-icon>Jornadas
             </button>
-            <button mat-button class="tertiary-button" routerLink="/inscripciones/campeonato/{{ campeonato.id }}">
+            <button mat-button class="tertiary" routerLink="/inscripciones/campeonato/{{ campeonato.id }}">
               <mat-icon>arrow_forward</mat-icon>Jugadores
             </button>
           </mat-card-actions>
@@ -33,10 +40,13 @@
 
         <div class="clasificacion-container">
           <h2>Clasificación</h2>
-          <mat-table [dataSource]="clasificacion" class="mat-elevation-z8">
+          <mat-table [dataSource]="clasificacion" class="mat-elevation-z8 clasificacion-table">
             <ng-container matColumnDef="posicion">
               <mat-header-cell *matHeaderCellDef> Posición </mat-header-cell>
-              <mat-cell *matCellDef="let elemento"> {{ elemento.posicion }} </mat-cell>
+              <mat-cell *matCellDef="let elemento"> 
+              <span [ngClass]="{'gold': elemento.posicion === 1, 'silver': elemento.posicion === 2, 'bronze': elemento.posicion === 3}">
+                {{ elemento.posicion }}
+              </span> </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="jugador">
