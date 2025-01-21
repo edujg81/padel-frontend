@@ -1,36 +1,60 @@
-.mat-form-field {
-    width: 100%;
-}
-
 .campeonato-form-container {
     max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
+    background-color: var(--mat-mdc-theme-surface);
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.form-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--mat-mdc-theme-primary);
+}
+
+.campeonato-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   
-@media (forced-colors: active) {
-    .mat-checkbox {
-      background-color: ButtonFace;
-      color: ButtonText;
-      border: 1px solid ButtonText;
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+  
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+    }
+  
+    .form-field {
+      flex: 1;
+      min-width: 200px;
+    }
+  
+    .activo-toggle {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+    }
+  
+    .alert {
+      color: var(--mat-mdc-theme-error);
+      font-size: 0.9rem;
+      text-align: center;
+      margin: 10px 0;
     }
 }
-  
-.jugador-form-container {
-    max-width: 800px;
-    padding: 20px;
-}
-   
-.form-buttons {
-    margin-top: 20px;
+
+.form-actions {
     display: flex;
-    justify-content: left-start;
-}
+    justify-content: space-between;
+    gap: 15px;
   
-.example-form mat-form-field {
-    margin-right: 10px;
-}
-  
-p.alert{
-    color: red !important;
-    font-size:0.9em;
-}
+    button {
+      min-width: 150px;
+    }
+  }

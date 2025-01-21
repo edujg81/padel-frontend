@@ -1,66 +1,67 @@
-
 .inscripcion-form {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     display: flex;
-    flex-wrap: wrap;
-}
+    flex-direction: column;
+    gap: 24px;
   
-.title {
-    margin-bottom: 40px;
-}
-
-.mat_card {
-    margin-bottom: 20px;
-    margin-right: 20px;
-    flex: 1 1 50%;
-}
-
-.subtitle {
-    font-weight: bold;
-    margin-top: 20px;
-    margin-left: 20px;
-    flex: 1 1 100%;
-}
-
-.list {
-    margin-left: 20px;
-    list-style: none;
-    flex: 1 1 100%;
-}
-
-.list li {
-    padding: 10px;
-}
-
-.mat_select {
-    flex: 1 1 30%;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin: auto;
-}
-
-.mat_select-trigger {
-    margin-right: 10px;
-}
-
-.jugadores-inscritos {
-    flex: 1 1 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-
-.jugador {
-    flex: 1 1 100%;
-    margin-bottom: 1px;
-}
-
-.button {
-    flex: 0 0 45%;
-    display: flex;
-    justify-content: flex-start;
-    margin: 0 auto 20px 10px;
-}
+    .title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var(--mat-mdc-theme-primary);
+    }
+  
+    .form-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+  
+      .player-select {
+        flex: 1;
+      }
+  
+      .inscribir-button {
+        height: 56px; /* Igual que el mat-select */
+      }
+    }
+  
+    .jugadores-inscritos {
+      margin-top: 24px;
+  
+      .subtitle {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+  
+      .no-jugadores {
+        font-size: 1rem;
+        color: var(--mat-mdc-theme-on-surface-variant);
+      }
+  
+      mat-list {
+        border: 1px solid var(--mat-mdc-theme-surface-variant);
+        border-radius: 8px;
+        padding: 8px;
+      }
+  
+      .jugador-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--mat-mdc-theme-surface-variant);
+  
+        &:last-child {
+          border-bottom: none;
+        }
+  
+        mat-icon {
+          color: var(--mat-mdc-theme-error);
+          cursor: pointer;
+        }
+      }
+    }
+  }

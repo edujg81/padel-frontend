@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'app-campeonato-list',
@@ -14,6 +15,7 @@ import { FlexLayoutModule } from '@ngbracket/ngx-layout';
         CommonModule,
         MatButtonModule,
         MatCardModule,
+        MatIconModule,
         RouterModule,
         FlexLayoutModule,
         NgFor,

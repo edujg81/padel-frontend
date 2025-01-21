@@ -1,21 +1,95 @@
 .container {
-    padding: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+    color: var(--mat-mdc-theme-primary);
   }
-  
+
   .header-actions {
-    margin-bottom: 16px;
-    text-align: left;
+    button {
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+
+      mat-icon {
+        font-size: 1.2rem;
+      }
+    }
   }
-  
-  .campeonato-list {
-    margin-top: 16px;
-  }
-  
-  .campeonato-card {
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .campeonato-card:hover {
+}
+
+.campeonato-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.campeonato-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+
+  &:hover {
     transform: translateY(-5px);
-    box-shadow: 0px 4px 15px var(--mat-sys-tertiary);
+    //box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 6px 20px var(--mat-sys-tertiary);
   }
+
+  mat-card-header {
+    background-color: var(--mat-mdc-theme-surface-variant);
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+
+    mat-card-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+  }
+
+  mat-card-content {
+    padding: 10px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+
+    strong {
+      color: var(--mat-mdc-theme-primary);
+    }
+  }
+
+  mat-card-actions {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 2px;
+
+    button {
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+
+      mat-icon {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+.no-data {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--mat-mdc-theme-on-surface-variant);
+  margin-top: 24px;
+}

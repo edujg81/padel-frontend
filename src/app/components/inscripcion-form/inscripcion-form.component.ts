@@ -83,14 +83,19 @@ export class InscripcionFormComponent implements OnInit {
 
   inscribirJugador(): void {
     if (this.jugadorSeleccionado && this.jugadoresInscritos.length < 20) {
-      const jugador = this.jugadoresDisponibles.find(jugador => jugador === this.jugadorSeleccionado);
+      const jugador = this.jugadoresDisponibles.find(j => j === this.jugadorSeleccionado);
       if(jugador) {
         this.inscripcionService.inscribirJugador(this.campeonatoId, jugador.id).subscribe({
           next: () => {
             this.jugadoresInscritos.push(jugador);
-            this.jugadoresDisponibles = this.jugadoresDisponibles.filter(jugador => jugador.id !== this.jugadorSeleccionado.id);
+            this.jugadoresDisponibles = this.jugadoresDisponibles.filter(j => j.id !== this.jugadorSeleccionado.id);
+            this.jugadorSeleccionado = null;
+            alert('Jugador inscrito con éxito');
           },
-          error: error => console.error('Error al inscribir al jugador', error)
+          error: error => {
+            console.error('Error al inscribir al jugador', error);
+            alert('Error al inscribir al jugador.');
+          }
         });
       }
     }
@@ -101,22 +106,43 @@ export class InscripcionFormComponent implements OnInit {
   }
 
   eliminarJugador(jugador: Jugador): void {
-    const index = this.jugadoresInscritos.indexOf(jugador);
-    if (index !== -1) {
-      this.jugadoresInscritos.splice(index, 1);
-      this.inscripcionService.getInscripcionByCampeonatoIdAndJugadorId(this.campeonatoId, jugador.id).subscribe({
-        next: inscripcion => {
-          if (inscripcion) {
-            this.inscripcionService.desinscribirJugador(this.campeonatoId, jugador.id).subscribe({
-            next: () => console.log('Inscripción eliminada correctamente'),
-            error: error => console.error('Error al eliminar inscripción', error)
+    // const index = this.jugadoresInscritos.indexOf(jugador);
+    // if (index !== -1) {
+    //   this.jugadoresInscritos.splice(index, 1);
+    //   this.inscripcionService.getInscripcionByCampeonatoIdAndJugadorId(this.campeonatoId, jugador.id).subscribe({
+    //     next: inscripcion => {
+    //       if (inscripcion) {
+    //         this.inscripcionService.desinscribirJugador(this.campeonatoId, jugador.id).subscribe({
+    //         next: () => console.log('Inscripción eliminada correctamente'),
+    //         error: error => console.error('Error al eliminar inscripción', error)
+    //       });
+    //     }
+    //     },
+    //     error: error => {
+    //       console.error('Error al obtener ID de la inscripción', error);
+    //     }
+    //   });
+    // }
+
+    this.inscripcionService.getInscripcionByCampeonatoIdAndJugadorId(this.campeonatoId, jugador.id).subscribe({
+      next: inscripcion => {
+        if (inscripcion) {
+          this.inscripcionService.desinscribirJugador(this.campeonatoId, jugador.id).subscribe({
+            next: () => {
+              this.jugadoresInscritos = this.jugadoresInscritos.filter(j => j.id !== jugador.id);
+              this.jugadoresDisponibles.push(jugador);
+              alert('Jugador eliminado con éxito');
+            },
+            error: error => {
+              console.error('Error al eliminar inscripción', error);
+              alert('Error al eliminar inscripción.');
+            }
           });
         }
-        },
-        error: error => {
-          console.error('Error al obtener ID de la inscripción', error);
-        }
-      });
-    }
+      },
+      error: error => {
+        console.error('Error al obtener inscripción', error);
+      }
+    });
   }
 }

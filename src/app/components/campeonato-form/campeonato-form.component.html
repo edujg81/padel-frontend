@@ -1,56 +1,74 @@
 <div class="campeonato-form-container">
-  <h2>{{ isEditing ? 'Editar Campeonato' : 'Nuevo Campeonato' }}</h2>
-  <form class="example-form" [formGroup]="campeonatoForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="tertiary-button" hintLabel="Año" appearance="fill">
-      <mat-label>Introduce Año</mat-label>
+  <h2 class="form-title">
+    {{ isEditing ? 'Editar Campeonato' : 'Nuevo Campeonato' }}
+  </h2>
+ <!-- Formulario -->
+ <form class="campeonato-form" [formGroup]="campeonatoForm" (ngSubmit)="onSubmit()">
+  <!-- Primera fila -->
+  <div class="form-row">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Año</mat-label>
       <input matInput #input maxlength="4" placeholder="Ej. 2024" formControlName="year">
     </mat-form-field>
 
-    <mat-form-field class="tertiary-button" hintLabel="Categoría" appearance="fill">
-      <mat-label>Introduce Categoría</mat-label>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Categoría</mat-label>
       <mat-select formControlName="categoria" required>
         <mat-option value="Masculino">Masculino</mat-option>
         <mat-option value="Femenino">Femenino</mat-option>
         <mat-option value="Mixto">Mixto</mat-option>
       </mat-select>
     </mat-form-field>
-    
-    <mat-form-field class="tertiary-button" hintLabel="División" appearance="fill">
-      <mat-label for="division">Introduce División</mat-label>
+  </div>
+  
+  <!-- Segunda fila -->
+  <div class="form-row">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>División</mat-label>
       <input matInput #input maxlength="1" placeholder="Ej. 1" formControlName="division">
     </mat-form-field>
   
-    <mat-form-field class="tertiary-button" hintLabel="Estado" appearance="fill">
-      <mat-label>Introduce Estado</mat-label>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Estado</mat-label>
       <mat-select formControlName="estado">
         <mat-option value="Sin iniciar">Sin iniciar</mat-option>
         <mat-option value="En curso">En curso</mat-option>
         <mat-option value="Finalizado">Finalizado</mat-option>
       </mat-select>
     </mat-form-field>
+  </div>
   
-    <mat-form-field class="tertiary-button" hintLabel="Puntos por Victoria" appearance="fill">
+  <!-- Tercera fila -->
+  <div class="form-row">
+    <mat-form-field appearance="outline" class="form-field">
       <mat-label>Puntos por Victoria</mat-label>
-      <input matInput #input maxlength="1" placeholder ="Ej. 2" formControlName="puntosPorVictoria">
+      <input matInput #input maxlength="1" placeholder="Ej. 2" formControlName="puntosPorVictoria">
     </mat-form-field>
   
-    <mat-form-field class="tertiary-button" hintLabel="Puntos por Derrota" appearance="fill">
-      <mat-label for="puntosPorDerrota">Puntos por Derrota</mat-label>
-      <input matInput #input maxlength="1" placeholder ="Ej. 0" formControlName="puntosPorDerrota">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Puntos por Derrota</mat-label>
+      <input matInput #input maxlength="1" placeholder="Ej. 0" formControlName="puntosPorDerrota">
     </mat-form-field>
+  </div>
+
+    <!-- Toggle Activo -->
+    <div class="form-row">
+      <mat-slide-toggle formControlName="activo" class="activo-toggle">
+        Activo
+      </mat-slide-toggle>
+    </div>
     
-    <mat-slide-toggle class="tertiary-button" hintlabel="Activo" formControlName="activo" labelPosition="before" appearance="fill">
-     <mat-label for="activo">Activo</mat-label>
-    </mat-slide-toggle>
-    <p></p>
-    <p class="alert" *ngIf="campeonatoForm.status == 'INVALID'; else muestraBoton">* Rellena todos los campos del formulario</p>
+    <!-- Mensaje de error -->
+    <p class="alert" *ngIf="campeonatoForm.invalid">
+      * Rellena todos los campos del formulario
+    </p>
+
+    <!-- Botones -->
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="campeonatoForm.invalid">
+        {{ isEditing ? 'Guardar Cambios' : 'Agregar Campeonato' }}
+      </button>
+      <button mat-raised-button color="warn" routerLink="/campeonatos">Cancelar</button>
+    </div>
   </form>
-
-  <button mat-raised-button class="error-button" routerLink="/campeonatos">Cancelar</button>
 </div>
-
-<ng-template #muestraBoton>
-  <p><button mat-raised-button class="tertiary-button" type="submit" [disabled]="campeonatoForm.invalid">
-    {{ isEditing ? 'Guardar Cambios' : 'Agregar Campeonato' }}
-  </button></p>
-</ng-template>

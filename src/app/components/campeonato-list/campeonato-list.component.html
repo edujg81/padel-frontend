@@ -1,32 +1,29 @@
 <div class="container">
-  <h2>Lista de Campeonatos</h2>
+  <div class="header">
+    <h2>{{ title }}</h2>
 
   <div class="header-actions">
     <button mat-raised-button color="primary" routerLink="/campeonatos/new">
-      Nuevo Campeonato
+      <mat-icon>add</mat-icon> Nuevo Campeonato
     </button>
   </div>
+</div>
 
   <div
     class="campeonato-list"
     fxLayout="row wrap"
-    fxLayout.xs="column"
-    fxLayout.sm="row wrap"
-    fxLayout.md="row wrap"
-    fxLayout.lg="row wrap"
-    fxLayout.xl="row wrap"
-    fxLayoutGap="16px"
+    fxLayoutGap="12px"
     *ngIf="campeonatos.length > 0; else noCampeonatos"
   >
     <mat-card
       *ngFor="let campeonato of campeonatos"
-      fxFlex="50"
+      fxFlex="98"
       fxLayout.xs="98"
       fxFlex.sm="98"
       fxFlex.md="48"
       fxFlex.lg="48"
-      fxFlex.xl="48"
       class="campeonato-card"
+      [class.hovered]="selCampeonatoId === campeonato.id"
       (mouseover)="selCampeonatoId = campeonato.id"
       (mouseout)="selCampeonatoId = -1"
     >
@@ -46,33 +43,33 @@
         </p>
       </mat-card-content>
 
-      <mat-card-actions>
+      <mat-card-actions align="end">
         <button
           mat-stroked-button
           color="primary"
           [routerLink]="['/campeonatos', campeonato.id]"
         >
-          Detalles
+        <mat-icon>visibility</mat-icon> Detalles
         </button>
         <button
           mat-stroked-button
           color="tertiary"
           (click)="editCampeonato(campeonato.id)"
         >
-          Editar
+        <mat-icon>edit</mat-icon> Editar
         </button>
         <button
           mat-stroked-button
           color="error"
           (click)="deleteCampeonato(campeonato.id)"
         >
-          Eliminar
+        <mat-icon>delete</mat-icon> Eliminar
         </button>
       </mat-card-actions>
     </mat-card>
   </div>
-</div>
 
 <ng-template #noCampeonatos>
-  <p>No hay campeonatos disponibles.</p>
+  <p class="no-data">No hay campeonatos disponibles.</p>
 </ng-template>
+</div>

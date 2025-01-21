@@ -1,26 +1,45 @@
 <div *ngIf="campeonato" class="inscripcion-form">
-    <h2 class="title">Inscribir jugadores a {{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }}</h2>
-    <div class="mat_card">
-        <mat-select appappearance="fill" [value]="jugadorSeleccionado" (selectionChange)="onChange($event)" class="mat_select">
-            <mat-option *ngFor="let jugador of jugadoresDisponibles" [value]="jugador" class="mat_select_trigger">
-                {{ jugador.nombreCompleto }}
-            </mat-option>
+    <h2 class="title">
+      Inscribir jugadores a {{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }}
+    </h2>
+  
+    <div class="form-container">
+      <!-- Selector de jugadores -->
+      <mat-form-field appearance="fill" class="player-select">
+        <mat-label>Seleccionar jugador</mat-label>
+        <mat-select [(value)]="jugadorSeleccionado" (selectionChange)="onChange($event)">
+          <mat-option *ngFor="let jugador of jugadoresDisponibles" [value]="jugador">
+            {{ jugador.nombreCompleto }}
+          </mat-option>
         </mat-select>
+      </mat-form-field>
+  
+      <!-- Botón para inscribir -->
+      <button
+        mat-raised-button
+        color="primary"
+        class="inscribir-button"
+        [disabled]="!jugadorSeleccionado || jugadoresInscritos.length >= 20"
+        (click)="inscribirJugador()"
+      >
+        Inscribir jugador
+      </button>
     </div>
-    <div class="button">
-        <button mat-raised-button color ="tertiary" class="tertiary-button" (click)="inscribirJugador()">Inscribir jugador</button>
-    </div>
+  
+    <!-- Lista de jugadores inscritos -->
     <div class="jugadores-inscritos">
-        <div *ngIf="jugadoresInscritos.length > 0" class="jugadores-inscritos">
-            <h3 class="subtitle">Jugadores inscritos</h3>
-                <mat-list class="list">
-                    <mat-list-item *ngFor="let jugador of jugadoresInscritos" class="jugador">
-                        {{ jugador.nombreCompleto }}
-                        <button mat-icon-button (click)="eliminarJugador(jugador)">
-                            <mat-icon class="error-button">cancel</mat-icon>
-                        </button>
-                    </mat-list-item>
-                </mat-list>
-        </div>
+      <h3 class="subtitle">Jugadores inscritos</h3>
+      <mat-list *ngIf="jugadoresInscritos.length > 0; else noJugadores">
+        <mat-list-item *ngFor="let jugador of jugadoresInscritos" class="jugador-item">
+          {{ jugador.nombreCompleto }}
+          <button mat-icon-button color="warn" (click)="eliminarJugador(jugador)">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+  
+      <ng-template #noJugadores>
+        <p class="no-jugadores">No hay jugadores inscritos en este campeonato.</p>
+      </ng-template>
     </div>
-</div>
+  </div>
