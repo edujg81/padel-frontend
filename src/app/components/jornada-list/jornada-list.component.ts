@@ -73,36 +73,61 @@ export class JornadaListComponent implements OnInit {
           this.jugadores = data;
           this.obtenerJornadas();
         },
-        error: (err: any) => console.error('Error al obtener jugadores:', err),
+        error: (err: any) => {
+          console.error('Error al obtener jugadores:', err);
+          alert('Error al cargar los jugadores. Por favor, intente nuevamente.');
+        }
       });
     }
   
+    // obtenerJornadas(): void {
+    //   this.jornadaService.getJornadasByCampeonatoId(this.campeonatoId!).subscribe({
+    //     next: (data: Jornada[] | null) => {
+    //       if (!data) {
+    //         //console.warn('El backend devolvió null o undefined para las jornadas.');
+    //         this.jornadas = [];
+    //         return;
+    //       }
+
+    //       this.jornadas = data.map((jornada) => {
+    //         return {
+    //           ...jornada,
+    //           partidos: (jornada.partidos || []).map((partido: Partido) => ({
+    //             ...partido,
+    //             equipo1Jugador1Nombre: this.obtenerNombreJugador(partido.equipo1Jugador1Id),
+    //             equipo1Jugador2Nombre: this.obtenerNombreJugador(partido.equipo1Jugador2Id),
+    //             equipo2Jugador1Nombre: this.obtenerNombreJugador(partido.equipo2Jugador1Id),
+    //             equipo2Jugador2Nombre: this.obtenerNombreJugador(partido.equipo2Jugador2Id),
+    //             resultado: partido.resultado || 'Partido pendiente',
+    //           })),
+    //         };
+    //       });
+    //     },
+    //     error: (err: any) => {
+    //       console.error('Error al obtener jornadas:', err);
+    //       this.jornadas = []; // Inicializa jornadas como vacío en caso de error
+    //     },
+    //   });
+    // }
+
     obtenerJornadas(): void {
       this.jornadaService.getJornadasByCampeonatoId(this.campeonatoId!).subscribe({
-        next: (data: Jornada[] | null) => {
-          if (!data) {
-            //console.warn('El backend devolvió null o undefined para las jornadas.');
-            this.jornadas = [];
-            return;
-          }
-
-          this.jornadas = data.map((jornada) => {
-            return {
-              ...jornada,
-              partidos: (jornada.partidos || []).map((partido: Partido) => ({
-                ...partido,
-                equipo1Jugador1Nombre: this.obtenerNombreJugador(partido.equipo1Jugador1Id),
-                equipo1Jugador2Nombre: this.obtenerNombreJugador(partido.equipo1Jugador2Id),
-                equipo2Jugador1Nombre: this.obtenerNombreJugador(partido.equipo2Jugador1Id),
-                equipo2Jugador2Nombre: this.obtenerNombreJugador(partido.equipo2Jugador2Id),
-                resultado: partido.resultado || 'Partido pendiente',
-              })),
-            };
-          });
+        next: (data: Jornada[]) => {
+          this.jornadas = data.map((jornada) => ({
+            ...jornada,
+            partidos: jornada.partidos.map((partido: Partido) => ({
+              ...partido,
+              equipo1Jugador1Nombre: this.obtenerNombreJugador(partido.equipo1Jugador1Id),
+              equipo1Jugador2Nombre: this.obtenerNombreJugador(partido.equipo1Jugador2Id),
+              equipo2Jugador1Nombre: this.obtenerNombreJugador(partido.equipo2Jugador1Id),
+              equipo2Jugador2Nombre: this.obtenerNombreJugador(partido.equipo2Jugador2Id),
+              resultado: partido.resultado || 'Partido pendiente',
+            })),
+          }));
         },
-        error: (err: any) => {
-          console.error('Error al obtener jornadas:', err);
-          this.jornadas = []; // Inicializa jornadas como vacío en caso de error
+        error: () => {
+          alert('Error al cargar las jornadas. Por favor, intente nuevamente.');
+          this.jornadas = [];
         },
       });
     }

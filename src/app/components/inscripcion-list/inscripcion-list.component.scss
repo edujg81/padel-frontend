@@ -1,12 +1,81 @@
-.container {
-    max-width: 800px;
-    margin: 10px 0px 0px 50px;
-    padding: 10px;
-}
+// .container {
+//     max-width: 800px;
+//     margin: 10px 0px 0px 50px;
+//     padding: 10px;
+// }
 
-.mensaje {
-    margin-top: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    color: red;
-}
+// .mensaje {
+//     margin-top: 10px;
+//     font-size: 14px;
+//     font-weight: bold;
+//     color: red;
+// }
+
+.inscripcion-list {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  
+    h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 24px;
+      color: var(--mat-mdc-theme-primary);
+    }
+  
+    .campeonato-card {
+      margin-bottom: 16px;
+  
+      mat-card {
+        padding: 16px;
+        transition: box-shadow 0.3s, transform 0.3s;
+  
+        &:hover {
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          //transform: translateY(-5px);
+        }
+  
+        mat-card-title {
+          font-size: 1.4rem;
+          font-weight: bold;
+          margin-bottom: 16px;
+        }
+  
+        mat-card-content {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+  
+          button {
+            align-self: flex-start;
+          }
+  
+          .mensaje {
+            font-size: 1rem;
+            color: var(--mat-mdc-theme-error);
+          }
+  
+          .no-inscripciones {
+            color: var(--mat-mdc-theme-on-surface-variant);
+            font-size: 0.95rem;
+          }
+  
+          mat-list {
+            border: 1px solid var(--mat-mdc-theme-surface-variant);
+            border-radius: 8px;
+            padding: 8px;
+  
+            mat-list-item {
+              border-bottom: 1px solid var(--mat-mdc-theme-surface-variant);
+              padding: 8px 0;
+  
+              &:last-child {
+                border-bottom: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  

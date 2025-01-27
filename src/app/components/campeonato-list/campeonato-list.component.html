@@ -45,22 +45,22 @@
 
       <mat-card-actions align="end">
         <button
-          mat-stroked-button
-          color="primary"
+          mat-stroked-button 
+          class="primary"
           [routerLink]="['/campeonatos', campeonato.id]"
         >
         <mat-icon>visibility</mat-icon> Detalles
         </button>
         <button
-          mat-stroked-button
-          color="tertiary"
+          mat-stroked-button 
+          class="tertiary"
           (click)="editCampeonato(campeonato.id)"
         >
         <mat-icon>edit</mat-icon> Editar
         </button>
         <button
           mat-stroked-button
-          color="error"
+          class="error"
           (click)="deleteCampeonato(campeonato.id)"
         >
         <mat-icon>delete</mat-icon> Eliminar

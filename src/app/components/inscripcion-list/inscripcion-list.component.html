@@ -1,4 +1,4 @@
-<h2>Inscripciones a campeonatos activos</h2>
+<!-- <h2>Inscripciones a campeonatos activos</h2>
 <div *ngFor="let campeonato of campeonatos">
   <div fxLayout="column" class="container" *ngIf="campeonato.activo">
       <h3>
@@ -24,4 +24,53 @@
     <p *ngIf="campeonato.estado === 'En curso'" class="mensaje">Plazo de inscripción finalizado.</p>
     <p *ngIf="campeonato.estado === 'Finalizado'" class="mensaje">Campeonato finalizado.</p>
   </ng-template>
+</div> -->
+
+<div class="inscripcion-list">
+  <h2>Inscripciones a Campeonatos Activos</h2>
+
+  <div *ngFor="let campeonato of campeonatos" class="campeonato-card mat-elevation-z4">
+    <mat-card>
+      <mat-card-title>
+        {{ campeonato.year }} - {{ campeonato.categoria }} - División {{ campeonato.division }}
+      </mat-card-title>
+
+      <mat-card-content>
+        <div *ngIf="isInscripcionDisponible(campeonato.id) && campeonato.estado === 'Sin iniciar'; else completo">
+          <button 
+            mat-raised-button 
+            color="primary" 
+            [routerLink]="'/inscripciones/campeonato/' + campeonato.id"
+          >
+            Inscribir Jugadores
+          </button>
+        </div>
+
+        <ng-template #completo>
+          <p *ngIf="(jugadoresInscritosPorCampeonato[campeonato.id]?.length || 0) >= 20" class="mensaje">
+            Máximo de jugadores inscritos alcanzado.
+          </p>
+          <p *ngIf="campeonato.estado === 'En curso'" class="mensaje">
+            Plazo de inscripción finalizado.
+          </p>
+          <p *ngIf="campeonato.estado === 'Finalizado'" class="mensaje">
+            Campeonato finalizado.
+          </p>
+        </ng-template>
+
+        <div *ngIf="hayInscripciones(campeonato.id); else noInscripciones">
+          <h4>Jugadores Inscritos</h4>
+          <mat-list>
+            <mat-list-item *ngFor="let jugador of jugadoresInscritosPorCampeonato[campeonato.id]">
+              {{ jugador.nombreCompleto }}
+            </mat-list-item>
+          </mat-list>
+        </div>
+
+        <ng-template #noInscripciones>
+          <p class="no-inscripciones">No hay jugadores inscritos en este campeonato.</p>
+        </ng-template>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
