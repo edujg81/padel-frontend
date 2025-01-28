@@ -17,6 +17,10 @@ export class PartidoService {
     return this.http.get<Partido>(`${this.baseUrl}/${partidoId}`);
   }
 
+  getPartidosByJornadaId(jornadaId: number): Observable<Partido[]> {
+    return this.http.get<Partido[]>(`${this.baseUrl}/jornada/${jornadaId}`);
+  }
+
   // Actualizar el resultado de un partido
   updatePartido(partidoId: number, partidoDetails: Partial<Partido>): Observable<Partido> {
     return this.http.put<Partido>(`${this.baseUrl}/${partidoId}`, partidoDetails);

@@ -1,17 +1,71 @@
-.jugador-detail {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
+// .jugador-detail {
+
   
-    h2 {
+//     h2 {
+//       font-size: 22px;
+//       font-weight: bold;
+//       margin-bottom: 10px;
+//     }
+  
+//     p {
+//       margin-bottom: 20px;
+//     }
+// }
+
+.jugador-detail {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+
+  mat-card {
+    padding: 16px;
+    border-radius: 8px;
+
+    mat-card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       font-size: 22px;
       font-weight: bold;
-      margin-bottom: 10px;
+      color: var(--mat-mdc-theme-primary);
     }
-  
-    p {
-      font-size: 16px;
-      margin-bottom: 20px;
+
+    .jugador-info {
+      margin-top: 16px;
+
+      p {
+        font-size: 16px;
+        margin: 8px 0;
+
+        strong {
+          color: var(--mat-mdc-theme-secondary);
+        }
+      }
+
+      .estado-alta {
+        color: var(--mat-mdc-theme-primary);
+        font-weight: bold;
+      }
+
+      .estado-baja {
+        color: var(--mat-mdc-theme-warn);
+        font-weight: bold;
+      }
     }
+
+    .acciones {
+      margin-top: 16px;
+      display: flex;
+      gap: 16px;
+
+      button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+  }
 }

@@ -2,7 +2,7 @@ export interface Partido {
     id: number;
     fecha: Date;
     pista: string;
-    resultado: string;
+    resultado?: string;
     equipoGanador: string;
     registrado: boolean;
     jornadaId: number; // ID de la jornada a la que pertenece el partido
@@ -23,12 +23,12 @@ export interface Partido {
     //ausencias: Ausencia[];
 
     /* Juegos ganados por equipos en cada set */
-    juegosGanadosEquipo1Set1: number | null;
-    juegosGanadosEquipo2Set1: number | null;
-    juegosGanadosEquipo1Set2: number | null;
-    juegosGanadosEquipo2Set2: number | null;
-    juegosGanadosEquipo1Set3: number | null;
-    juegosGanadosEquipo2Set3: number | null;
-    setsGanadosEquipo1: number | null;
-    setsGanadosEquipo2: number | null;
+    juegosGanadosEquipo1Set1: number;
+    juegosGanadosEquipo2Set1: number;
+    juegosGanadosEquipo1Set2: number;
+    juegosGanadosEquipo2Set2: number;
+    juegosGanadosEquipo1Set3: number;
+    juegosGanadosEquipo2Set3: number;
+    setsGanadosEquipo1: number;
+    setsGanadosEquipo2: number;
 }

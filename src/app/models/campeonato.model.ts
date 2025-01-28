@@ -1,3 +1,5 @@
+import { Jornada } from "./jornada.model";
+
 export interface Campeonato {
     id: number;
     year: number;
@@ -7,4 +9,5 @@ export interface Campeonato {
     puntosPorVictoria: number;
     puntosPorDerrota: number;
     activo: boolean;
+    jornadas?: Jornada[]; // Agregar jornadas como propiedad opcional
   }

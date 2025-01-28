@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Observable, of } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'app-jugador-form',
@@ -27,7 +28,8 @@ import { Observable, of } from 'rxjs';
         MatNativeDateModule,
         MatButtonModule,
         MatCheckboxModule,
-        MatSelectModule
+        MatSelectModule,
+        MatIconModule
     ],
     templateUrl: './jugador-form.component.html',
     styleUrl: './jugador-form.component.scss'

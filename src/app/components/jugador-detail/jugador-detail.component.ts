@@ -5,6 +5,7 @@ import { Jugador } from '../../models/jugador.model';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'app-jugador-detail',
@@ -13,7 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
         CommonModule,
         RouterModule,
         MatCardModule,
-        MatButtonModule
+        MatButtonModule,
+        MatIconModule
     ],
     templateUrl: './jugador-detail.component.html',
     styleUrl: './jugador-detail.component.scss'

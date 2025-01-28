@@ -1,31 +1,78 @@
-@media (forced-colors: active) {
-  .mat-checkbox {
-    background-color: ButtonFace;
-    color: ButtonText;
-    border: 1px solid ButtonText;
-  }
-}
+// @media (forced-colors: active) {
+//   .mat-checkbox {
+//     background-color: ButtonFace;
+//     color: ButtonText;
+//     border: 1px solid ButtonText;
+//   }
+// }
+
+// .jugador-form-container {
+//   max-width: 800px;
+//   padding: 20px;
+// }
+ 
+// .form-buttons {
+//   margin-top: 20px;
+//   display: flex;
+//   justify-content: left-start;
+// }
+
+// .example-form mat-form-field {
+//   margin-right: 10px;
+// }
+
+// p.alert{
+//   color: red !important;
+//   font-size:0.9em;
+// }
+
+// .mat-form-field {
+//   width: 100%;
+// }
 
 .jugador-form-container {
-  max-width: 800px;
+  max-width: 600px;
+  margin: 20px auto;
   padding: 20px;
-}
- 
-.form-buttons {
-  margin-top: 20px;
-  display: flex;
-  justify-content: left-start;
-}
+  border-radius: 8px;
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
 
-.example-form mat-form-field {
-  margin-right: 10px;
-}
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--mat-mdc-theme-primary);
+  }
 
-p.alert{
-  color: red !important;
-  font-size:0.9em;
-}
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
 
-.mat-form-field {
-  width: 100%;
+  mat-checkbox {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  /* Colores dinámicos para el estado */
+  .estado-alta {
+    color: var(--mat-mdc-theme-primary);
+  }
+
+  .estado-baja {
+    color: var(--mat-mdc-theme-warn);
+  }
 }

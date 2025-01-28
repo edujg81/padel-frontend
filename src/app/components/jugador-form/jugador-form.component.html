@@ -1,61 +1,67 @@
-<div class="jugador-form-container">
+<div class="jugador-form-container mat-elevation-z4">
   <h2>{{ isEditing ? 'Editar Jugador' : 'Agregar Jugador' }}</h2>
   <form [formGroup]="jugadorForm" (ngSubmit)="onSubmit()" class="example-form">
     <mat-form-field>
       <mat-label>DNI</mat-label>
-      <input matInput formControlName="dni" required>
-      <mat-error *ngIf="jugadorForm.get('dni')?.hasError('required')">DNI es requerido</mat-error>
-      <mat-error *ngIf="jugadorForm.get('dni')?.hasError('pattern')">DNI inválido</mat-error>
+      <input matInput formControlName="dni" required placeholder="Ej: 12345678A">
+      <mat-error *ngIf="jugadorForm.get('dni')?.hasError('required')">DNI es obligatorio</mat-error>
+      <mat-error *ngIf="jugadorForm.get('dni')?.hasError('pattern')">DNI no válido</mat-error>
     </mat-form-field>
     
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <mat-label>Nombre Completo</mat-label>
       <input matInput formControlName="nombreCompleto" placeholder="Ingresa el nombre completo" required>
-      <mat-error *ngIf="jugadorForm.get('nombreCompleto')?.hasError('required')">Nombre es requerido</mat-error>
+      <mat-error *ngIf="jugadorForm.get('nombreCompleto')?.hasError('required')">El nombre es obligatorio</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Teléfono</mat-label>
-      <input matInput formControlName="telefono">
+      <input matInput formControlName="telefono" placeholder="Ej: +34 600 000 000">
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <mat-label>Email</mat-label>
-      <input matInput formControlName="email" placeholder="Ingresa el email" required>
+      <input matInput formControlName="email" placeholder="Ingresa el correo electrônico" type="email" required>
       <mat-error *ngIf="jugadorForm.get('email')?.hasError('required')">Email es obligatorio</mat-error>
       <mat-error *ngIf="jugadorForm.get('email')?.hasError('email')">Email no válido</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <mat-label>Sexo</mat-label>
-      <mat-select formControlName="sexo" panelClass="mat-select-panel" required>
+      <mat-select formControlName="sexo" required> <!-- panelClass="mat-select-panel" -->
         <mat-option value="Masculino">Masculino</mat-option>
         <mat-option value="Femenino">Femenino</mat-option>
       </mat-select>
-      <mat-error *ngIf="jugadorForm.get('sexo')?.hasError('required')">Sexo es obligatorio</mat-error>
+      <mat-error *ngIf="jugadorForm.get('sexo')?.hasError('required')">El sexo es obligatorio</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <mat-label>Estado</mat-label>
-      <mat-select formControlName="estado">
+      <mat-select formControlName="estado" [ngClass]="{'estado-alta': jugadorForm.get('estado')?.value === 'Alta', 'estado-baja': jugadorForm.get('estado')?.value === 'Baja'}">
         <mat-option value="Alta">Alta</mat-option>
         <mat-option value="Baja">Baja</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <mat-label>Fecha de Alta</mat-label>
       <input matInput formControlName="fechaAlta" [matDatepicker]="picker" placeholder="Selecciona una fecha">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <mat-checkbox formControlName="lesionado" style="forced-color-adjust: yes;">Lesionado</mat-checkbox>
+    <mat-checkbox formControlName="lesionado">Lesionado</mat-checkbox> <!-- style="forced-color-adjust: yes;" -->
 
     <div class="form-buttons">
-      <button mat-raised-button class="tertiary-button" type="submit">{{ isEditing ? 'Guardar Cambios' : 'Agregar Jugador' }}</button>
+      <!-- <button mat-raised-button class="tertiary-button" type="submit">{{ isEditing ? 'Guardar Cambios' : 'Agregar Jugador' }}</button>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <button mat-raised-button class="error-button" (click)="onCancel()">Cancelar</button>
+      <button mat-raised-button class="error-button" (click)="onCancel()">Cancelar</button> -->
+      <button mat-raised-button color="primary" type="submit" [disabled]="jugadorForm.invalid">
+        <mat-icon>{{ isEditing ? 'save' : 'add' }}</mat-icon> {{ isEditing ? 'Guardar Cambios' : 'Agregar Jugador' }}
+      </button>
+      <button mat-raised-button color="warn" type="button" (click)="onCancel()">
+        <mat-icon>close</mat-icon> Cancelar
+      </button>
     </div>
   </form>
 </div>

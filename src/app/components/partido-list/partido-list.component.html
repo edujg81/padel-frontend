@@ -1,1 +1,40 @@
-<p>partido-list works!</p>
+<div class="partido-list-container">
+    <h2>Lista de Partidos</h2>
+  
+    <!-- Mostrar campeonatos -->
+    <div *ngFor="let campeonato of campeonatos">
+      <mat-card class="campeonato-card">
+        <mat-card-title>
+          {{ campeonato?.year }} - {{ campeonato?.categoria }} - División {{ campeonato?.division }}
+        </mat-card-title>
+        <mat-card-content>
+          <div *ngIf="campeonato.jornadas?.length; else noJornadas">
+            <!-- Mostrar jornadas dentro del campeonato -->
+            <div *ngFor="let jornada of campeonato.jornadas">
+              <h3 class="jornada-title">Jornada {{ jornada?.numero }} ({{ jornada?.fechaInicio | date: 'dd/MM/yyyy' }})</h3>
+  
+              <!-- Mostrar partidos dentro de la jornada -->
+              <div *ngFor="let partido of jornada.partidos" class="partido-item">
+                <p>
+                  <strong>Partido:</strong>
+                  {{ partido?.equipo1Jugador1Nombre }} y {{ partido?.equipo1Jugador2Nombre }}
+                  <strong>vs</strong>
+                  {{ partido?.equipo2Jugador1Nombre }} y {{ partido?.equipo2Jugador2Nombre }}
+                </p>
+                <p>
+                  <strong>Pista:</strong> {{ partido?.pista }}<br />
+                  <strong>Resultado:</strong> {{ partido?.resultado || 'Pendiente' }}
+                </p>
+                <button mat-button color="primary" (click)="verPartido(partido.id)">Ver Detalles</button>
+              </div>
+            </div>
+          </div>
+  
+          <ng-template #noJornadas>
+            <p>No hay jornadas registradas para este campeonato.</p>
+          </ng-template>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

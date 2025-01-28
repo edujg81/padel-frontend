@@ -1,0 +1,46 @@
+.partido-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: var(--mat-sys-surface);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+    h2,
+    h3 {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+  
+    h4 {
+      margin: 16px 0 8px;
+    }
+  
+    .campo {
+      display: block;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  
+    .resultados {
+      margin: 20px 0;
+  
+      .set {
+        padding: 10px;
+        border: 1px solid var(--mat-sys-outline);
+        border-radius: 8px;
+        margin-bottom: 16px;
+      }
+    }
+  
+    .acciones {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+  
+      button {
+        min-width: 120px;
+      }
+    }
+  }
+  

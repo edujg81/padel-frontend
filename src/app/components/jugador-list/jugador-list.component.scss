@@ -1,79 +1,94 @@
+// .table-container {
+//     overflow: auto; /* Hacer la tabla desplazable en dispositivos pequeños */
+//     margin-top: 20px;
+//     display: flex;
+//     flex-direction: column;
+//     min-width: 550px;
+//   }
+
+// .mat-form-field-wrapper {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+// .buscar {
+//     padding: 20px 0px 0px 0px;
+//     margin-left: 20px;
+//     width: 100%;   
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+// mat-paginator {
+//     display: flex;
+//     justify-content: center;
+//     margin-top: 20px;
+// }
+
 .container {
     padding: 16px;
-}
-
-.header-actions {
-    margin-bottom: 16px;
   }
-
-  .table-container {
-    overflow: auto; /* Hacer la tabla desplazable en dispositivos pequeños */
-    margin-top: 20px;
+  
+  .header-actions {
     display: flex;
-    flex-direction: column;
-    min-width: 550px;
-  }
-
-.mat-form-field-wrapper {
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-}
-
-.mat-header-row {
+    margin-bottom: 16px;
+  
+    button {
+      display: flex;
+      align-items: center;
+    }
+  
+    .buscar {
+      width: 50%;
+    }
+  }
+  
+  .table-container {
+    overflow-x: auto; /* Hacer la tabla desplazable en pantallas pequeñas */
+    margin-top: 16px;
+  }
+  
+  .mat-header-row {
     background-color: var(--mat-sys-primary);
     color: var(--mat-sys-on-primary);
-}
+  }
   
-.mat-row:hover {
+  .mat-row:hover {
     background-color: var(--mat-sys-secondary-container);
-}
-
-.buscar {
-    padding: 20px 0px 0px 0px;
-    margin-left: 20px;
-    width: 100%;   
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-mat-paginator {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.estado-activo {
-    color: green;
-    font-weight:normal;
-}
+  }
   
-.estado-inactivo {
-    //color: red;
-    color: var(--mat-sys-error);
-    font-weight: normal;
-}
-
-.lesionado-no {
+  .estado-activo {
     color: green;
-    font-weight:normal;
-}
+  }
   
-.lesionado-si {
-    //color: red;
-    color: var(--mat-sys-error);
-    font-weight: normal;
-}
-
-.sexo-masculino {
-    //color: rgb(102, 198, 230);
+  .estado-inactivo {
+    color: red;
+  }
+  
+  .lesionado-si {
+    color: red;
+  }
+  
+  .lesionado-no {
+    color: green;
+  }
+  
+  .sexo-masculino {
     color: var(--mat-sys-primary);
-    font-weight:normal;
-}
+  }
   
-.sexo-femenino {
-    //color: rgb(243, 130, 149);
+  .sexo-femenino {
     color: var(--mat-sys-tertiary);
-    font-weight: normal;
-}   
+  }
+  
+  .mensaje {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--mat-sys-secondary);
+    margin-top: 20px;
+  }
+  
