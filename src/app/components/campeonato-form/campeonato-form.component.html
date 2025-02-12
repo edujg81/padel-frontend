@@ -31,9 +31,9 @@
     <mat-form-field appearance="outline" class="form-field">
       <mat-label>Estado</mat-label>
       <mat-select formControlName="estado">
-        <mat-option value="Sin iniciar">Sin iniciar</mat-option>
-        <mat-option value="En curso">En curso</mat-option>
-        <mat-option value="Finalizado">Finalizado</mat-option>
+        <mat-option value="SIN_INICIAR">{{ 'SIN_INICIAR' | estadoFriendly }}</mat-option>
+        <mat-option value="EN_CURSO">{{ 'EN_CURSO' | estadoFriendly }}</mat-option>
+        <mat-option value="FINALIZADO">{{ 'FINALIZADO' | estadoFriendly }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>

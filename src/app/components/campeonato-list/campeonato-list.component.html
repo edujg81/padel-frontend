@@ -36,7 +36,7 @@
 
       <mat-card-content>
         <p>
-          <strong>Estado:</strong> {{ campeonato.estado }}<br />
+          <strong>Estado:</strong> {{ campeonato.estado | estadoFriendly }}<br />
           <strong>Activo:</strong> {{ campeonato.activo ? "Sí" : "No" }}<br />
           <strong>Puntos:</strong> {{ campeonato.puntosPorVictoria }} por
           victoria, {{ campeonato.puntosPorDerrota }} por derrota

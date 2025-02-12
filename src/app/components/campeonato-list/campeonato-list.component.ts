@@ -7,22 +7,24 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { MatIconModule } from '@angular/material/icon';
+import { EstadoFriendlyPipe } from "../../shared/estadoFriendly.pipe";
 
 @Component({
     selector: 'app-campeonato-list',
     standalone: true,
     imports: [
-        CommonModule,
-        MatButtonModule,
-        MatCardModule,
-        MatIconModule,
-        RouterModule,
-        FlexLayoutModule,
-        NgFor,
-        NgIf,
-        RouterModule,
-        RouterLink
-    ],
+    CommonModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    RouterModule,
+    FlexLayoutModule,
+    NgFor,
+    NgIf,
+    RouterModule,
+    RouterLink,
+    EstadoFriendlyPipe
+],
     templateUrl: './campeonato-list.component.html',
     styleUrls: ['./campeonato-list.component.scss'],
     encapsulation: ViewEncapsulation.None // Esto permite que los estilos globales se apliquen

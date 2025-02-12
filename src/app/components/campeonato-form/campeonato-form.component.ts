@@ -1,15 +1,16 @@
-import { ChangeDetectionStrategy, Component, inject, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CampeonatoService } from '../../services/campeonato.service';
 import { CommonModule } from '@angular/common';
-import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
-import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Campeonato } from '../../models/campeonato.model';
 import { Observable, of } from 'rxjs';
+import { EstadoFriendlyPipe } from '../../shared/estadoFriendly.pipe';
 
 @Component({
     selector: 'app-campeonato-form',
@@ -27,7 +28,8 @@ import { Observable, of } from 'rxjs';
         MatInputModule,
         MatSelectModule,
         MatButtonModule,
-        RouterModule
+        RouterModule,
+        EstadoFriendlyPipe
     ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -77,7 +79,7 @@ export class CampeonatoFormComponent implements OnInit {
       year: ['', Validators.required],
       categoria: ['', Validators.required],
       division: ['', Validators.required],
-      estado: ['Sin iniciar', Validators.required],
+      estado: ['SIN_INICIAR', Validators.required],
       puntosPorVictoria: ['2', Validators.required],
       puntosPorDerrota: ['0', Validators.required],
       activo: [true]

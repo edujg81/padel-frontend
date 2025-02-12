@@ -24,7 +24,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./partido-form.component.scss'],
 })
 export class PartidoFormComponent implements OnInit {
-  partido!: Partido;
+  //partido!: Partido;
+  partido: Partido = {} as Partido;
 
   setMappings: { [key: number]: { equipo1: keyof Partido; equipo2: keyof Partido } } = {
     1: { equipo1: 'juegosGanadosEquipo1Set1', equipo2: 'juegosGanadosEquipo2Set1' },

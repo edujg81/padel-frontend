@@ -36,7 +36,7 @@
       </mat-card-title>
 
       <mat-card-content>
-        <div *ngIf="isInscripcionDisponible(campeonato.id) && campeonato.estado === 'Sin iniciar'; else completo">
+        <div *ngIf="isInscripcionDisponible(campeonato.id) && campeonato.estado === 'SIN_INICIAR'; else completo">
           <button 
             mat-raised-button 
             color="primary" 
@@ -50,10 +50,10 @@
           <p *ngIf="(jugadoresInscritosPorCampeonato[campeonato.id]?.length || 0) >= 20" class="mensaje">
             Máximo de jugadores inscritos alcanzado.
           </p>
-          <p *ngIf="campeonato.estado === 'En curso'" class="mensaje">
+          <p *ngIf="campeonato.estado === 'EN_CURSO'" class="mensaje">
             Plazo de inscripción finalizado.
           </p>
-          <p *ngIf="campeonato.estado === 'Finalizado'" class="mensaje">
+          <p *ngIf="campeonato.estado === 'FINALIZADO'" class="mensaje">
             Campeonato finalizado.
           </p>
         </ng-template>

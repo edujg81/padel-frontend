@@ -12,7 +12,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { Jugador } from '../../models/jugador.model';
 import { Partido } from '../../models/partido.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDatepickerControl, MatDatepickerModule, MatDatepickerPanel } from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
@@ -79,43 +79,13 @@ export class JornadaListComponent implements OnInit {
         }
       });
     }
-  
-    // obtenerJornadas(): void {
-    //   this.jornadaService.getJornadasByCampeonatoId(this.campeonatoId!).subscribe({
-    //     next: (data: Jornada[] | null) => {
-    //       if (!data) {
-    //         //console.warn('El backend devolvió null o undefined para las jornadas.');
-    //         this.jornadas = [];
-    //         return;
-    //       }
-
-    //       this.jornadas = data.map((jornada) => {
-    //         return {
-    //           ...jornada,
-    //           partidos: (jornada.partidos || []).map((partido: Partido) => ({
-    //             ...partido,
-    //             equipo1Jugador1Nombre: this.obtenerNombreJugador(partido.equipo1Jugador1Id),
-    //             equipo1Jugador2Nombre: this.obtenerNombreJugador(partido.equipo1Jugador2Id),
-    //             equipo2Jugador1Nombre: this.obtenerNombreJugador(partido.equipo2Jugador1Id),
-    //             equipo2Jugador2Nombre: this.obtenerNombreJugador(partido.equipo2Jugador2Id),
-    //             resultado: partido.resultado || 'Partido pendiente',
-    //           })),
-    //         };
-    //       });
-    //     },
-    //     error: (err: any) => {
-    //       console.error('Error al obtener jornadas:', err);
-    //       this.jornadas = []; // Inicializa jornadas como vacío en caso de error
-    //     },
-    //   });
-    // }
 
     obtenerJornadas(): void {
       this.jornadaService.getJornadasByCampeonatoId(this.campeonatoId!).subscribe({
-        next: (data: Jornada[]) => {
-          this.jornadas = data.map((jornada) => ({
+        next: (data: Jornada[] | null) => {
+          this.jornadas = (data || []).map((jornada) => ({
             ...jornada,
-            partidos: jornada.partidos.map((partido: Partido) => ({
+            partidos: (jornada.partidos || []).map((partido: Partido) => ({
               ...partido,
               equipo1Jugador1Nombre: this.obtenerNombreJugador(partido.equipo1Jugador1Id),
               equipo1Jugador2Nombre: this.obtenerNombreJugador(partido.equipo1Jugador2Id),
@@ -138,7 +108,7 @@ export class JornadaListComponent implements OnInit {
     }  
 
     puedeGenerarJornada(): boolean {
-      return this.campeonato?.estado === 'En curso';
+      return this.campeonato?.estado === 'EN_CURSO';
     }
 
     generarNuevaJornada(): void {

@@ -19,25 +19,27 @@ import { MatTableModule } from '@angular/material/table';
 import { Jugador } from '../../models/jugador.model';
 import { JugadorService } from '../../services/jugador.service';
 import { MatDividerModule } from '@angular/material/divider';
+import { EstadoFriendlyPipe } from "../../shared/estadoFriendly.pipe";
 
 @Component({
     selector: 'app-campeonato-detail',
     standalone: true,
     imports: [
-        CommonModule,
-        MatCardModule,
-        MatButtonModule,
-        MatIconModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatGridListModule,
-        MatTableModule,
-        MatDividerModule,
-        RouterModule,
-        RouterLink,
-        FormsModule,
-        ReactiveFormsModule
-    ],
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatTableModule,
+    MatDividerModule,
+    RouterModule,
+    RouterLink,
+    FormsModule,
+    ReactiveFormsModule,
+    EstadoFriendlyPipe
+],
     templateUrl: './campeonato-detail.component.html',
     styleUrls: ['./campeonato-detail.component.scss']
 })
@@ -114,8 +116,8 @@ export class CampeonatoDetailComponent implements OnInit {
 
   private permiteCambioEstado(estado: string): boolean {
     return (
-      (this.campeonato?.estado === 'Sin iniciar' && estado === 'En curso' && this.jugadoresInscritos >= 12) ||
-      (this.campeonato?.estado === 'En curso' && estado === 'Finalizado')
+      (this.campeonato?.estado === 'SIN_INICIAR' && estado === 'EN_CURSO' && this.jugadoresInscritos >= 12) ||
+      (this.campeonato?.estado === 'EN_CURSO' && estado === 'FINALIZADO')
     );
   }
 
@@ -159,8 +161,8 @@ export class CampeonatoDetailComponent implements OnInit {
 
   private toggleEstadoControl(): void {
     const habilitarCambioEstado = 
-      (this.estadoControl.value === 'Sin iniciar' && this.jugadoresInscritos >= 12) ||
-      (this.estadoControl.value === 'En curso');
+      (this.estadoControl.value === 'SIN_INICIAR' && this.jugadoresInscritos >= 12) ||
+      (this.estadoControl.value === 'EN_CURSO');
 
     habilitarCambioEstado ? this.estadoControl.enable() : this.estadoControl.disable();
   }
