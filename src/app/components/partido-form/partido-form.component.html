@@ -1,34 +1,3 @@
-<!-- <div class="partido-form">
-    <h2>Detalles del Partido</h2>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Fecha</mat-label>
-      <input matInput type="date" [(ngModel)]="partido.fecha" />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Pista</mat-label>
-      <input matInput type="text" [(ngModel)]="partido.pista" />
-    </mat-form-field>
-
-    <h3>Resultados</h3>
-    <div class="resultados">
-        <div *ngFor="let set of [1, 2, 3]" class="set">
-            <p>Set {{ set }}</p>
-            <mat-form-field>
-              <mat-label>Equipo 1 - Juegos</mat-label>
-              <input matInput type="number" [(ngModel)]="partido[setMappings[set].equipo1]" />
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Equipo 2 - Juegos</mat-label>
-              <input matInput type="number" [(ngModel)]="partido[setMappings[set].equipo2]" />
-            </mat-form-field>
-          </div>
-    </div>
-
-    <button mat-raised-button color="primary" (click)="registrarResultado()">Registrar Resultado</button>
-  </div> -->
-
   <div class="partido-form-container">
     <h2>Detalles del Partido</h2>
   
@@ -41,7 +10,7 @@
     <!-- Pista -->
     <mat-form-field appearance="outline" class="campo">
       <mat-label>Pista</mat-label>
-      <input matInput type="text" [(ngModel)]="partido.pista" required />
+      <input matInput type="text" [(ngModel)]="partido!.pista" required />
     </mat-form-field>
   
     <h3>Resultados por Sets</h3>
@@ -52,11 +21,11 @@
         <h4>Set {{ set }}</h4>
         <mat-form-field appearance="outline" class="campo">
           <mat-label>Equipo 1 - Juegos</mat-label>
-          <input matInput type="number" [(ngModel)]="partido[setMappings[set].equipo1]" min="0" required />
+          <input matInput type="number" [(ngModel)]="partido![setMappings[set].equipo1]" min="0" required />
         </mat-form-field>
         <mat-form-field appearance="outline" class="campo">
           <mat-label>Equipo 2 - Juegos</mat-label>
-          <input matInput type="number" [(ngModel)]="partido[setMappings[set].equipo2]" min="0" required />
+          <input matInput type="number" [(ngModel)]="partido![setMappings[set].equipo2]" min="0" required />
         </mat-form-field>
       </div>
     </div>
